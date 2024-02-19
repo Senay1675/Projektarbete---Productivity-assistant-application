@@ -9,7 +9,9 @@
   </head>
   <body>
     <div class="todo-container">
-      <div class="todo-list"></div>
+      <div class="todo-list">
+        <h2>Your To-dos:</h2>
+      </div>
 
       <div class="add-filter-todo">
         <div class="add-todo">
@@ -29,17 +31,43 @@
           <label for="todoCategory">Category:</label>
           <select name="" id="todoCategory">
             <option value="Health">Health</option>
-            <option value="HouseKeeping">Housekeeping</option>
+            <option value="Housekeeping">Housekeeping</option>
             <option value="Work">Work</option>
             <option value="Music">Music</option>
             <option value="Miscellaneous">Miscellaneous</option>
           </select>
           <button id="addTodo">Add To-do</button>
         </div>
-        <div class="filter-todo"></div>
+        <div class="filter-todo">
+          <h3>Filtering:</h3>
+          <h4>Task status:</h4>
+          <label for="todoDone">Done</label>
+          <input type="checkbox" name="todoStatus" id="todoDone" />
+          <label for="todoProgess">In-Progress</label>
+          <input type="checkbox" name="todoStatus" id="todoProgess" />
+          <div class="todoCategories">
+            <h4>Categories:</h4>
+            <label for="categHealth">Health</label>
+            <input type="checkbox" name="category" id="categHealth" />
+            <label for="categHousekeeping">Housekeeping</label>
+            <input type="checkbox" name="category" id="categHousekeeping" />
+            <label for="categWork">Work</label>
+            <input type="checkbox" name="category" id="categWork" />
+            <label for="categMusic">Music</label>
+            <input type="checkbox" name="category" id="categMusic" />
+            <label for="categMisc">Miscellaneous</label>
+            <input type="checkbox" name="category" id="categMisc" />
+          </div>
+          <label for="filterEst">Estimate:</label>
+          <input type="number" name="todoEst" id="filterEst">
+          <label for="todoDeadline">Deadline</label>
+          <input type="date" name="deadlineTodo" id="todoDealine">
+        </div>
       </div>
     </div>
 
-    <div class="habit-container"></div>
+      <div class="habit-container"></div>
+    </option>
   </body>
 </html>
+
