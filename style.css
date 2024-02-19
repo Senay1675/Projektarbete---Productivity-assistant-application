@@ -1,1 +1,28 @@
-/*# sourceMappingURL=style.css.map */
+* {
+  margin: 0px;
+}
+
+.add-filter-todo {
+  border: 1px solid black;
+  display: flex;
+}
+
+.todo {
+  padding: 10px;
+}
+
+.todo-done {
+  background: rgb(203, 255, 203);
+}
+
+.todo-progress {
+  background: rgb(255, 255, 203);
+}
+
+.add-todo {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  gap: 6px;
+}/*# sourceMappingURL=style.css.map */

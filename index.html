@@ -8,7 +8,37 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="todo-container"></div>
+    <div class="todo-container">
+      <div class="todo-list"></div>
+
+      <div class="add-filter-todo">
+        <div class="add-todo">
+          <h3>Add your todo:</h3>
+          <label for="todoName">To-do:</label>
+          <input type="text" name="todo" id="todoName" />
+          <label for="todoDesc">Description:</label>
+          <input type="text" name="todo-desc" id="todoDesc" />
+          <label for="todoDate">Deadline:</label>
+          <input type="date" name="todo-deadline" id="todoDate" />
+          <label for="todoEstimate">Est. time:</label>
+          <input type="number" name="todoEst" id="todoEstimate" />
+          <select value="estTime" id="estTime">
+            <option name="estimateTodo" id="estMinutes">Minutes</option>
+            <option name="estimateTodo" id="estDays">Days</option>
+          </select>
+          <label for="todoCategory">Category:</label>
+          <select name="" id="todoCategory">
+            <option value="Health">Health</option>
+            <option value="HouseKeeping">Housekeeping</option>
+            <option value="Work">Work</option>
+            <option value="Music">Music</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+          </select>
+          <button id="addTodo">Add To-do</button>
+        </div>
+        <div class="filter-todo"></div>
+      </div>
+    </div>
 
     <div class="habit-container"></div>
   </body>
