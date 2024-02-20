@@ -8,7 +8,66 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="todo-container"></div>
+    <div class="todo-container">
+      <div class="todo-list">
+        <h2>Your To-dos:</h2>
+        <h3>Sorting:</h3>
+        <div class="sort-todo">
+          <select name="risingFalling" id="riseFall">
+            <option value="rising">Rising</option>
+            <option value="falling">Falling</option>
+          </select>
+        </div>
+        <div class="your-todo"></div>
+      </div>
+      <div class="add-filter-todo">
+        <div class="add-todo">
+          <h3>Add your todo:</h3>
+          <label for="todoName">To-do:</label>
+          <input type="text" name="todo" id="todoName" />
+          <label for="todoDesc">Description:</label>
+          <input type="text" name="todo-desc" id="todoDesc" />
+          <label for="todoDate">Deadline:</label>
+          <input type="date" name="todo-deadline" id="todoDate" />
+          <label for="todoEstimate">Est. time:</label>
+          <input type="number" name="todoEst" id="todoEstimate" />
+          <select value="estTime" id="estTime">
+            <option name="estimateTodo" id="estMinutes">Minutes</option>
+            <option name="estimateTodo" id="estDays">Days</option>
+          </select>
+          <label for="todoCategory">Category:</label>
+          <select name="" id="todoCategory">
+            <option value="Health">Health</option>
+            <option value="Housekeeping">Housekeeping</option>
+            <option value="Work">Work</option>
+            <option value="Music">Music</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+          </select>
+          <button id="addTodo">Add To-do</button>
+        </div>
+        <div class="filter-todo">
+          <h3>Filtering:</h3>
+          <h4>Task status:</h4>
+          <label for="todoDone">Done</label>
+          <input type="checkbox" name="todoStatus" id="todoDone" />
+          <label for="todoProgess">In-Progress</label>
+          <input type="checkbox" name="todoStatus" id="todoProgess" />
+          <div class="todoCategories">
+            <h4>Categories:</h4>
+            <label for="categHealth">Health</label>
+            <input type="checkbox" name="category" id="categHealth" />
+            <label for="categHousekeeping">Housekeeping</label>
+            <input type="checkbox" name="category" id="categHousekeeping" />
+            <label for="categWork">Work</label>
+            <input type="checkbox" name="category" id="categWork" />
+            <label for="categMusic">Music</label>
+            <input type="checkbox" name="category" id="categMusic" />
+            <label for="categMisc">Miscellaneous</label>
+            <input type="checkbox" name="category" id="categMisc" />
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="habit-container"></div>
   </body>
