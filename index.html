@@ -11,8 +11,15 @@
     <div class="todo-container">
       <div class="todo-list">
         <h2>Your To-dos:</h2>
+        <h3>Sorting:</h3>
+        <div class="sort-todo">
+          <select name="risingFalling" id="riseFall">
+            <option value="rising">Rising</option>
+            <option value="falling">Falling</option>
+          </select>
+        </div>
+        <div class="your-todo"></div>
       </div>
-
       <div class="add-filter-todo">
         <div class="add-todo">
           <h3>Add your todo:</h3>
@@ -58,16 +65,10 @@
             <label for="categMisc">Miscellaneous</label>
             <input type="checkbox" name="category" id="categMisc" />
           </div>
-          <label for="filterEst">Estimate:</label>
-          <input type="number" name="todoEst" id="filterEst">
-          <label for="todoDeadline">Deadline</label>
-          <input type="date" name="deadlineTodo" id="todoDealine">
         </div>
       </div>
     </div>
 
-      <div class="habit-container"></div>
-    </option>
+    <div class="habit-container"></div>
   </body>
 </html>
-
