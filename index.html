@@ -29,6 +29,9 @@
           <input type="text" name="todo-desc" id="todoDesc" />
           <label for="todoDate">Deadline:</label>
           <input type="date" name="todo-deadline" id="todoDate" />
+          <div id="errorMessage" style="color: red; display: none">
+            Deadline cannot be in the past!
+          </div>
           <label for="todoEstimate">Est. time:</label>
           <input type="number" name="todoEst" id="todoEstimate" />
           <select value="estTime" id="estTime">
@@ -70,21 +73,23 @@
     </div>
 
     <div class="habit-container">
+      <div id="habitForm-container">
+        <h3>Add your habit:</h3>
+        <label for="habitInput">add</label>
+        <input
+          type="text"
+          name="habit"
+          id="habitInput"
+          placeholder="What do you want to do today.."
+        />
+        <br />
+        <button id="low">Low</button>
+        <button id="Medium">Medium</button>
+        <button id="High">High</button>
+        <br />
 
-        <div id="habitForm-container">
-            <h3>Add your habit:</h3>
-            <label for="habitInput">add</label>
-            <input type="text" name="habit" id="habitInput" placeholder="What do you want to do today..">
-            <br>
-            <button id="low">Low</button>
-            <button id="Medium">Medium</button>
-            <button id="High">High</button>
-            <br>
-
-            <button id="addHabitBtn">
-                Add habit
-            </button>
-        </div>
+        <button id="addHabitBtn">Add habit</button>
+      </div>
     </div>
   </body>
 </html>

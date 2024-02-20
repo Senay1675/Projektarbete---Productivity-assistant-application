@@ -7,51 +7,152 @@ const todoEst = document.querySelector("#todoEstimate");
 const todoCategory = document.querySelector("#todoCategory");
 const todoList = document.querySelector(".your-todo");
 
-addTodoBtn.addEventListener("click", () => {
-  let todoCard = document.createElement("div");
+const createTodoItem = (
+  title,
+  description,
+  estimation,
+  estimationUnit,
+  deadline
+) => {
+  //Create Todo-card
+  const todoCard = document.createElement("div");
   todoCard.classList.add("todo");
-  let status = document.createElement("div");
-  status.classList.add("todoStatus");
-  let statusP = document.createElement("span");
-  statusP.textContent = "To-do";
-  let todoName = document.createElement("h4");
-  todoName.textContent = todoTitle.value;
-  let description = document.createElement("p");
-  description.textContent = todoDesc.value;
-  let estimate = document.createElement("span");
-  estimate.innerHTML = `<p>Est.time: ${todoEst.value} ${todoEstValue.value}</p>`;
 
-  todoCard.append(estimate);
-  status.append(statusP);
-  todoCard.append(status);
-  todoCard.append(todoName);
-  todoCard.append(description);
-  todoList.append(todoCard);
-  console.log(todoCard);
+  //Add divs for structure in To-do card
+  let upperTodo = createDiv("upperCard");
+
+  let middleTodo = createDiv("middleCard");
+
+  let lowerTodo = createDiv("lowerCard");
+
+  todoCard.append(upperTodo, middleTodo, lowerTodo);
+
+  // Append to upper card position
+  let status = createDiv("todoStatus");
+
+  status.innerHTML = `<span>To-do</span>
+  <span>Est. time: ${estimation} ${estimationUnit}</span>
+  <span>Deadline: ${deadline}</span>`;
+
+  //Append to mid card position
+  let todoDetails = createDiv("todoDetails");
+
+  todoDetails.innerHTML = `<h4>${title}</h4>
+  <p>${description}</p>
+  `;
+  //Append to lower card position
+  const doneBtn = createButton("Done", "todoDoneBtn");
+  const editBtn = createButton("Edit", "todoEditBtn");
+  const deleteBtn = createButton("Done", "todoDeleteBtn");
+
+  upperTodo.append(status);
+  middleTodo.append(todoDetails);
+  lowerTodo.append(doneBtn, editBtn, deleteBtn);
+  return todoCard;
+};
+
+const createDiv = (className) => {
+  const todoDiv = document.createElement("div");
+  todoDiv.classList.add(className);
+  return todoDiv;
+};
+
+const createButton = (text, className) => {
+  const button = document.createElement("button");
+  button.textConent = text;
+  button.classList.add(className);
+  return button;
+};
+
+todoDate.addEventListener("change", () => {
+  const deadline = todoDate.value;
+
+  if (new Date(deadline) < new Date()) {
+    errorMessage.style.display = "block";
+    addTodoBtn.disabled = true;
+  } else {
+    errorMessage.style.display = "none";
+    addTodoBtn.disabled = false;
+  }
 });
+
+addTodoBtn.addEventListener("click", () => {
+  const title = todoTitle.value;
+  const description = todoDesc.value;
+  const estimation = todoEstValue.value;
+  const estimationUnit = todoEstValue.value;
+  const deadline = todoDate.value;
+
+  const todoItem = createTodoItem(
+    title,
+    description,
+    estimation,
+    estimationUnit,
+    deadline
+  );
+  todoList.append(todoItem);
+});
+//   let statusP = document.createElement("span");
+//   statusP.textContent = "To-do";
+
+//   let description = document.createElement("p");
+//   description.textContent = todoDesc.value;
+//   let estimate = document.createElement("span");
+//   estimate.innerHTML = `<p>Est.time: ${todoEst.value} ${todoEstValue.value}</p>`;
+//   let deadline = document.createElement("span");
+//   deadline.innerHTML = `Deadline: ${todoDate.value}`;
+//   let doneBtn = document.createElement("button");
+//   doneBtn.classList.add("todoDoneBtn");
+//   doneBtn.textContent = "Done";
+
+//   let editBtn = document.createElement("button");
+//   editBtn.classList.add("todoEditBtn");
+//   editBtn.textContent = "Edit";
+
+//   let deleteBtn = document.createElement("button");
+//   deleteBtn.classList.add("todoDeleteBtn");
+//   deleteBtn.textContent = "Delete";
+
+//   status.append(statusP);
+//   todoCard.append(
+//     status,
+//     estimate,
+//     deadline,
+//     todoName,
+//     description,
+//     doneBtn,
+//     editBtn,
+//     deleteBtn
+//   );
+//   todoCard.append(estimate);
+//   todoCard.append(deadline);
+//   todoCard.append(todoName);
+//   todoCard.append(description);
+//   todoCard.append(doneBtn, editBtn, deleteBtn);
+//   todoList.append(todoCard);
+//   console.log(todoCard);
+
 /* ----------- LOGIN FUNKTIONALITET -------------- */
-const loginUsernameInput = document.querySelector("#loginUsername");
-const loginPasswordInput = document.querySelector("#loginPassword");
-const loginRegisterBtn = document.querySelector(".loginRegisterBtn");
-const loginBtn = document.querySelector(".loginBtn");
+// const loginUsernameInput = document.querySelector("#loginUsername");
+// const loginPasswordInput = document.querySelector("#loginPassword");
+// const loginRegisterBtn = document.querySelector(".loginRegisterBtn");
+// const loginBtn = document.querySelector(".loginBtn");
 
-let users = JSON.parse(localStorage.getItem(users)) || [];
+// let users = JSON.parse(localStorage.getItem(users)) || [];
 
-loginRegisterBtn.addEventListener("click", () => {
-  let username = loginUsernameInput.value;
-  let password = loginPasswordInput.value;
+// loginRegisterBtn.addEventListener("click", () => {
+//   let username = loginUsernameInput.value;
+//   let password = loginPasswordInput.value;
 
-  localStorage.setItem("name", loginUsernameInput.value);
-});
+//   localStorage.setItem("name", loginUsernameInput.value);
+// });
 
-/* ----------- LOGIN FUNKTIONALITET SLUT ---------- */
+// /* ----------- LOGIN FUNKTIONALITET SLUT ---------- */
 
-const inputHabit = document.querySelector("#habitInput");
-const lowBtn = document.querySelector("#low");
-const mediumBtn = document.querySelector("#medium");
-const highBtn = document.querySelector("#high");
-const addHabit = document.querySelector("addHabitBtn");
+// const inputHabit = document.querySelector("#habitInput");
+// const lowBtn = document.querySelector("#low");
+// const mediumBtn = document.querySelector("#medium");
+// const highBtn = document.querySelector("#high");
+// const addHabit = document.querySelector("addHabitBtn");
 
-addHabit.addEventListener("click", ()=>{
-    
-})
+// addHabit.addEventListener("click", () => {});
