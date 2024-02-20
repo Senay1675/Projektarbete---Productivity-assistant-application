@@ -1,1 +1,49 @@
-/*# sourceMappingURL=style.css.map */
+* {
+  margin: 0;
+}
+
+.loginBackground {
+  background: linear-gradient(#e66465, #9198e5);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginMain {
+  border: 1px solid crimson;
+  width: 85%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+}
+.loginMain h1 {
+  margin: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.loginMain input {
+  margin: 3px;
+  width: 70%;
+  height: 30px;
+}
+.loginMain .loginRegisterBtn {
+  margin: 10px;
+  width: 72%;
+  border: none;
+  border-radius: 30px;
+  height: 25px;
+  background-color: #9198e5;
+  color: beige;
+}
+.loginMain .loginBtn {
+  width: 72%;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+}/*# sourceMappingURL=style.css.map */
