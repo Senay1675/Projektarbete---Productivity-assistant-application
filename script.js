@@ -20,6 +20,7 @@ addTodoBtn.addEventListener("click", () => {
   description.textContent = todoDesc.value;
   let estimate = document.createElement("span");
   estimate.innerHTML = `<p>Est.time: ${todoEst.value} ${todoEstValue.value}</p>`;
+
   todoCard.append(estimate);
   status.append(statusP);
   todoCard.append(status);
