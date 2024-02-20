@@ -1,8 +1,109 @@
-#habitForm-container {
+* {
+  margin: 0;
+}
+
+.loginBackground {
+  background: linear-gradient(#e66465, #9198e5);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginMain {
+  border: 1px solid crimson;
+  width: 85%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+}
+.loginMain h1 {
+  margin: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.loginMain input {
+  margin: 3px;
+  width: 70%;
+  height: 30px;
+}
+.loginMain .loginRegisterBtn {
+  margin: 10px;
+  width: 72%;
+  border: none;
+  border-radius: 30px;
+  height: 25px;
+  background-color: #9198e5;
+  color: beige;
+}
+.loginMain .loginBtn {
+  width: 72%;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+  margin: 0px;
+}
+
+.add-filter-todo {
+  border: 1px solid black;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.todo {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.todoStatus {
+  height: 50px;
+  width: 50px;
+}
+
+.todo-done {
+  background: rgb(203, 255, 203);
+}
+
+.todo-progress {
+  background: rgb(255, 255, 203);
+}
+
+.add-todo {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  gap: 6px;
+}
+
+.todo-container {
+  display: flex;
+}
+.todo-container .todo-list {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+.todo-container .todo-list > h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.todo-container .your-todo {
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.todo-container .filter-todo {
+  padding: 12px;
+}
+.todo-container .sort-todo {
   width: auto;
-  border: solid black;
-  text-align: center;
-  padding: 20px;
-  display: grid;
-  grid-gap: 20px;
+  height: auto;
 }/*# sourceMappingURL=style.css.map */
