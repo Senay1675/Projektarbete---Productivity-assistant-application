@@ -4,19 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/todo.js" defer></script>
   </head>
   <body>
+    <header id="loginHeader">
+      
+      <h1 id="loginHeaderH1">Initialt välkomstmeddelande</h1>
+    
+    </header>
     <div class="todo-container">
       <div class="todo-list">
         <h2>Your To-dos:</h2>
-        <h3>Sorting:</h3>
+
         <div class="sort-todo">
           <select name="risingFalling" id="riseFall">
+            <option value="Sort">Sort</option>
             <option value="rising">Rising</option>
             <option value="falling">Falling</option>
           </select>
+          <label for="deadlineEst">Deadline</label>
+          <input
+            type="radio"
+            name="estimationSort"
+            id="deadlineEst"
+            checked
+          />
+          <label for="timeEst">Time Est.</label>
+          <input type="radio" name="estimationSort" id="timeEst" />
         </div>
         <div class="your-todo"></div>
       </div>
