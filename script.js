@@ -63,27 +63,6 @@ sortFilter.addEventListener("change", () => {
   timeSort(filter);
 });
 
-const deadlineSort = (filter) => {
-  console.log(filter);
-  const todoCards = Array.from(todoList.getElementsByClassName("todo"));
-
-  todoCards.sort((a, b) => {
-    const timeA = extractTimeDate(a);
-    const timeB = extractTimeDate(b);
-    console.log(timeA);
-    if (filter === "rising") {
-      return timeA - timeB;
-    } else if (filter === "falling") {
-      return timeB - timeA;
-    }
-  });
-
-  todoList.innerHTML = "";
-  todoCards.forEach((card) => {
-    todoList.appendChild(card);
-  });
-};
-
 const timeSort = (filter) => {
   console.log(filter);
   const todoCards = Array.from(todoList.getElementsByClassName("todo"));
@@ -92,13 +71,14 @@ const timeSort = (filter) => {
     const timeA = extractTimeDate(a);
     const timeB = extractTimeDate(b);
     console.log(timeA);
+    //Check if sorting by rising or falling order
     if (filter === "rising") {
       return timeA - timeB;
     } else if (filter === "falling") {
       return timeB - timeA;
     }
   });
-
+  //Clear and append the cards according to new order
   todoList.innerHTML = "";
   todoCards.forEach((card) => {
     todoList.appendChild(card);
@@ -106,15 +86,14 @@ const timeSort = (filter) => {
 };
 
 const extractTimeDate = (todoCard) => {
+  //Check which checkbox is checked in sorting and sort according to
+
   if (timeCheck.checked) {
     const details = todoCard.querySelector(
       ".todoStatus span:nth-child(2) > span"
     );
-    console.log(details);
     if (!details) return 0;
-    console.log(details);
     const estText = details.textContent;
-    console.log(estText);
     const [estimation, _] = estText.split(" ");
     return parseInt(estimation) || 0;
   }
@@ -122,25 +101,16 @@ const extractTimeDate = (todoCard) => {
     const details = todoCard.querySelector(
       ".todoStatus span:nth-child(3) > span"
     );
-    console.log(details);
     if (!details) return 0;
-
     const estText = details.textContent;
-    console.log(estText);
-
     const deadlineDate = new Date(estText);
-    console.log(deadlineDate);
 
     if (isNaN(deadlineDate.getTime())) {
-      console.error("Invalid date format:", deadline);
+      console.error("Invalid date format:", deadlineDate);
       return null;
     }
     return deadlineDate;
   }
-};
-
-const extractTodoDate = (todoCard) => {
-  const details = todoCard.querySelector("");
 };
 
 const createDiv = (className) => {
@@ -184,6 +154,7 @@ addTodoBtn.addEventListener("click", () => {
     deadline
   );
   todoList.append(todoItem);
+  console.log(todoItem);
 });
 
 /* ----------- LOGIN FUNKTIONALITET -------------- */
