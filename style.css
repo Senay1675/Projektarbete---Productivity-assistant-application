@@ -58,10 +58,28 @@
 }
 
 .todo {
+  height: auto;
   border: 1px solid black;
   padding: 10px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 }
-
+.todo .upperCard {
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+}
+.todo .upperCard .todoStatus > span {
+  font-size: 12px;
+}
+.todo .upperCard .todoStatus > span:first-child {
+  position: absolute;
+  left: 5%;
+}
+.todo .upperCard .todoStatus > span:nth-child(2) {
+  text-align: end;
+}
 .todoStatus {
   height: 50px;
   width: 50px;
