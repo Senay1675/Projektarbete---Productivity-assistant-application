@@ -46,12 +46,24 @@ loginRegisterBtn.addEventListener("click", () => {
 
 /* ----------- LOGIN FUNKTIONALITET SLUT ---------- */
 
+/* ------------------- Habits ---------------------- */
+
 const inputHabit = document.querySelector("#habitInput");
 const lowBtn = document.querySelector("#low");
 const mediumBtn = document.querySelector("#medium");
 const highBtn = document.querySelector("#high");
-const addHabit = document.querySelector("addHabitBtn");
+const addHabit = document.querySelector("#addHabitBtn");
+const habitCardContainer = document.querySelector("#habitCard-container")
 
-addHabit.addEventListener("click", ()=>{
-    
-})
+addHabit.addEventListener("click", () => {
+    let habitCard = document.createElement("div");
+    let habitName = document.createElement("h4");
+    habitName.innerText = inputHabit.value;
+
+    habitCard.append(habitName);
+
+    // Lägg till habitCard i DOM-trädet, till exempel genom att lägga till det till body
+    document.body.appendChild(habitCard);
+//habitCard.append(habitName);
+});
+/* ------------------- Habits ---------------------- */
