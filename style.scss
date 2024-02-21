@@ -85,6 +85,7 @@
 
 .todo {
   height: auto;
+  background-color: rgb(255, 255, 212);
 
   border: 1px solid black;
   padding: 10px;
@@ -107,10 +108,10 @@
       text-align: end;
     }
   }
-  .middleCard {
-  }
-  .lowerCard {
-  }
+  //   .middleCard {
+  //   }
+  //   .lowerCard {
+  //   }
 }
 
 .todoStatus {
@@ -120,6 +121,31 @@
 
 .todo-done {
   background: rgb(203, 255, 203);
+}
+
+.todo button {
+  border: none;
+  border-radius: 4px;
+  height: 24px;
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.todoDoneBtn {
+  background-color: rgb(28, 251, 28);
+  &:hover {
+    background-color: rgb(107, 245, 107);
+  }
+}
+
+.todoDeleteBtn {
+  background-color: red;
+
+  &:hover {
+    background-color: rgb(249, 58, 58);
+  }
 }
 
 .todo-progress {
