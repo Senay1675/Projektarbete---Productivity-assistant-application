@@ -3,6 +3,7 @@ const loginPasswordInput = document.querySelector("#loginPassword");
 const loginRegisterBtn = document.querySelector(".loginRegisterBtn");
 const loginBtn = document.querySelector(".loginBtn");
 const loginHeader = document.querySelector("#loginHeader");
+console.log(loginHeader);
 console.log("före querySelector");
 const loginHeaderH1 = document.querySelector("#loginHeaderH1");
 console.log(loginHeaderH1);

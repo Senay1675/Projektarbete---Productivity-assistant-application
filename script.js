@@ -6,7 +6,7 @@ const mediumBtn = document.querySelector("#medium");
 const highBtn = document.querySelector("#high");
 const addHabit = document.querySelector("#addHabitBtn");
 const habitCardContainer = document.querySelector("#habitCard-container");
-const radioLow = document.createElement("#low");
+const radioLow = document.querySelector("#low");
 const radioMedium = document.querySelector("#medium");
 const radioHigh = document.querySelector("#high");
 
@@ -57,8 +57,10 @@ addHabit.addEventListener("click", () => {
   });
 
   decrementBtn.addEventListener("click", () => {
-    counter--;
-    counterValue.innerText = counter;
+    if (counter > 0) {
+      counter--;
+      counterValue.innerText = counter;
+    }
   });
 
   resetBtn.addEventListener("click", () => {
