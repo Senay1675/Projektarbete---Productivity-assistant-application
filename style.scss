@@ -13,7 +13,7 @@
 }
 
 .loginMain {
-  border: 1px solid crimson;
+  //   border: 1px solid crimson;
   width: 85%;
   height: 85%;
   display: flex;
@@ -46,6 +46,7 @@
     border-radius: 30px;
     border: none;
     background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+    color: beige;
     margin: 0px;
   }
 }
