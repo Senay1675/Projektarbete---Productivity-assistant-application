@@ -7,28 +7,28 @@ const todoEst = document.querySelector("#todoEstimate");
 const todoCategory = document.querySelector("#todoCategory");
 const todoList = document.querySelector(".your-todo");
 
-// addTodoBtn.addEventListener("click", () => {
-//   let todoCard = document.createElement("div");
-//   todoCard.classList.add("todo");
-//   let status = document.createElement("div");
-//   status.classList.add("todoStatus");
-//   let statusP = document.createElement("span");
-//   statusP.textContent = "To-do";
-//   let todoName = document.createElement("h4");
-//   todoName.textContent = todoTitle.value;
-//   let description = document.createElement("p");
-//   description.textContent = todoDesc.value;
-//   let estimate = document.createElement("span");
-//   estimate.innerHTML = `<p>Est.time: ${todoEst.value} ${todoEstValue.value}</p>`;
+addTodoBtn.addEventListener("click", () => {
+  let todoCard = document.createElement("div");
+  todoCard.classList.add("todo");
+  let status = document.createElement("div");
+  status.classList.add("todoStatus");
+  let statusP = document.createElement("span");
+  statusP.textContent = "To-do";
+  let todoName = document.createElement("h4");
+  todoName.textContent = todoTitle.value;
+  let description = document.createElement("p");
+  description.textContent = todoDesc.value;
+  let estimate = document.createElement("span");
+  estimate.innerHTML = `<p>Est.time: ${todoEst.value} ${todoEstValue.value}</p>`;
 
-//   todoCard.append(estimate);
-//   status.append(statusP);
-//   todoCard.append(status);
-//   todoCard.append(todoName);
-//   todoCard.append(description);
-//   todoList.append(todoCard);
-//   console.log(todoCard);
-// });
+  todoCard.append(estimate);
+  status.append(statusP);
+  todoCard.append(status);
+  todoCard.append(todoName);
+  todoCard.append(description);
+  todoList.append(todoCard);
+  console.log(todoCard);
+});
 /* ----------- LOGIN FUNKTIONALITET -------------- */
 
 const loginUsernameInput = document.querySelector("#loginUsername");
@@ -75,10 +75,10 @@ loginBtn.addEventListener("click", () => {
 
 /* ----------- LOGIN FUNKTIONALITET SLUT ---------- */
 
-// const inputHabit = document.querySelector("#habitInput");
-// const lowBtn = document.querySelector("#low");
-// const mediumBtn = document.querySelector("#medium");
-// const highBtn = document.querySelector("#high");
-// const addHabit = document.querySelector("addHabitBtn");
+const inputHabit = document.querySelector("#habitInput");
+const lowBtn = document.querySelector("#low");
+const mediumBtn = document.querySelector("#medium");
+const highBtn = document.querySelector("#high");
+const addHabit = document.querySelector("addHabitBtn");
 
-// addHabit.addEventListener("click", () => {});
+addHabit.addEventListener("click", () => {});
