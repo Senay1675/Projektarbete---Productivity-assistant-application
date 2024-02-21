@@ -60,10 +60,12 @@ addHabit.addEventListener("click", () => {
     let habitName = document.createElement("h4");
     habitName.innerText = inputHabit.value;
 
-    habitCard.append(habitName);
+    //habitCardContainer.append(habitCard);
+    //habitCardContainer.append(habitName);
+    habitCard.appendChild(habitName);
 
-    // Lägg till habitCard i DOM-trädet, till exempel genom att lägga till det till body
-    document.body.appendChild(habitCard);
-//habitCard.append(habitName);
+    // Lägg till habitCard som barn till habitCardContainer
+    habitCardContainer.appendChild(habitCard);
 });
+
 /* ------------------- Habits ---------------------- */
