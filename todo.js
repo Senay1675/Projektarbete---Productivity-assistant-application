@@ -48,7 +48,12 @@ const createTodoItem = (
   //Append to lower card position
   const doneBtn = createButton("Done", "todoDoneBtn");
   const editBtn = createButton("Edit", "todoEditBtn");
-  const deleteBtn = createButton("Done", "todoDeleteBtn");
+  const deleteBtn = createButton("Delete", "todoDeleteBtn");
+
+  doneBtn.addEventListener("click", () => {
+    doneBtn.parentElement.parentElement.classList.add("todo-done");
+    doneBtn.remove();
+  });
 
   upperTodo.append(status);
   middleTodo.append(todoDetails);
@@ -127,6 +132,7 @@ const createButton = (text, className) => {
 };
 
 todoDate.addEventListener("change", () => {
+  console.log("start");
   const deadline = todoDate.value;
 
   if (new Date(deadline) < new Date()) {
