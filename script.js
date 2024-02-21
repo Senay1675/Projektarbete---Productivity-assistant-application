@@ -92,26 +92,26 @@ addTodoBtn.addEventListener("click", () => {
 });
 
 /* ----------- LOGIN FUNKTIONALITET -------------- */
-const loginUsernameInput = document.querySelector("#loginUsername");
-const loginPasswordInput = document.querySelector("#loginPassword");
-const loginRegisterBtn = document.querySelector(".loginRegisterBtn");
-const loginBtn = document.querySelector(".loginBtn");
+// const loginUsernameInput = document.querySelector("#loginUsername");
+// const loginPasswordInput = document.querySelector("#loginPassword");
+// const loginRegisterBtn = document.querySelector(".loginRegisterBtn");
+// const loginBtn = document.querySelector(".loginBtn");
 
-let users = JSON.parse(localStorage.getItem(users)) || [];
+// let users = JSON.parse(localStorage.getItem("users")) || [];
 
-loginRegisterBtn.addEventListener("click", () => {
-  let username = loginUsernameInput.value;
-  let password = loginPasswordInput.value;
+// loginRegisterBtn.addEventListener("click", () => {
+//   let username = loginUsernameInput.value;
+//   let password = loginPasswordInput.value;
 
-  localStorage.setItem("name", loginUsernameInput.value);
-});
+//   localStorage.setItem("name", loginUsernameInput.value);
+// });
 
 /* ----------- LOGIN FUNKTIONALITET SLUT ---------- */
 
-const inputHabit = document.querySelector("#habitInput");
-const lowBtn = document.querySelector("#low");
-const mediumBtn = document.querySelector("#medium");
-const highBtn = document.querySelector("#high");
-const addHabit = document.querySelector("addHabitBtn");
+// const inputHabit = document.querySelector("#habitInput");
+// const lowBtn = document.querySelector("#low");
+// const mediumBtn = document.querySelector("#medium");
+// const highBtn = document.querySelector("#high");
+// const addHabit = document.querySelector("addHabitBtn");
 
-addHabit.addEventListener("click", () => {});
+// addHabit.addEventListener("click", () => {});
