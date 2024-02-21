@@ -188,72 +188,68 @@ addTodoBtn.addEventListener("click", () => {
 
 /* ----------- LOGIN FUNKTIONALITET -------------- */
 
+// const loginUsernameInput = document.querySelector("#loginUsername");
+// const loginPasswordInput = document.querySelector("#loginPassword");
+// const loginRegisterBtn = document.querySelector(".loginRegisterBtn");
+// const loginBtn = document.querySelector(".loginBtn");
 
-const loginUsernameInput = document.querySelector("#loginUsername");
-const loginPasswordInput = document.querySelector("#loginPassword");
-const loginRegisterBtn = document.querySelector(".loginRegisterBtn");
-const loginBtn = document.querySelector(".loginBtn");
+// let users = JSON.parse(localStorage.getItem("users")) || [];
 
-let users = JSON.parse(localStorage.getItem("users")) || [];
+// // loginRegisterBtn.addEventListener("click", () => {
+// //   let username = loginUsernameInput.value;
+// //   let password = loginPasswordInput.value;
 
+//   let newUser = {
+//     username,
+//     password,
+//   };
 
-// loginRegisterBtn.addEventListener("click", () => {
+//   users.push(newUser);
+
+//   localStorage.setItem("users", JSON.stringify(users));
+
+//   console.log("Användaren har registrerats", newUser);
+//   //   localStorage.setItem("name", loginUsernameInput.value);
+// });
+
+// loginBtn.addEventListener("click", () => {
 //   let username = loginUsernameInput.value;
 //   let password = loginPasswordInput.value;
 
+//   let user = users.find(
+//     (user) => user.username === username && user.password === password
+//   );
 
-  let newUser = {
-    username,
-    password,
-  };
+//   let h2 = document.querySelector("#loginH2");
+//   console.log(user);
 
-  users.push(newUser);
+//   if (user) {
+//     h2.textContent = `Welcome ${user.username}`;
+//   } else {
+//     h2.textContent = `Failed 2 login`;
+//   }
+// });
 
-  localStorage.setItem("users", JSON.stringify(users));
+// /* ----------- LOGIN FUNKTIONALITET SLUT ---------- */
 
-  console.log("Användaren har registrerats", newUser);
-  //   localStorage.setItem("name", loginUsernameInput.value);
-});
+// /* ------------------- Habits ---------------------- */
 
-loginBtn.addEventListener("click", () => {
-  let username = loginUsernameInput.value;
-  let password = loginPasswordInput.value;
+// const inputHabit = document.querySelector("#habitInput");
+// const lowBtn = document.querySelector("#low");
+// const mediumBtn = document.querySelector("#medium");
+// const highBtn = document.querySelector("#high");
+// const addHabit = document.querySelector("#addHabitBtn");
+// const habitCardContainer = document.querySelector("#habitCard-container");
 
-  let user = users.find(
-    (user) => user.username === username && user.password === password
-  );
+// addHabit.addEventListener("click", () => {
+//   let habitCard = document.createElement("div");
+//   let habitName = document.createElement("h4");
+//   habitName.innerText = inputHabit.value;
 
-  let h2 = document.querySelector("#loginH2");
-  console.log(user);
+//   habitCard.append(habitName);
 
-  if (user) {
-    h2.textContent = `Welcome ${user.username}`;
-  } else {
-    h2.textContent = `Failed 2 login`;
-  }
-});
-
-/* ----------- LOGIN FUNKTIONALITET SLUT ---------- */
-
-/* ------------------- Habits ---------------------- */
-
-const inputHabit = document.querySelector("#habitInput");
-const lowBtn = document.querySelector("#low");
-const mediumBtn = document.querySelector("#medium");
-const highBtn = document.querySelector("#high");
-const addHabit = document.querySelector("#addHabitBtn");
-const habitCardContainer = document.querySelector("#habitCard-container");
-
-addHabit.addEventListener("click", () => {
-  let habitCard = document.createElement("div");
-  let habitName = document.createElement("h4");
-  habitName.innerText = inputHabit.value;
-
-  habitCard.append(habitName);
-
-  // Lägg till habitCard i DOM-trädet, till exempel genom att lägga till det till body
-  document.body.appendChild(habitCard);
-  //habitCard.append(habitName);
-});
-/* ------------------- Habits ---------------------- */
-
+//   // Lägg till habitCard i DOM-trädet, till exempel genom att lägga till det till body
+//   document.body.appendChild(habitCard);
+//   //habitCard.append(habitName);
+// });
+// /* ------------------- Habits ---------------------- */
