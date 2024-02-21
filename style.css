@@ -58,23 +58,28 @@
 }
 
 .todo {
-  height: 100px;
+  height: auto;
   border: 1px solid black;
   padding: 10px;
   display: flex;
-  gap: 10px;
+  gap: 20px;
   flex-direction: column;
 }
 .todo .upperCard {
-  height: 10px;
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
 }
-.todo .middleCard {
-  height: 10px;
+.todo .upperCard .todoStatus > span {
+  font-size: 12px;
 }
-.todo .lowerCard {
-  height: 10px;
+.todo .upperCard .todoStatus > span:first-child {
+  position: absolute;
+  left: 5%;
 }
-
+.todo .upperCard .todoStatus > span:nth-child(2) {
+  text-align: end;
+}
 .todoStatus {
   height: 50px;
   width: 50px;
