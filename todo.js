@@ -182,61 +182,31 @@ const filterTodoItems = (todoStatus, todoCategory) => {
   todoList.querySelectorAll(".todo").forEach((todo) => {
     const cardCategory = todo.querySelector(".todoDetails > span").textContent;
     const cardStatus = todo.querySelector(".todoStatus > span").textContent;
-    console.log("Category value: " + cardCategory + " Status: " + cardStatus);
 
-    const matchCategory = Array.from(todoCategory).some(
+    let matchCategory = Array.from(todoCategory).some(
       (cat) => cat.value === cardCategory
     );
-    console.log(todoStatus.value);
-    console.log("Card Status:", cardStatus);
-    const matchStatus =
-      !todoStatus ||
-      Array.from(todoStatus).some((status) => cardStatus === status.value);
-    console.log(matchStatus);
+
+    let matchStatus = Array.from(todoStatus).some(
+      (status) => status.value === cardStatus
+    );
+
     if (matchStatus && matchCategory) {
       todo.style.display = "block";
     } else {
       todo.style.display = "none";
     }
 
-    // if (!categoryFound) {
-    //   todo.style.display = "none";
     // }
   });
 };
 
-// let categoryFound = false;
-// todoCategory.forEach((cat) => {
-//   console.log(cat.value);
-//   if (cat.value === cardCategory) {
-//     categoryFound = true;
-//   }
-// });
-// todoStatus.forEach((status) => {
-//   console.log("State: " + status);
-// });
-
 filterTodo.addEventListener("click", () => {
-  const filterTodoStat = document.querySelector(
+  const filterTodoStat = document.querySelectorAll(
     "input[type='checkbox'][name='todoStatus']:checked"
   );
   const filterTodoCateg = document.querySelectorAll(
     "input[type='checkbox'][name='todo-category']:checked"
   );
   filterTodoItems(filterTodoStat, filterTodoCateg);
-
-  //   todoList.querySelectorAll(".todo").forEach((todo) => {
-  //     const cardCategory = todo.querySelector(".todoDetails > span").textContent;
-  //     console.log("Category value: " + cardCategory);
-
-  //     let categoryFound = false;
-  //     filterTodoCateg.forEach((cat) => {
-  //       console.log(cat.value);
-  //       if (cat.value === cardCategory) {
-  //         categoryFound = true;
-  //       }
-  //     });
-  //     if (!categoryFound) {
-  //       todo.style.display = "none";
-  //     }
 });
