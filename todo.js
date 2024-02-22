@@ -13,14 +13,17 @@ const todoList = document.querySelector(".your-todo");
 const sortFilter = document.querySelector("#riseFall");
 const deadlineCheck = document.querySelector("#deadlineEst");
 const timeCheck = document.querySelector("#timeEst");
-console.log(deadlineCheck.checked, timeCheck.checked);
+
+const filterTodo = document.querySelector("#filterTodo");
+const todoFilterReset = document.querySelector("#todoFilterReset");
 
 const createTodoItem = (
   title,
   description,
   estimation,
   estimationUnit,
-  deadline
+  deadline,
+  category
 ) => {
   //Create Todo-card
   const todoCard = createDiv("todo");
@@ -34,8 +37,8 @@ const createTodoItem = (
 
   // Append to upper card position
   let status = createDiv("todoStatus");
-
-  status.innerHTML = `<span>To-do</span>
+  let statusText = "To-do";
+  status.innerHTML = `<span>${statusText}</span>
   <span>Est. time: <span>${estimation}</span> ${estimationUnit}</span>
   <span>Deadline: <span>${deadline}</span></span>`;
 
@@ -44,6 +47,7 @@ const createTodoItem = (
 
   todoDetails.innerHTML = `<h4>${title}</h4>
   <p>${description}</p>
+  <span>${category}</span>
   `;
   //Append to lower card position
   const doneBtn = createButton("Done", "todoDoneBtn");
@@ -51,8 +55,17 @@ const createTodoItem = (
   const deleteBtn = createButton("Delete", "todoDeleteBtn");
 
   doneBtn.addEventListener("click", () => {
+    const lowTodo = doneBtn.parentElement;
+    const status = lowTodo.parentElement.querySelector(
+      ".todoStatus > span:first-child"
+    );
+    status.textContent = "Done";
     doneBtn.parentElement.parentElement.classList.add("todo-done");
     doneBtn.remove();
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    deleteBtn.parentElement.parentElement.remove();
   });
 
   upperTodo.append(status);
@@ -150,6 +163,7 @@ addTodoBtn.addEventListener("click", () => {
   const estimation = todoEst.value;
   const estimationUnit = todoEstValue.value;
   const deadline = todoDate.value;
+  const category = todoCategory.value;
   console.log(estimation);
 
   const todoItem = createTodoItem(
@@ -157,8 +171,72 @@ addTodoBtn.addEventListener("click", () => {
     description,
     estimation,
     estimationUnit,
-    deadline
+    deadline,
+    category
   );
   todoList.append(todoItem);
   console.log(todoItem);
+});
+
+const filterTodoItems = (todoStatus, todoCategory) => {
+  todoList.querySelectorAll(".todo").forEach((todo) => {
+    const cardCategory = todo.querySelector(".todoDetails > span").textContent;
+    const cardStatus = todo.querySelector(".todoStatus > span").textContent;
+    console.log("Category value: " + cardCategory + " Status: " + cardStatus);
+
+    const matchCategory = Array.from(todoCategory).some(
+      (cat) => cat.value === cardCategory
+    );
+    console.log(todoStatus.value);
+    console.log("Card Status:", cardStatus);
+    const matchStatus =
+      !todoStatus ||
+      Array.from(todoStatus).some((status) => cardStatus === status.value);
+    console.log(matchStatus);
+    if (matchStatus && matchCategory) {
+      todo.style.display = "block";
+    } else {
+      todo.style.display = "none";
+    }
+
+    // if (!categoryFound) {
+    //   todo.style.display = "none";
+    // }
+  });
+};
+
+// let categoryFound = false;
+// todoCategory.forEach((cat) => {
+//   console.log(cat.value);
+//   if (cat.value === cardCategory) {
+//     categoryFound = true;
+//   }
+// });
+// todoStatus.forEach((status) => {
+//   console.log("State: " + status);
+// });
+
+filterTodo.addEventListener("click", () => {
+  const filterTodoStat = document.querySelector(
+    "input[type='checkbox'][name='todoStatus']:checked"
+  );
+  const filterTodoCateg = document.querySelectorAll(
+    "input[type='checkbox'][name='todo-category']:checked"
+  );
+  filterTodoItems(filterTodoStat, filterTodoCateg);
+
+  //   todoList.querySelectorAll(".todo").forEach((todo) => {
+  //     const cardCategory = todo.querySelector(".todoDetails > span").textContent;
+  //     console.log("Category value: " + cardCategory);
+
+  //     let categoryFound = false;
+  //     filterTodoCateg.forEach((cat) => {
+  //       console.log(cat.value);
+  //       if (cat.value === cardCategory) {
+  //         categoryFound = true;
+  //       }
+  //     });
+  //     if (!categoryFound) {
+  //       todo.style.display = "none";
+  //     }
 });

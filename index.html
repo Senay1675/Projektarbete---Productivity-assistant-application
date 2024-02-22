@@ -61,22 +61,62 @@
         <div class="filter-todo">
           <h3>Filtering:</h3>
           <h4>Task status:</h4>
-          <label for="todoDone">Done</label>
-          <input type="checkbox" name="todoStatus" id="todoDone" />
-          <label for="todoProgess">In-Progress</label>
-          <input type="checkbox" name="todoStatus" id="todoProgess" />
-          <div class="todoCategories">
+          <div class="todo-status">
+            <label for="todoProgess">To-do</label>
+            <input
+              type="checkbox"
+              name="todoStatus"
+              id="todoProgess"
+              value="To-do"
+            />
+            <label for="todoDone">Done</label>
+            <input
+              type="checkbox"
+              name="todoStatus"
+              id="todoDone"
+              value="Done"
+            />
+          </div>
+
+          <div class="todoFilterCategories">
             <h4>Categories:</h4>
             <label for="categHealth">Health</label>
-            <input type="checkbox" name="category" id="categHealth" />
+            <input
+              type="checkbox"
+              name="todo-category"
+              id="categHealth"
+              value="Health"
+            />
             <label for="categHousekeeping">Housekeeping</label>
-            <input type="checkbox" name="category" id="categHousekeeping" />
+            <input
+              type="checkbox"
+              name="todo-category"
+              id="categHousekeeping"
+              value="Housekeeping"
+            />
             <label for="categWork">Work</label>
-            <input type="checkbox" name="category" id="categWork" />
+            <input
+              type="checkbox"
+              name="todo-category"
+              id="categWork"
+              value="Work"
+            />
             <label for="categMusic">Music</label>
-            <input type="checkbox" name="category" id="categMusic" />
+            <input
+              type="checkbox"
+              name="todo-category"
+              id="categMusic"
+              value="Music"
+            />
             <label for="categMisc">Miscellaneous</label>
-            <input type="checkbox" name="category" id="categMisc" />
+            <input
+              type="checkbox"
+              name="todo-category"
+              id="categMisc"
+              value="Miscellaneous"
+            />
+            <button id="filterTodo">Add Filtering</button>
+            <button id="todoFilterReset">Reset Filter</button>
           </div>
         </div>
       </div>

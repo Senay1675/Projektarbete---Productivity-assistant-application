@@ -94,7 +94,6 @@
 }
 .todo .upperCard .todoStatus > span:first-child {
   position: absolute;
-  left: 5%;
 }
 .todo .upperCard .todoStatus > span:nth-child(2) {
   text-align: end;
