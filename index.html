@@ -92,7 +92,7 @@
     <div class="habit-container">
       <div id="habitForm-container">
             <h3>Add your habit:</h3>
-            <label for="habitInput">add</label>
+            <label for="habitInput">Add:</label>
             <input type="text" name="habit" id="habitInput" placeholder="What do you want to do today..">
             <br>
             <h4>Habit priorities:</h4>
@@ -105,12 +105,37 @@
            
             <br>
             <button id="addHabitBtn">Add habit</button>
-
+            <br>
             <!-- checkboxes på sortering och radiobuttons på filtrering-->
+            <div class="filter-habit">
+                <h3>Habit-filtrering</h3>
 
-            <input type="radio" id="">
+                <label for="sortera">low</label>
+                <input type="checkbox" id="lowCheck" name="sortera" value="low">
+    
+                <label for="sortera">Medium</label>
+                <input type="checkbox" id="mediumCheck" name="sortera" value="medium">
+    
+                <label for="sortera">High</label>
+                <input type="checkbox" id="highCheck" name="sortera" value="high">
+    
+    
+            </div>
 
+            <div class="sort-habit">
+                <h3>Habit sortering:</h3>
+                <select name="habit-option" id="">
+                    <option value="">Rising</option>
+                    <option value="">Falling</option>
+                </select>
+                <label for="">Habit-streak:</label>
+                <input type="radio" id="" name="" value="">
+                <label for="">Priority</label>
+                <input type="radio" id="" name="" value="">
+
+            </div>
             <div id="habitCard-container"></div>
+
 
 
         </div>

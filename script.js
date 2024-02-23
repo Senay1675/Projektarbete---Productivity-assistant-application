@@ -25,6 +25,7 @@ addHabit.addEventListener("click", () => {
  // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
  
  let habitCard = document.createElement("div");
+ habitCard.classList.add("habit-card");
  let habitName = document.createElement("h4");
  habitName.innerText = inputHabit.value;
  radioCategories.forEach((radio)=>{
