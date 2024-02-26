@@ -68,10 +68,72 @@
   }
 }
 
+/* ---------------- HEADER STYLING ------------------ */
+
 #loginHeader {
-  background-color: crimson;
-  height: 100px;
+  display: flex;
+  background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+
+  .headerLeft {
+    border: 1px solid black;
+    width: 20%;
+    height: inherit;
+  }
+
+  .headerMiddle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+
+    h1 {
+      font-family: nanum brush script;
+      font-size: 80px;
+      color: #e66465;
+    }
+
+    p {
+      font-variant-caps: all-petite-caps;
+      font-family: "Times New Roman", Times, serif;
+      font-size: small;
+      letter-spacing: 0.01ch;
+    }
+  }
+
+  .headerRight {
+    border: 1px solid blue;
+    width: 20%;
+  }
 }
+
+// #loginHeaderH1 {
+//   width: 100vw;
+//   display: flex;
+//   justify-content: center;
+// }
+
+// #loginHeader {
+//   // background: linear-gradient(rgb(223, 125, 125), rgb(187, 144, 233));
+//   background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+//   height: 300px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   // border-bottom: 3px solid grey;
+//   h1 {
+//     font-family: nanum brush script;
+//     font-size: 80px;
+//     color: #e66465;
+//   }
+//   p {
+//     font-variant-caps: all-petite-caps;
+//     font-family: "Times New Roman", Times, serif;
+//     font-size: small;
+//     letter-spacing: 0.01ch;
+//   }
+// }
 
 // LOGIN STYLING SLUT ! ---------------------<<<<
 
