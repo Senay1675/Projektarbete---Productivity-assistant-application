@@ -4,17 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="/startPage.js" defer></script>
     <script src="/login.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js " defer></script>
     <link rel="stylesheet" href="/style.css" />
-    <script src="/todo.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/29047c7944.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
+    <!-- ''''''' --------------- HEADER ---------------------'''''' -->
+
     <header id="loginHeader">
-      
-      <h1 id="loginHeaderH1">Initialt välkomstmeddelande</h1>
-    
+      <div class="headerLeft">fdfvfgdf</div>
+      <div class="headerMiddle">
+        <h1>Habit app</h1>
+        <h2 id="loginHeaderH1">Initialt välkomstmeddelande</h2>
+        <br /><br />
+        <p id="loginQuoteContainer"></p>
+      </div>
+      <div class="headerRight">
+        <button id="logOutBtn">Log out</button>
+      </div>
     </header>
+
+    <!-- ''''''' --------------- HEADER ---------------------'''''' -->
+
     <div class="todo-container">
       <div class="todo-list">
         <h2>Your To-dos:</h2>
@@ -26,14 +42,77 @@
             <option value="falling">Falling</option>
           </select>
           <label for="deadlineEst">Deadline</label>
-          <input
-            type="radio"
-            name="estimationSort"
-            id="deadlineEst"
-            checked
-          />
+          <input type="radio" name="estimationSort" id="deadlineEst" checked />
           <label for="timeEst">Time Est.</label>
           <input type="radio" name="estimationSort" id="timeEst" />
+        </div>
+        <button id="toggleFilter">
+          Filtering<i class="fa-solid fa-angles-down"></i>
+        </button>
+        <div class="filter-todo collapsed">
+          <h3>Filtering:</h3>
+          <h4>Task status:</h4>
+          <div class="todo-status">
+            <label for="todoProgess">To-do</label>
+            <input
+              type="checkbox"
+              name="todoStatus"
+              id="todoProgess"
+              value="To-do"
+            />
+            <label for="todoDone">Done</label>
+            <input
+              type="checkbox"
+              name="todoStatus"
+              id="todoDone"
+              value="Done"
+            />
+          </div>
+
+          <div class="todoFilterCategories">
+            <h4>Categories:</h4>
+            <button id="selectAllCateg">All Categories</button>
+            <div class="allCateg">
+              <label for="categHealth">Health</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categHealth"
+                value="Health"
+              />
+              <label for="categHousekeeping">Housekeeping</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categHousekeeping"
+                value="Housekeeping"
+              />
+              <label for="categWork">Work</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categWork"
+                value="Work"
+              />
+              <label for="categMusic">Music</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categMusic"
+                value="Music"
+              />
+              <label for="categMisc">Miscellaneous</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categMisc"
+                value="Miscellaneous"
+              />
+            </div>
+
+            <button id="filterTodo">Add Filtering</button>
+            <button id="todoFilterReset">Reset Filter</button>
+          </div>
         </div>
         <div class="your-todo"></div>
       </div>
@@ -56,6 +135,7 @@
             <option name="estimateTodo" id="estDays">Days</option>
           </select>
           <label for="todoCategory">Category:</label>
+
           <select name="" id="todoCategory">
             <option value="Health">Health</option>
             <option value="Housekeeping">Housekeeping</option>
@@ -65,80 +145,32 @@
           </select>
           <button id="addTodo">Add To-do</button>
         </div>
-        <div class="filter-todo">
-          <h3>Filtering:</h3>
-          <h4>Task status:</h4>
-          <label for="todoDone">Done</label>
-          <input type="checkbox" name="todoStatus" id="todoDone" />
-          <label for="todoProgess">In-Progress</label>
-          <input type="checkbox" name="todoStatus" id="todoProgess" />
-          <div class="todoCategories">
-            <h4>Categories:</h4>
-            <label for="categHealth">Health</label>
-            <input type="checkbox" name="category" id="categHealth" />
-            <label for="categHousekeeping">Housekeeping</label>
-            <input type="checkbox" name="category" id="categHousekeeping" />
-            <label for="categWork">Work</label>
-            <input type="checkbox" name="category" id="categWork" />
-            <label for="categMusic">Music</label>
-            <input type="checkbox" name="category" id="categMusic" />
-            <label for="categMisc">Miscellaneous</label>
-            <input type="checkbox" name="category" id="categMisc" />
-          </div>
-        </div>
       </div>
     </div>
-                                <!--    Habits    -->
+    <!--    Habits    -->
     <div class="habit-container">
       <div id="habitForm-container">
-            <h3>Add your habit:</h3>
-            <label for="habitInput">Add:</label>
-            <input type="text" name="habit" id="habitInput" placeholder="What do you want to do today..">
-            <br>
-            <h4>Habit priorities:</h4>
-            <label for="low">Low</label>
-            <input type="radio" id="low" name="priority" value="Low">
-            <label for="medium">Medium</label>
-            <input type="radio" id="medium" name="priority" value="Medium">
-            <label for="high">High</label>
-            <input type="radio" id="High" name="priority" value="High">
-           
-            <br>
-            <button id="addHabitBtn">Add habit</button>
-            <br>
-            <!-- checkboxes på sortering och radiobuttons på filtrering-->
-            <div class="filter-habit">
-                <h3>Habit-filtrering</h3>
+        <h3>Add your habit:</h3>
+        <label for="habitInput">add</label>
+        <input
+          type="text"
+          name="habit"
+          id="habitInput"
+          placeholder="What do you want to do today.."
+        />
+        <br />
+        <h4>Habit priorities:</h4>
+        <label for="low">Low</label>
+        <input type="radio" id="low" name="priority" value="Low" />
+        <label for="medium">Medium</label>
+        <input type="radio" id="medium" name="priority" value="Medium" />
+        <label for="high">High</label>
+        <input type="radio" id="High" name="priority" value="High" />
 
-                <label for="filtrera">low</label>
-                <input type="checkbox" id="low-Check" name="filtrera" value="low">
-    
-                <label for="filtrera">Medium</label>
-                <input type="checkbox" id="medium-Check" name="filtrera" value="medium">
-    
-                <label for="filtrera">High</label>
-                <input type="checkbox" id="high-Check" name="filtrera" value="high">
-    
-    
-            </div>
-
-            <div class="sort-habit">
-                <h3>Habit sortering:</h3>
-                <select name="habit-option" id="sortSelect">
-                    <option value="rising">Rising</option>
-                    <option value="falling">Falling</option>
-                </select>
-                <label for="">Habit-streak:</label>
-                <input type="radio" id="sort-streak-radio" name="" value="streak">
-                <label for="">Priority</label>
-                <input type="radio" id="sort-priority-radio" name="" value="priority">
-
-            </div>
-            <div id="habitCard-container"></div>
-
-
-
-        </div>
+        <br />
+        <button id="addHabitBtn">Add habit</button>
+        <div id="habitCard-container"></div>
+      </div>
     </div>
   </body>
 </html>

@@ -11,36 +11,30 @@ const habitCardContainer = document.querySelector("#habitCard-container");
 
 
 
-
 console.log(habitCardContainer);
 
 console.log(radioCategories);
 // När man trycker på knappen så dyker kortet för habits fram
 
-
 addHabit.addEventListener("click", () => {
-    
-    
- // För varje kort som skapas så gör jag en en till funktion som tar ut prioritet värde från radio buttons
-    
- 
- // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
- 
- let habitCard = document.createElement("div");
- habitCard.classList.add("habit-card");
- let habitName = document.createElement("h4");
- habitName.innerText = inputHabit.value;
- radioCategories.forEach((radio)=>{
-     
-         if (radio.checked){
-                 priority = radio.value;
-                 console.log('Vald prioritet', priority);
-                 
-                 let prioritytext = document.createElement("p")
-                 prioritytext.innerText = radio.value;
-                 habitCard.append(prioritytext);      
-         }
-     });
+  // För varje kort som skapas så gör jag en en till funktion som tar ut prioritet värde från radio buttons
+
+  // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
+
+  let habitCard = document.createElement("div");
+  habitCard.classList.add("habit-card");
+  let habitName = document.createElement("h4");
+  habitName.innerText = inputHabit.value;
+  radioCategories.forEach((radio) => {
+    if (radio.checked) {
+      priority = radio.value;
+      console.log("Vald prioritet", priority);
+
+      let prioritytext = document.createElement("p");
+      prioritytext.innerText = radio.value;
+      habitCard.append(prioritytext);
+    }
+  });
 
   habitCard.append(habitName);
 
@@ -53,7 +47,7 @@ addHabit.addEventListener("click", () => {
   habitCounter.append(habitStreakTitle);
   habitCard.append(habitCounter);
 
-// Här koden som skapar counter elementen och appendar dem till DOMen
+  // Här koden som skapar counter elementen och appendar dem till DOMen
 
   let counterDiv = document.createElement("div");
 
@@ -82,8 +76,10 @@ addHabit.addEventListener("click", () => {
   });
 
   decrementBtn.addEventListener("click", () => {
-    counter--;
-    counterValue.innerText = counter;
+    if (counter > 0) {
+      counter--;
+      counterValue.innerText = counter;
+    }
   });
 
   resetBtn.addEventListener("click", () => {

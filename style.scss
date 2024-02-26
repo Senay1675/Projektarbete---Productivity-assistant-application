@@ -68,6 +68,338 @@
   }
 }
 
+/* ---------------- HEADER STYLING ------------------ */
+
+#loginHeader {
+  display: flex;
+  background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+
+  .headerLeft {
+    border: 1px solid black;
+    width: 20%;
+    height: inherit;
+  }
+
+  .headerMiddle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+
+    h1 {
+      font-family: nanum brush script;
+      font-size: 80px;
+      color: #e66465;
+    }
+
+    p {
+      font-variant-caps: all-petite-caps;
+      font-family: "Times New Roman", Times, serif;
+      font-size: small;
+      letter-spacing: 0.01ch;
+    }
+  }
+
+  .headerRight {
+    border: 1px solid blue;
+    width: 20%;
+  }
+}
+
+// #loginHeaderH1 {
+//   width: 100vw;
+//   display: flex;
+//   justify-content: center;
+// }
+
+// #loginHeader {
+//   // background: linear-gradient(rgb(223, 125, 125), rgb(187, 144, 233));
+//   background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+//   height: 300px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   // border-bottom: 3px solid grey;
+//   h1 {
+//     font-family: nanum brush script;
+//     font-size: 80px;
+//     color: #e66465;
+//   }
+//   p {
+//     font-variant-caps: all-petite-caps;
+//     font-family: "Times New Roman", Times, serif;
+//     font-size: small;
+//     letter-spacing: 0.01ch;
+//   }
+// }
+
+// LOGIN STYLING SLUT ! ---------------------<<<<
+
+// TO-DO STYLING START >>>>>>>
+
+.add-filter-todo {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 12px;
+  align-self: flex-end;
+}
+
+.todo {
+  height: auto;
+  min-width: 170px;
+  width: 40%;
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+  background-color: rgb(255, 255, 212);
+
+  padding: 10px;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+
+  .upperCard {
+    display: flex;
+    justify-content: flex-end;
+
+    .todoStatus {
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+    }
+
+    .todoStatus > span {
+      font-size: 12px;
+    }
+    .todoStatus > span:first-child {
+      // position: absolute;
+      align-self: flex-start;
+    }
+  }
+  .middleCard {
+    width: 100%;
+    .todoDetails {
+      width: 50%;
+      h4 {
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  .lowerCard {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-start;
+
+    .todoDeleteBtn {
+      align-self: flex-end;
+    }
+  }
+}
+
+.todo-done {
+  background: rgb(203, 255, 203);
+}
+
+.todo button {
+  border: none;
+  border-radius: 4px;
+  height: 24px;
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.todoDoneBtn {
+  background-color: rgb(121, 243, 121);
+  &:hover {
+    background-color: rgb(107, 245, 107);
+  }
+}
+
+.todoDeleteBtn {
+  background-color: red;
+
+  &:hover {
+    background-color: rgb(249, 58, 58);
+  }
+}
+
+.todo-progress {
+  background: rgb(255, 255, 203);
+}
+
+.add-todo {
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  gap: 6px;
+}
+
+.todo-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(#e66465, #9198e5);
+
+  * {
+    color: white;
+  }
+  button,
+  select {
+    color: black;
+  }
+
+  .todo-list {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+
+    h2 {
+      color: white;
+    }
+
+    #toggleFilter {
+      color: black;
+      font-size: 18px;
+      width: 120px;
+
+      i {
+        color: black;
+        margin-left: 12px;
+      }
+    }
+  }
+  .todo-list > h3 {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .your-todo {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .filter-todo {
+    border: 1px solid black;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-in, border 0.6s ease;
+    padding: 12px;
+    border-radius: 8px;
+
+    // border: 1px solid black;
+    box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+
+    .allCateg {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin: 0px 12px 0px 2px;
+      }
+    }
+  }
+
+  .collapsed {
+    max-height: 0;
+    // padding: 0;
+    border-width: 0;
+  }
+
+  .expanded {
+    max-height: 800px;
+  }
+
+  .sort-todo {
+    width: auto;
+    height: auto;
+  }
+}
+
+// TO-DO STYLING SLUT <<<<<<<<<<
+
+* {
+  margin: 0;
+}
+
+// LOGIN STYLING ------------->>>>>
+
+.loginBackground {
+  background: linear-gradient(#e66465, #9198e5);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.loginMain {
+  //   border: 1px solid crimson;
+  width: 85%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+  h1 {
+    font-family: nanum brush script;
+    font-size: 80px;
+    color: #e66465;
+  }
+  p {
+    text-align: center;
+    font-size: 8px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    letter-spacing: 0.3ch;
+    // text-decoration: underline;
+    color: rgb(105, 105, 105);
+  }
+  h2 {
+    margin: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+  }
+  input {
+    margin: 3px;
+    width: 70%;
+    height: 30px;
+  }
+  .loginRegisterBtn {
+    margin: 10px;
+    width: 72%;
+    border: none;
+    border-radius: 30px;
+    height: 25px;
+    background-color: #9198e5;
+    color: beige;
+  }
+  .loginBtn {
+    width: 72%;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+    color: beige;
+    margin: 0px;
+  }
+}
+
 #loginHeader {
   background-color: crimson;
   height: 100px;
@@ -188,10 +520,9 @@
   }
 }
 
+// Habit Styling
 
-// Habit Styling 
-
-.habit-container{
+.habit-container {
   display: flex;
   border: black solid;
 
@@ -200,13 +531,12 @@
     flex-direction: column;
     border: solid black;
     margin: 10px;
-    padding:10px;
+    padding: 10px;
   }
-  .filter-habit{
+  .filter-habit {
     border: solid black;
     padding: 10px;
     margin: 10px;
-    
   }
   .sort-habit {
     border: solid black;
