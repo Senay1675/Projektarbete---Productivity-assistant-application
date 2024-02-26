@@ -1,4 +1,5 @@
 /* ------------------- Habits ---------------------- */
+const radioCategories = document.querySelectorAll('input[name="priority"]');
 
 const inputHabit = document.querySelector("#habitInput");
 const lowBtn = document.querySelector("#low");
@@ -7,7 +8,8 @@ const highBtn = document.querySelector("#high");
 const addHabit = document.querySelector("#addHabitBtn");
 const habitCardContainer = document.querySelector("#habitCard-container");
 
-const radioCategories = document.querySelectorAll('input[name="priority"]');
+
+
 
 
 console.log(habitCardContainer);
