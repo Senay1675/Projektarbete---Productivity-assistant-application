@@ -36,11 +36,14 @@ const createTodoItem = (
   estimation,
   estimationUnit,
   deadline,
-  category
+  category,
+  cardID
 ) => {
+  //Create CardID
   //Create Todo-card
   const todoCard = createDiv("todo");
-
+  cardID = Math.floor(1000 + Math.random() * 9000);
+  todoCard.classList.add(cardID);
   //Add divs for structure in To-do card
   let upperTodo = createDiv("upperCard");
 
@@ -100,8 +103,30 @@ const createTodoItem = (
     doneBtn.remove();
   });
 
+  let allUserTodos = {
+    userID: currentID,
+    status: statusText,
+    title: title,
+    description: description,
+    estTime: estimation,
+    estUnit: estimationUnit,
+    deadline: deadline,
+    category: category,
+    cardID: cardID,
+  };
+  let uniqueCardID = allUserTodos.cardID;
   deleteBtn.addEventListener("click", () => {
     deleteBtn.parentElement.parentElement.remove();
+    const uniqueClass = deleteBtn.parentElement.parentElement.classList[1];
+
+    let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+
+    todoCards.forEach((card) => console.log(card.cardID));
+    const updatedTodoList = todoCards.filter((item) => {
+      return item.cardID !== +uniqueClass;
+    });
+
+    localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
   });
 
   upperTodo.append(status);
@@ -110,29 +135,44 @@ const createTodoItem = (
   todoCard.append(upperTodo, middleTodo, lowerTodo);
   console.log(todoCard);
 
-  //Make this a separate function
-  //Set and Get data to and from localStorage
-  let allUserTodos = {
-    user: "Username",
-    title: title,
-    status: statusText,
-    estTime: estimation,
-    estUnit: estimationUnit,
-  };
-
   userTodo.push(allUserTodos);
   console.log(userTodo);
   localStorage.setItem("userTodo", JSON.stringify(userTodo));
 
-  let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
-  console.log(parsedUserTodo);
-  /*Sätt in all data i localstorage här?
-Kom på ett sätt att få in localStorage till respektive användare, använd object?*/
-
   return todoCard;
 };
 
-const getTodoData = () => {};
+let currentID = localStorage.getItem("currentUserId");
+const getTodoData = () => {
+  let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
+  console.log(currentID);
+  parsedUserTodo.forEach((todo) => {
+    console.log(todo);
+    console.log(todo.userID);
+    console.log(currentID);
+    if (todo.userID === currentID) {
+      let localTodo = createTodoItem(
+        todo.title,
+        todo.description,
+        todo.estTime,
+        todo.estUnit,
+        todo.deadline,
+        todo.category,
+        todo.cardID
+      );
+      console.log(localTodo);
+      todoList.append(localTodo);
+    }
+  });
+  /*
+    title,
+  description,
+  estimation,
+  estimationUnit,
+  deadline,
+  category
+) => {*/
+};
 
 sortFilter.addEventListener("change", () => {
   let filter = sortFilter.value;
@@ -290,3 +330,5 @@ todoFilterReset.addEventListener("click", () => {
     stat.checked = false;
   });
 });
+
+getTodoData();

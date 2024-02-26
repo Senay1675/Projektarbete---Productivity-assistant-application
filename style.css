@@ -200,7 +200,7 @@
   justify-content: space-between;
   background: linear-gradient(#e66465, #9198e5);
 }
-.todo-container * {
+.todo-container label {
   color: white;
 }
 .todo-container button,
@@ -237,9 +237,9 @@
 }
 .todo-container .filter-todo {
   border: 1px solid black;
-  max-height: 0;
+  height: 0;
   overflow: hidden;
-  transition: max-height 0.6s ease-in, border 0.6s ease;
+  transition: height 0.6s ease-in;
   padding: 12px;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
@@ -252,19 +252,16 @@
   margin: 0px 12px 0px 2px;
 }
 .todo-container .collapsed {
-  max-height: 0;
+  height: 0;
+  padding: 0;
   border-width: 0;
 }
 .todo-container .expanded {
-  max-height: 800px;
+  height: auto;
 }
 .todo-container .sort-todo {
   width: auto;
   height: auto;
-}
-
-* {
-  margin: 0;
 }
 
 .loginBackground {
@@ -330,109 +327,6 @@
 #loginHeader {
   background-color: crimson;
   height: 100px;
-}
-
-.add-filter-todo {
-  border: 1px solid black;
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-self: flex-end;
-}
-
-.todo {
-  height: auto;
-  background-color: rgb(255, 255, 212);
-  border: 1px solid black;
-  padding: 10px;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-}
-.todo .upperCard {
-  display: flex;
-  justify-content: flex-end;
-  width: 200px;
-}
-.todo .upperCard .todoStatus > span {
-  font-size: 12px;
-}
-.todo .upperCard .todoStatus > span:first-child {
-  position: absolute;
-  left: 5%;
-}
-.todo .upperCard .todoStatus > span:nth-child(2) {
-  text-align: end;
-}
-
-.todoStatus {
-  height: 50px;
-  width: 50px;
-}
-
-.todo-done {
-  background: rgb(203, 255, 203);
-}
-
-.todo button {
-  border: none;
-  border-radius: 4px;
-  height: 24px;
-}
-.todo button:hover {
-  color: white;
-  cursor: pointer;
-}
-
-.todoDoneBtn {
-  background-color: rgb(28, 251, 28);
-}
-.todoDoneBtn:hover {
-  background-color: rgb(107, 245, 107);
-}
-
-.todoDeleteBtn {
-  background-color: red;
-}
-.todoDeleteBtn:hover {
-  background-color: rgb(249, 58, 58);
-}
-
-.todo-progress {
-  background: rgb(255, 255, 203);
-}
-
-.add-todo {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  padding: 18px;
-  gap: 6px;
-}
-
-.todo-container {
-  display: flex;
-}
-.todo-container .todo-list {
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-}
-.todo-container .todo-list > h3 {
-  font-size: 16px;
-  font-weight: normal;
-}
-.todo-container .your-todo {
-  padding: 12px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.todo-container .filter-todo {
-  padding: 12px;
-}
-.todo-container .sort-todo {
-  width: auto;
-  height: auto;
 }
 
 .habit-container {
