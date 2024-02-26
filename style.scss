@@ -243,6 +243,9 @@
   flex-direction: column;
   padding: 18px;
   gap: 6px;
+  h3 {
+    color: white;
+  }
 }
 
 .todo-container {
@@ -303,6 +306,10 @@
     // border: 1px solid black;
     box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
 
+    h3,
+    h4 {
+      color: white;
+    }
     .allCateg {
       display: flex;
       flex-direction: column;

@@ -193,6 +193,9 @@
   padding: 18px;
   gap: 6px;
 }
+.add-todo h3 {
+  color: white;
+}
 
 .todo-container {
   width: 100%;
@@ -243,6 +246,10 @@
   padding: 12px;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
+}
+.todo-container .filter-todo h3,
+.todo-container .filter-todo h4 {
+  color: white;
 }
 .todo-container .filter-todo .allCateg {
   display: flex;
