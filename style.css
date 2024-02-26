@@ -68,40 +68,60 @@
 }
 
 .add-filter-todo {
-  border: 1px solid black;
   width: 30%;
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  margin: 12px;
   align-self: flex-end;
 }
 
 .todo {
   height: auto;
+  min-width: 170px;
+  width: 40%;
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
   background-color: rgb(255, 255, 212);
-  border: 1px solid black;
   padding: 10px;
   display: flex;
-  gap: 20px;
+  gap: 12px;
   flex-direction: column;
 }
 .todo .upperCard {
   display: flex;
   justify-content: flex-end;
-  width: 200px;
+}
+.todo .upperCard .todoStatus {
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
 }
 .todo .upperCard .todoStatus > span {
   font-size: 12px;
 }
 .todo .upperCard .todoStatus > span:first-child {
-  position: absolute;
+  align-self: flex-start;
 }
-.todo .upperCard .todoStatus > span:nth-child(2) {
-  text-align: end;
+.todo .middleCard {
+  width: 100%;
 }
-
-.todoStatus {
-  height: 50px;
-  width: 50px;
+.todo .middleCard .todoDetails {
+  width: 50%;
+}
+.todo .middleCard .todoDetails h4 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+.todo .lowerCard {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-start;
+}
+.todo .lowerCard .todoDeleteBtn {
+  align-self: flex-end;
 }
 
 .todo-done {
@@ -119,7 +139,7 @@
 }
 
 .todoDoneBtn {
-  background-color: rgb(28, 251, 28);
+  background-color: rgb(121, 243, 121);
 }
 .todoDoneBtn:hover {
   background-color: rgb(107, 245, 107);
@@ -137,6 +157,8 @@
 }
 
 .add-todo {
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -145,12 +167,34 @@
 }
 
 .todo-container {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  background: linear-gradient(#e66465, #9198e5);
+}
+.todo-container * {
+  color: white;
+}
+.todo-container button,
+.todo-container select {
+  color: black;
 }
 .todo-container .todo-list {
   display: flex;
   flex-direction: column;
   padding: 12px;
+}
+.todo-container .todo-list h2 {
+  color: white;
+}
+.todo-container .todo-list #toggleFilter {
+  color: black;
+  font-size: 18px;
+  width: 120px;
+}
+.todo-container .todo-list #toggleFilter i {
+  color: black;
+  margin-left: 12px;
 }
 .todo-container .todo-list > h3 {
   font-size: 16px;
@@ -159,10 +203,32 @@
 .todo-container .your-todo {
   padding: 12px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 12px;
 }
 .todo-container .filter-todo {
+  border: 1px solid black;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-in, border 0.6s ease;
   padding: 12px;
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
+}
+.todo-container .filter-todo .allCateg {
+  display: flex;
+  flex-direction: column;
+}
+.todo-container .filter-todo .allCateg input {
+  margin: 0px 12px 0px 2px;
+}
+.todo-container .collapsed {
+  max-height: 0;
+  border-width: 0;
+}
+.todo-container .expanded {
+  max-height: 800px;
 }
 .todo-container .sort-todo {
   width: auto;

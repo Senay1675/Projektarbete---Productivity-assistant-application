@@ -75,47 +75,72 @@
 
 // LOGIN STYLING SLUT ! ---------------------<<<<
 
+// TO-DO STYLING START >>>>>>>
+
 .add-filter-todo {
-  border: 1px solid black;
   width: 30%;
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  margin: 12px;
   align-self: flex-end;
 }
 
 .todo {
   height: auto;
+  min-width: 170px;
+  width: 40%;
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
   background-color: rgb(255, 255, 212);
 
-  border: 1px solid black;
   padding: 10px;
   display: flex;
-  gap: 20px;
+  gap: 12px;
   flex-direction: column;
 
   .upperCard {
     display: flex;
     justify-content: flex-end;
-    width: 200px;
+
+    .todoStatus {
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+    }
+
     .todoStatus > span {
       font-size: 12px;
     }
     .todoStatus > span:first-child {
-      position: absolute;
+      // position: absolute;
+      align-self: flex-start;
     }
     .todoStatus > span:nth-child(2) {
-      text-align: end;
+      // text-align: end;
     }
   }
-  //   .middleCard {
-  //   }
-  //   .lowerCard {
-  //   }
-}
+  .middleCard {
+    width: 100%;
+    .todoDetails {
+      width: 50%;
+      h4 {
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  .lowerCard {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-start;
 
-.todoStatus {
-  height: 50px;
-  width: 50px;
+    .todoDeleteBtn {
+      align-self: flex-end;
+    }
+  }
 }
 
 .todo-done {
@@ -133,7 +158,7 @@
 }
 
 .todoDoneBtn {
-  background-color: rgb(28, 251, 28);
+  background-color: rgb(121, 243, 121);
   &:hover {
     background-color: rgb(107, 245, 107);
   }
@@ -152,6 +177,8 @@
 }
 
 .add-todo {
+  border-radius: 8px;
+  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -160,12 +187,38 @@
 }
 
 .todo-container {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  background: linear-gradient(#e66465, #9198e5);
+
+  * {
+    color: white;
+  }
+  button,
+  select {
+    color: black;
+  }
 
   .todo-list {
     display: flex;
     flex-direction: column;
     padding: 12px;
+
+    h2 {
+      color: white;
+    }
+
+    #toggleFilter {
+      color: black;
+      font-size: 18px;
+      width: 120px;
+
+      i {
+        color: black;
+        margin-left: 12px;
+      }
+    }
   }
   .todo-list > h3 {
     font-size: 16px;
@@ -175,10 +228,39 @@
   .your-todo {
     padding: 12px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 12px;
   }
   .filter-todo {
+    border: 1px solid black;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-in, border 0.6s ease;
     padding: 12px;
+    border-radius: 8px;
+
+    // border: 1px solid black;
+    box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+
+    .allCateg {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        margin: 0px 12px 0px 2px;
+      }
+    }
+  }
+
+  .collapsed {
+    max-height: 0;
+    // padding: 0;
+    border-width: 0;
+  }
+
+  .expanded {
+    max-height: 800px;
   }
 
   .sort-todo {
@@ -186,3 +268,5 @@
     height: auto;
   }
 }
+
+// TO-DO STYLING SLUT <<<<<<<<<<

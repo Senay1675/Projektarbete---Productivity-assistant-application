@@ -9,6 +9,10 @@ const todoEst = document.querySelector("#todoEstimate");
 
 const todoCategory = document.querySelector("#todoCategory");
 const todoList = document.querySelector(".your-todo");
+const allTodoCategories = document.querySelectorAll(
+  "input[type='checkbox'][name='todo-category']"
+);
+const allCategBtn = document.querySelector("#selectAllCateg");
 
 const sortFilter = document.querySelector("#riseFall");
 const deadlineCheck = document.querySelector("#deadlineEst");
@@ -16,6 +20,15 @@ const timeCheck = document.querySelector("#timeEst");
 
 const filterTodo = document.querySelector("#filterTodo");
 const todoFilterReset = document.querySelector("#todoFilterReset");
+const toggleFilterBtn = document.querySelector("#toggleFilter");
+const filterContainer = document.querySelector(".filter-todo");
+
+toggleFilterBtn.addEventListener("click", () => {
+  filterContainer.classList.toggle("collapsed");
+  filterContainer.classList.toggle("expanded");
+});
+
+let userTodo = [];
 
 const createTodoItem = (
   title,
@@ -54,6 +67,29 @@ const createTodoItem = (
   const editBtn = createButton("Edit", "todoEditBtn");
   const deleteBtn = createButton("Delete", "todoDeleteBtn");
 
+  editBtn.addEventListener("click", () => {
+    if (editBtn.innerText === "Edit") {
+      editBtn.innerText = "Save";
+      todoDetails.innerHTML = "";
+      todoDetails.innerHTML = `<input id="titleEdit" type="text" value="${title}" />
+        <input type="text"  id="descEdit" value="${description}"/>
+        <select id="categEdit">
+                <option value="Health">Health</option>
+                <option value="Housekeeping">Housekeeping</option>
+                <option value="Work">Work</option>
+                <option value="Music">Music</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+              </select>`;
+    } else {
+      const titleEdit = document.getElementById("titleEdit");
+      const descEdit = document.getElementById("descEdit");
+      const categEdit = document.getElementById("categEdit");
+      todoDetails.innerHTML = `<h4>${titleEdit.value}</h4>
+      <p>${descEdit.value}</p>
+      <span>${categEdit.value}</span>
+      `;
+    }
+  });
   doneBtn.addEventListener("click", () => {
     const lowTodo = doneBtn.parentElement;
     const status = lowTodo.parentElement.querySelector(
@@ -72,17 +108,40 @@ const createTodoItem = (
   middleTodo.append(todoDetails);
   lowerTodo.append(doneBtn, editBtn, deleteBtn);
   todoCard.append(upperTodo, middleTodo, lowerTodo);
+  console.log(todoCard);
+
+  //Make this a separate function
+  //Set and Get data to and from localStorage
+  let allUserTodos = {
+    user: "Username",
+    title: title,
+    status: statusText,
+    estTime: estimation,
+    estUnit: estimationUnit,
+  };
+  userTodo.push(allUserTodos);
+  console.log(userTodo);
+  localStorage.setItem("userTodo", JSON.stringify(userTodo));
+
+  let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
+  console.log(parsedUserTodo);
+  /*Sätt in all data i localstorage här?
+Kom på ett sätt att få in localStorage till respektive användare, använd object?*/
 
   return todoCard;
 };
 
+const getTodoData = () => {};
+
 sortFilter.addEventListener("change", () => {
   let filter = sortFilter.value;
+  //Call the timesort function
   timeSort(filter);
 });
 
 const timeSort = (filter) => {
   console.log(filter);
+  //Get an array of all the cards in the DOM
   const todoCards = Array.from(todoList.getElementsByClassName("todo"));
 
   todoCards.sort((a, b) => {
@@ -147,8 +206,10 @@ const createButton = (text, className) => {
 todoDate.addEventListener("change", () => {
   console.log("start");
   const deadline = todoDate.value;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  if (new Date(deadline) < new Date()) {
+  if (new Date(deadline) < new Date(today)) {
     errorMessage.style.display = "block";
     addTodoBtn.disabled = true;
   } else {
@@ -201,6 +262,12 @@ const filterTodoItems = (todoStatus, todoCategory) => {
   });
 };
 
+allCategBtn.addEventListener("click", () => {
+  allTodoCategories.forEach((box) => {
+    box.checked = true;
+  });
+});
+
 filterTodo.addEventListener("click", () => {
   const filterTodoStat = document.querySelectorAll(
     "input[type='checkbox'][name='todoStatus']:checked"
@@ -209,4 +276,16 @@ filterTodo.addEventListener("click", () => {
     "input[type='checkbox'][name='todo-category']:checked"
   );
   filterTodoItems(filterTodoStat, filterTodoCateg);
+});
+
+todoFilterReset.addEventListener("click", () => {
+  allTodoCategories.forEach((box) => {
+    box.checked = false;
+  });
+  const status = document.querySelectorAll(
+    "input[type='checkbox'][name='todoStatus']"
+  );
+  status.forEach((stat) => {
+    stat.checked = false;
+  });
 });

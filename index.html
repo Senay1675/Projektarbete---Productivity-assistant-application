@@ -8,6 +8,10 @@
     <script src="script.js" defer></script>
     <script src="todo.js" defer></script>
     <link rel="stylesheet" href="/style.css" />
+    <script
+      src="https://kit.fontawesome.com/29047c7944.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header id="loginHeader">
@@ -27,6 +31,74 @@
           <input type="radio" name="estimationSort" id="deadlineEst" checked />
           <label for="timeEst">Time Est.</label>
           <input type="radio" name="estimationSort" id="timeEst" />
+        </div>
+        <button id="toggleFilter">
+          Filtering<i class="fa-solid fa-angles-down"></i>
+        </button>
+        <div class="filter-todo collapsed">
+          <h3>Filtering:</h3>
+          <h4>Task status:</h4>
+          <div class="todo-status">
+            <label for="todoProgess">To-do</label>
+            <input
+              type="checkbox"
+              name="todoStatus"
+              id="todoProgess"
+              value="To-do"
+            />
+            <label for="todoDone">Done</label>
+            <input
+              type="checkbox"
+              name="todoStatus"
+              id="todoDone"
+              value="Done"
+            />
+          </div>
+
+          <div class="todoFilterCategories">
+            <h4>Categories:</h4>
+            <button id="selectAllCateg">All Categories</button>
+            <div class="allCateg">
+              <label for="categHealth">Health</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categHealth"
+                value="Health"
+              />
+              <label for="categHousekeeping">Housekeeping</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categHousekeeping"
+                value="Housekeeping"
+              />
+              <label for="categWork">Work</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categWork"
+                value="Work"
+              />
+              <label for="categMusic">Music</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categMusic"
+                value="Music"
+              />
+              <label for="categMisc">Miscellaneous</label>
+              <input
+                type="checkbox"
+                name="todo-category"
+                id="categMisc"
+                value="Miscellaneous"
+              />
+            </div>
+
+            <button id="filterTodo">Add Filtering</button>
+            <button id="todoFilterReset">Reset Filter</button>
+          </div>
         </div>
         <div class="your-todo"></div>
       </div>
@@ -49,6 +121,7 @@
             <option name="estimateTodo" id="estDays">Days</option>
           </select>
           <label for="todoCategory">Category:</label>
+
           <select name="" id="todoCategory">
             <option value="Health">Health</option>
             <option value="Housekeeping">Housekeeping</option>
@@ -57,67 +130,6 @@
             <option value="Miscellaneous">Miscellaneous</option>
           </select>
           <button id="addTodo">Add To-do</button>
-        </div>
-        <div class="filter-todo">
-          <h3>Filtering:</h3>
-          <h4>Task status:</h4>
-          <div class="todo-status">
-            <label for="todoProgess">To-do</label>
-            <input
-              type="checkbox"
-              name="todoStatus"
-              id="todoProgess"
-              value="To-do"
-            />
-            <label for="todoDone">Done</label>
-            <input
-              type="checkbox"
-              name="todoStatus"
-              id="todoDone"
-              value="Done"
-            />
-          </div>
-
-          <div class="todoFilterCategories">
-            <h4>Categories:</h4>
-            <label for="categHealth">Health</label>
-            <input
-              type="checkbox"
-              name="todo-category"
-              id="categHealth"
-              value="Health"
-            />
-            <label for="categHousekeeping">Housekeeping</label>
-            <input
-              type="checkbox"
-              name="todo-category"
-              id="categHousekeeping"
-              value="Housekeeping"
-            />
-            <label for="categWork">Work</label>
-            <input
-              type="checkbox"
-              name="todo-category"
-              id="categWork"
-              value="Work"
-            />
-            <label for="categMusic">Music</label>
-            <input
-              type="checkbox"
-              name="todo-category"
-              id="categMusic"
-              value="Music"
-            />
-            <label for="categMisc">Miscellaneous</label>
-            <input
-              type="checkbox"
-              name="todo-category"
-              id="categMisc"
-              value="Miscellaneous"
-            />
-            <button id="filterTodo">Add Filtering</button>
-            <button id="todoFilterReset">Reset Filter</button>
-          </div>
         </div>
       </div>
     </div>
