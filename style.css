@@ -233,4 +233,206 @@
 .todo-container .sort-todo {
   width: auto;
   height: auto;
+}
+
+* {
+  margin: 0;
+}
+
+.loginBackground {
+  background: linear-gradient(#e66465, #9198e5);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginMain {
+  width: 85%;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 12px;
+}
+.loginMain h1 {
+  font-family: nanum brush script;
+  font-size: 80px;
+  color: #e66465;
+}
+.loginMain p {
+  text-align: center;
+  font-size: 8px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: 0.3ch;
+  color: rgb(105, 105, 105);
+}
+.loginMain h2 {
+  margin: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+}
+.loginMain input {
+  margin: 3px;
+  width: 70%;
+  height: 30px;
+}
+.loginMain .loginRegisterBtn {
+  margin: 10px;
+  width: 72%;
+  border: none;
+  border-radius: 30px;
+  height: 25px;
+  background-color: #9198e5;
+  color: beige;
+}
+.loginMain .loginBtn {
+  width: 72%;
+  height: 30px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+  color: beige;
+  margin: 0px;
+}
+
+#loginHeader {
+  background-color: crimson;
+  height: 100px;
+}
+
+.add-filter-todo {
+  border: 1px solid black;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.todo {
+  height: auto;
+  background-color: rgb(255, 255, 212);
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.todo .upperCard {
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+}
+.todo .upperCard .todoStatus > span {
+  font-size: 12px;
+}
+.todo .upperCard .todoStatus > span:first-child {
+  position: absolute;
+  left: 5%;
+}
+.todo .upperCard .todoStatus > span:nth-child(2) {
+  text-align: end;
+}
+
+.todoStatus {
+  height: 50px;
+  width: 50px;
+}
+
+.todo-done {
+  background: rgb(203, 255, 203);
+}
+
+.todo button {
+  border: none;
+  border-radius: 4px;
+  height: 24px;
+}
+.todo button:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.todoDoneBtn {
+  background-color: rgb(28, 251, 28);
+}
+.todoDoneBtn:hover {
+  background-color: rgb(107, 245, 107);
+}
+
+.todoDeleteBtn {
+  background-color: red;
+}
+.todoDeleteBtn:hover {
+  background-color: rgb(249, 58, 58);
+}
+
+.todo-progress {
+  background: rgb(255, 255, 203);
+}
+
+.add-todo {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  gap: 6px;
+}
+
+.todo-container {
+  display: flex;
+}
+.todo-container .todo-list {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+.todo-container .todo-list > h3 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.todo-container .your-todo {
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.todo-container .filter-todo {
+  padding: 12px;
+}
+.todo-container .sort-todo {
+  width: auto;
+  height: auto;
+}
+
+.habit-container {
+  display: flex;
+  border: black solid;
+}
+.habit-container #habitForm-container {
+  display: flex;
+  flex-direction: column;
+  border: solid black;
+  margin: 10px;
+  padding: 10px;
+}
+.habit-container .filter-habit {
+  border: solid black;
+  padding: 10px;
+  margin: 10px;
+}
+.habit-container .sort-habit {
+  border: solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.habit-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: 200px; /* Justera bredden efter ditt behov */
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */

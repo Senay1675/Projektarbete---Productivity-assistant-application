@@ -136,6 +136,7 @@
     <!--    Habits    -->
     <div class="habit-container">
       <div id="habitForm-container">
+<<<<<<< HEAD
         <h3>Add your habit:</h3>
         <label for="habitInput">add</label>
         <input
@@ -157,6 +158,56 @@
         <button id="addHabitBtn">Add habit</button>
         <div id="habitCard-container"></div>
       </div>
+=======
+            <h3>Add your habit:</h3>
+            <label for="habitInput">Add:</label>
+            <input type="text" name="habit" id="habitInput" placeholder="What do you want to do today..">
+            <br>
+            <h4>Habit priorities:</h4>
+            <label for="low">Low</label>
+            <input type="radio" id="low" name="priority" value="Low">
+            <label for="medium">Medium</label>
+            <input type="radio" id="medium" name="priority" value="Medium">
+            <label for="high">High</label>
+            <input type="radio" id="High" name="priority" value="High">
+           
+            <br>
+            <button id="addHabitBtn">Add habit</button>
+            <br>
+            <!-- checkboxes på sortering och radiobuttons på filtrering-->
+            <div class="filter-habit">
+                <h3>Habit-filtrering</h3>
+
+                <label for="filtrera">low</label>
+                <input type="checkbox" id="low-Check" name="filtrera" value="low">
+    
+                <label for="filtrera">Medium</label>
+                <input type="checkbox" id="medium-Check" name="filtrera" value="medium">
+    
+                <label for="filtrera">High</label>
+                <input type="checkbox" id="high-Check" name="filtrera" value="high">
+    
+    
+            </div>
+
+            <div class="sort-habit">
+                <h3>Habit sortering:</h3>
+                <select name="habit-option" id="sortSelect">
+                    <option value="rising">Rising</option>
+                    <option value="falling">Falling</option>
+                </select>
+                <label for="">Habit-streak:</label>
+                <input type="radio" id="sort-streak-radio" name="" value="streak">
+                <label for="">Priority</label>
+                <input type="radio" id="sort-priority-radio" name="" value="priority">
+
+            </div>
+            <div id="habitCard-container"></div>
+
+
+
+        </div>
+>>>>>>> d850345874acc90af4904e25319bdedd52ca9118
     </div>
   </body>
 </html>
