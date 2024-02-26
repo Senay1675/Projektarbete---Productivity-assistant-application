@@ -38,7 +38,8 @@ loginBtn.addEventListener("click", () => {
 
   if (user) {
     console.log("user found: " + user.username);
-    localStorage.setItem("currentUser", user.id);
+    localStorage.setItem("currentUser", user.username);
+    localStorage.setItem("currentUserId", user.id);
     // loginHeaderH1.innerText = `Welcome ${user.username}`;
     window.location.href = "index.html";
     // h2.textContent = `Welcome ${user.username}`;
