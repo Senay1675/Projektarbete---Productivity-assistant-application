@@ -19,7 +19,7 @@ console.log(radioCategories);
 addHabit.addEventListener("click", () => {
     
     
- // För varje kort som skapas så gör jag en till funktion som tar ut värde från radio buttons
+ // För varje kort som skapas så gör jag en en till funktion som tar ut prioritet värde från radio buttons
     
  
  // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
