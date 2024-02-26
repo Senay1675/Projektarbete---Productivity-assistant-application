@@ -169,6 +169,33 @@
 
         <br />
         <button id="addHabitBtn">Add habit</button>
+        <div class="filter-habit">
+          <h3>Habit-filtrering</h3>
+
+          <label for="filtrera">low</label>
+          <input type="checkbox" id="low-Check" name="filtrera" value="low">
+
+          <label for="filtrera">Medium</label>
+          <input type="checkbox" id="medium-Check" name="filtrera" value="medium">
+
+          <label for="filtrera">High</label>
+          <input type="checkbox" id="high-Check" name="filtrera" value="high">
+
+
+      </div>
+
+      <div class="sort-habit">
+          <h3>Habit sortering:</h3>
+          <select name="habit-option" id="sortSelect">
+              <option value="rising">Rising</option>
+              <option value="falling">Falling</option>
+          </select>
+          <label for="">Habit-streak:</label>
+          <input type="radio" id="sort-streak-radio" name="" value="streak">
+          <label for="">Priority</label>
+          <input type="radio" id="sort-priority-radio" name="" value="priority">
+
+      </div>
         <div id="habitCard-container"></div>
       </div>
     </div>
