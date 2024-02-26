@@ -119,6 +119,8 @@ const createTodoItem = (
     estTime: estimation,
     estUnit: estimationUnit,
   };
+
+  console.log(crypto.randomUUID());
   userTodo.push(allUserTodos);
   console.log(userTodo);
   localStorage.setItem("userTodo", JSON.stringify(userTodo));
