@@ -4,17 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="/startPage.js" defer></script>
     <script src="/login.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js " defer></script>
     <link rel="stylesheet" href="/style.css" />
     <script src="/todo.js" defer></script>
   </head>
   <body>
+    <!-- ''''''' --------------- HEADER ---------------------'''''' -->
+
     <header id="loginHeader">
-      
-      <h1 id="loginHeaderH1">Initialt välkomstmeddelande</h1>
-    
+      <div class="headerLeft">fdfvfgdf</div>
+      <div class="headerMiddle">
+        <h1>Habit app</h1>
+        <h2 id="loginHeaderH1">Initialt välkomstmeddelande</h2>
+        <br /><br />
+        <p id="loginQuoteContainer"></p>
+      </div>
+      <div class="headerRight">
+        <button id="logOutBtn">Log out</button>
+      </div>
     </header>
+
+    <!-- ''''''' --------------- HEADER ---------------------'''''' -->
+
     <div class="todo-container">
       <div class="todo-list">
         <h2>Your To-dos:</h2>
@@ -26,12 +39,7 @@
             <option value="falling">Falling</option>
           </select>
           <label for="deadlineEst">Deadline</label>
-          <input
-            type="radio"
-            name="estimationSort"
-            id="deadlineEst"
-            checked
-          />
+          <input type="radio" name="estimationSort" id="deadlineEst" checked />
           <label for="timeEst">Time Est.</label>
           <input type="radio" name="estimationSort" id="timeEst" />
         </div>
@@ -88,25 +96,30 @@
         </div>
       </div>
     </div>
-                                <!--    Habits    -->
+    <!--    Habits    -->
     <div class="habit-container">
       <div id="habitForm-container">
-            <h3>Add your habit:</h3>
-            <label for="habitInput">add</label>
-            <input type="text" name="habit" id="habitInput" placeholder="What do you want to do today..">
-            <br>
-            <h4>Habit priorities:</h4>
-            <label for="low">Low</label>
-            <input type="radio" id="low" name="priority" value="Low">
-            <label for="medium">Medium</label>
-            <input type="radio" id="medium" name="priority" value="Medium">
-            <label for="high">High</label>
-            <input type="radio" id="High" name="priority" value="High">
-           
-            <br>
-            <button id="addHabitBtn">Add habit</button>
-            <div id="habitCard-container"></div>
-        </div>
+        <h3>Add your habit:</h3>
+        <label for="habitInput">add</label>
+        <input
+          type="text"
+          name="habit"
+          id="habitInput"
+          placeholder="What do you want to do today.."
+        />
+        <br />
+        <h4>Habit priorities:</h4>
+        <label for="low">Low</label>
+        <input type="radio" id="low" name="priority" value="Low" />
+        <label for="medium">Medium</label>
+        <input type="radio" id="medium" name="priority" value="Medium" />
+        <label for="high">High</label>
+        <input type="radio" id="High" name="priority" value="High" />
+
+        <br />
+        <button id="addHabitBtn">Add habit</button>
+        <div id="habitCard-container"></div>
+      </div>
     </div>
   </body>
 </html>
