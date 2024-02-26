@@ -8,6 +8,18 @@ const highBtn = document.querySelector("#high");
 const addHabit = document.querySelector("#addHabitBtn");
 const habitCardContainer = document.querySelector("#habitCard-container");
 
+const sortSelect = document.querySelector("#sortSelect");
+
+const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]');
+console.log(filterCheckboxes);
+
+filterCheckboxes.forEach((filter)=>{ 
+  if (filter.checked){
+    priority = filter.value;
+    console.log("vald prioritet", priority);
+  }
+
+});
 
 
 
@@ -25,6 +37,8 @@ addHabit.addEventListener("click", () => {
   habitCard.classList.add("habit-card");
   let habitName = document.createElement("h4");
   habitName.innerText = inputHabit.value;
+
+
   radioCategories.forEach((radio) => {
     if (radio.checked) {
       priority = radio.value;
