@@ -71,8 +71,10 @@ const createTodoItem = (
   const deleteBtn = createButton("Delete", "todoDeleteBtn");
 
   editBtn.addEventListener("click", () => {
+    const uniqueCard = editBtn.parentElement.parentElement.classList[1];
+    const editStatus = todoCard.querySelector(".todoStatus span").textContent;
     if (editBtn.innerText === "Edit") {
-      editBtn.innerText = "Save";
+      editBtn.textContent = "Save";
       todoDetails.innerHTML = "";
       todoDetails.innerHTML = `<input id="titleEdit" type="text" value="${title}" />
         <input type="text"  id="descEdit" value="${description}"/>
@@ -83,14 +85,70 @@ const createTodoItem = (
                 <option value="Music">Music</option>
                 <option value="Miscellaneous">Miscellaneous</option>
               </select>`;
+      status.innerHTML = `<span>${editStatus}</span>
+                <span>Est. time:</span>
+              <input id="estiTime" type="text" value="${estimation}"/>
+              <select id="estiValue">
+                <option value="Minutes">Minutes</option>
+                <option value="Days">Days</option>
+               />
+               </select>`;
     } else {
-      const titleEdit = document.getElementById("titleEdit");
-      const descEdit = document.getElementById("descEdit");
-      const categEdit = document.getElementById("categEdit");
-      todoDetails.innerHTML = `<h4>${titleEdit.value}</h4>
-      <p>${descEdit.value}</p>
-      <span>${categEdit.value}</span>
+      editBtn.textContent = "Edit";
+      const titleEdit = document.getElementById("titleEdit").value;
+      const descEdit = document.getElementById("descEdit").value;
+      const categEdit = document.getElementById("categEdit").value;
+      const getEstTime = document.getElementById("estiTime").value;
+      const getEstValue = document.getElementById("estiValue").value;
+
+      console.log(titleEdit, descEdit, categEdit, getEstTime, getEstValue);
+
+      console.log(editStatus);
+
+      todoDetails.innerHTML = `<h4>${titleEdit}</h4>
+      <p>${descEdit}</p>
+      <span>${categEdit}</span>
       `;
+
+      `<span>${statusText}</span>
+  <span>Est. time: <span>${estimation}</span> ${estimationUnit}</span>
+  <span>Deadline: <span>${deadline}</span></span>`;
+
+      status.innerHTML = `<span>${editStatus}</span>
+      <span>Est. time: ${getEstTime}
+            <span>${getEstValue}</span></span>
+            <span>Deadline: <span>${deadline}</span></span>`;
+      console.log(userTodo);
+
+      const editedCard = {
+        userID: currentID,
+        status: editStatus,
+        title: titleEdit,
+        description: descEdit,
+        estimation: getEstTime,
+        estimationUnit: getEstValue,
+        deadline: deadline,
+        category: categEdit,
+        cardID: uniqueCard,
+      };
+      //Update localStorage list of todos'
+
+      let todoLocalCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+      console.log(todoLocalCards);
+      todoLocalCards.forEach((card, index) => {
+        if (card.cardID === +uniqueCard) {
+          todoLocalCards[index] = editedCard;
+        }
+      });
+      console.log(editedCard);
+      //   const updateTodoList = todoLocalCards.filter(
+      //     (item) => item.cardID !== +uniqueCard
+      //   );
+      // todoCards.forEach
+
+      //CREATE A FUNCTION THAT UPDATES LOCALSTORAGE!!!!!!!!!!
+      console.log(todoLocalCards);
+      localStorage.setItem("userTodo", JSON.stringify(todoLocalCards));
     }
   });
   doneBtn.addEventListener("click", () => {
@@ -114,19 +172,20 @@ const createTodoItem = (
     category: category,
     cardID: cardID,
   };
-  let uniqueCardID = allUserTodos.cardID;
+
   deleteBtn.addEventListener("click", () => {
+    deleteBtnFunc(deleteBtn);
     deleteBtn.parentElement.parentElement.remove();
-    const uniqueClass = deleteBtn.parentElement.parentElement.classList[1];
+    // const uniqueClass = deleteBtn.parentElement.parentElement.classList[1];
 
-    let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+    // let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
 
-    todoCards.forEach((card) => console.log(card.cardID));
-    const updatedTodoList = todoCards.filter((item) => {
-      return item.cardID !== +uniqueClass;
-    });
+    // todoCards.forEach((card) => console.log(card.cardID));
+    // const updatedTodoList = todoCards.filter((item) => {
+    //   return item.cardID !== +uniqueClass;
+    // });
 
-    localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
+    // localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
   });
 
   upperTodo.append(status);
@@ -140,6 +199,23 @@ const createTodoItem = (
   localStorage.setItem("userTodo", JSON.stringify(userTodo));
 
   return todoCard;
+};
+
+//delete and edit button function
+
+const deleteBtnFunc = (button) => {
+  const btn = button.innerText;
+  const cardId = button.parentElement.parentElement.classList[1];
+  let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+  console.log(btn);
+  if (btn === "Delete") {
+    todoCards.forEach((card) => console.log(card.cardID));
+    const updatedTodoList = todoCards.filter((item) => {
+      return item.cardID !== +cardId;
+    });
+    localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
+    console.log(updatedTodoList);
+  }
 };
 
 let currentID = localStorage.getItem("currentUserId");
