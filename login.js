@@ -7,6 +7,14 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 
 /* ---------- REGISTER BUTTON ------------ */
 
+function showSnackbar() {
+  let snackbar = document.querySelector("#snackbar");
+  snackbar.classList.add("show");
+  setTimeout(function () {
+    snackbar.classList.remove("show"); // Använd remove istället för replace
+  }, 3000);
+}
+
 loginRegisterBtn.addEventListener("click", () => {
   let username = loginUsernameInput.value;
   let password = loginPasswordInput.value;
@@ -21,6 +29,14 @@ loginRegisterBtn.addEventListener("click", () => {
 
   localStorage.setItem("users", JSON.stringify(users));
 
+  showSnackbar();
+
+  //   alert("User has been created");
+  //   const loginMessageElement = document.createElement("div");
+  //   loginMessageElement.textContent = "User has been created";
+  //   loginMessageElement.classList.add("success-message");
+
+  //   document.body.append(loginMessageElement);
   //   console.log("Användaren har registrerats", newUser);
 });
 
