@@ -76,8 +76,11 @@ const createTodoItem = (
     if (editBtn.innerText === "Edit") {
       editBtn.textContent = "Save";
       todoDetails.innerHTML = "";
-      todoDetails.innerHTML = `<input id="titleEdit" type="text" value="${title}" />
+      todoDetails.innerHTML = `<p>Title:</p>
+      <input id="titleEdit" type="text" value="${title}"/>
+      <p>Desc:</p>
         <input type="text"  id="descEdit" value="${description}"/>
+        <p>Categ:</p>
         <select id="categEdit">
                 <option value="Health">Health</option>
                 <option value="Housekeeping">Housekeeping</option>
@@ -127,10 +130,11 @@ const createTodoItem = (
         description: descEdit,
         estimation: getEstTime,
         estimationUnit: getEstValue,
-        deadline: deadline,
+        deadline,
         category: categEdit,
         cardID: uniqueCard,
       };
+      console.log(editedCard.estimation);
       //Update localStorage list of todos'
 
       let todoLocalCards = JSON.parse(localStorage.getItem("userTodo")) || [];
@@ -141,10 +145,6 @@ const createTodoItem = (
         }
       });
       console.log(editedCard);
-      //   const updateTodoList = todoLocalCards.filter(
-      //     (item) => item.cardID !== +uniqueCard
-      //   );
-      // todoCards.forEach
 
       //CREATE A FUNCTION THAT UPDATES LOCALSTORAGE!!!!!!!!!!
       console.log(todoLocalCards);
@@ -164,14 +164,15 @@ const createTodoItem = (
   let allUserTodos = {
     userID: currentID,
     status: statusText,
-    title: title,
-    description: description,
-    estTime: estimation,
-    estUnit: estimationUnit,
-    deadline: deadline,
-    category: category,
-    cardID: cardID,
+    title,
+    description,
+    estimation,
+    estimationUnit,
+    deadline,
+    category,
+    cardID,
   };
+  console.log(allUserTodos.estimation);
 
   deleteBtn.addEventListener("click", () => {
     deleteBtnFunc(deleteBtn);
@@ -217,7 +218,7 @@ const deleteBtnFunc = (button) => {
     console.log(updatedTodoList);
   }
 };
-
+console.log(localStorage.getItem("userTodo"));
 let currentID = localStorage.getItem("currentUserId");
 const getTodoData = () => {
   let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
@@ -230,8 +231,8 @@ const getTodoData = () => {
       let localTodo = createTodoItem(
         todo.title,
         todo.description,
-        todo.estTime,
-        todo.estUnit,
+        todo.estimation,
+        todo.estimationUnit,
         todo.deadline,
         todo.category,
         todo.cardID
@@ -240,14 +241,6 @@ const getTodoData = () => {
       todoList.append(localTodo);
     }
   });
-  /*
-    title,
-  description,
-  estimation,
-  estimationUnit,
-  deadline,
-  category
-) => {*/
 };
 
 sortFilter.addEventListener("change", () => {
