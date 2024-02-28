@@ -123,7 +123,7 @@ const createTodoItem = (
       const getEstTime = document.getElementById("estiTime").value;
       const getEstValue = document.getElementById("estiValue").value;
 
-      console.log(titleEdit, descEdit, categEdit, getEstTime, getEstValue);
+      console.log(titleEdit, desXcEdit, categEdit, getEstTime, getEstValue);
 
       console.log(editStatus);
 
@@ -191,7 +191,7 @@ const createTodoItem = (
     category,
     cardID,
   };
-  console.log(allUserTodos.estimation);
+  //   console.log(allUserTodos.estimation);
 
   deleteBtn.addEventListener("click", () => {
     deleteBtnFunc(deleteBtn);
@@ -212,10 +212,10 @@ const createTodoItem = (
   middleTodo.append(todoDetails);
   lowerTodo.append(doneBtn, editBtn, deleteBtn);
   todoCard.append(upperTodo, middleTodo, lowerTodo);
-  console.log(todoCard);
+  //   console.log(todoCard);
 
   userTodo.push(allUserTodos);
-  console.log(userTodo);
+  //   console.log(userTodo);
   localStorage.setItem("userTodo", JSON.stringify(userTodo));
 
   return todoCard;
@@ -237,15 +237,16 @@ const deleteBtnFunc = (button) => {
     console.log(updatedTodoList);
   }
 };
-console.log(localStorage.getItem("userTodo"));
+// console.log(localStorage.getItem("userTodo"));
 let currentID = localStorage.getItem("currentUserId");
+// console.log("Current user: " + currentID);
 const getTodoData = () => {
   let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
-  console.log(currentID);
+  //   console.log(currentID);
   parsedUserTodo.forEach((todo) => {
-    console.log(todo);
-    console.log(todo.userID);
-    console.log(currentID);
+    // console.log(todo);
+    // console.log(todo.userID);
+    // console.log(currentID);
     if (todo.userID === currentID) {
       let localTodo = createTodoItem(
         todo.title,
@@ -256,7 +257,7 @@ const getTodoData = () => {
         todo.category,
         todo.cardID
       );
-      console.log(localTodo);
+      //   console.log(localTodo);
       todoList.append(localTodo);
     }
   });

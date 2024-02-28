@@ -6,7 +6,8 @@
     <title>Document</title>
     <script src="/startPage.js" defer></script>
     <!-- <script src="/login.js" defer></script> -->
-    <script src="script.js " defer></script>
+    <!-- <script src="script.js " defer></script> -->
+    <script src="calender.js" defer></script>
     <script src="todo.js" defer></script>
     <link rel="stylesheet" href="/style.css" />
     <script
@@ -149,6 +150,18 @@
             Collapse <i class="fa-solid fa-angles-up"></i>
           </button>
         </div>
+      </div>
+      <div class="NTH-calender">
+        <label for="calTitle">Title:</label>
+        <input type="text" name="calTitle" id="calTitle" />
+        <label for="calStart">Startdate:</label>
+        <input type="date" name="startDate" id="calStartDate" />
+        <input type="time" name="startTime" id="calStartTime" />
+        <label for="calEnd">Enddate:</label>
+        <input type="date" name="endDate" id="calEndDate" />
+        <input type="time" name="endTime" id="calEndTime" />
+        <button id="addCalResult">Add to Calender</button>
+        <div class="cal-results"></div>
       </div>
     </div>
     <!--    Habits    -->
