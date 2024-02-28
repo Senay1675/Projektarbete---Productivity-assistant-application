@@ -10,16 +10,41 @@ const habitCardContainer = document.querySelector("#habitCard-container");
 
 const sortSelect = document.querySelector("#sortSelect");
 
-const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]');
-console.log(filterCheckboxes);
+// den här koden är filter funktionen
 
-filterCheckboxes.forEach((filter)=>{ 
-  if (filter.checked){
-    priority = filter.value;
-    console.log("vald prioritet", priority);
-  }
+const filterBtn = document.querySelector("#filter-btn");
 
+filterBtn.addEventListener("click", () =>{
+  
+  const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]');
+  console.log(filterCheckboxes);
+
+  filterCheckboxes.forEach((filter)=>{ 
+    console.log(filter.checked);
+
+    if (filter.checked){
+      priority = filter.value;
+      console.log("vald prioritet", priority);
+    }
+  
+  habitCardContainer.querySelectorAll(".habit-card").forEach((item)=>{
+    let habitCard2 = item.querySelector("p").textContent;
+
+    console.log("habitcard value " + habitCard2);
+    console.log("priority value " + priority);
+
+    if (priority === habitCard2){
+          // Gör något med de matchande habitCard-elementen
+          item.style.display = 'block'; // Visa elementet
+        } else {
+          item.style.display = 'none'; // Dölj elementet om det inte matchar
+    }
+  });
+
+  });
 });
+
+
 
 
 
