@@ -157,6 +157,14 @@
   width: 20%;
 }
 
+.timerContainer {
+  border: 1px solid magenta;
+  height: 200px;
+}
+.timerContainer #timer {
+  font-size: xx-large;
+}
+
 .add-filter-todo {
   width: 30%;
   display: flex;
