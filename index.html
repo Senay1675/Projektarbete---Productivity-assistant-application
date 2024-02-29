@@ -118,39 +118,39 @@
         </div>
         <div class="your-todo"></div>
       </div>
-      <div class="add-filter-todo expanded">
-        <div class="add-todo expanded">
-          <h3>Add your todo:</h3>
-          <label for="todoName">To-do:</label>
-          <input type="text" name="todo" id="todoName" />
-          <label for="todoDesc">Description:</label>
-          <input type="text" name="todo-desc" id="todoDesc" />
-          <label for="todoDate">Deadline:</label>
-          <input type="date" name="todo-deadline" id="todoDate" />
-          <div id="errorMessage" style="color: red; display: none">
-            Deadline cannot be in the past!
-          </div>
-          <label for="todoEstimate">Est. time:</label>
-          <input type="number" name="todoEst" id="todoEstimate" />
-          <select value="estTime" id="estTime">
-            <option name="estimateTodo" id="estMinutes">Minutes</option>
-            <option name="estimateTodo" id="estDays">Days</option>
-          </select>
-          <label for="todoCategory">Category:</label>
 
-          <select name="" id="todoCategory">
-            <option value="Health">Health</option>
-            <option value="Housekeeping">Housekeeping</option>
-            <option value="Work">Work</option>
-            <option value="Music">Music</option>
-            <option value="Miscellaneous">Miscellaneous</option>
-          </select>
-          <button id="addTodo">Add To-do</button>
-          <button id="collapse">
-            Collapse <i class="fa-solid fa-angles-up"></i>
-          </button>
+      <div class="add-todo expanded">
+        <h3>Add your todo:</h3>
+        <label for="todoName">To-do:</label>
+        <input type="text" name="todo" id="todoName" />
+        <label for="todoDesc">Description:</label>
+        <input type="text" name="todo-desc" id="todoDesc" />
+        <label for="todoDate">Deadline:</label>
+        <input type="date" name="todo-deadline" id="todoDate" />
+        <div id="errorMessage" style="color: red; display: none">
+          Deadline cannot be in the past!
         </div>
+        <label for="todoEstimate">Est. time:</label>
+        <input type="number" name="todoEst" id="todoEstimate" />
+        <select value="estTime" id="estTime">
+          <option name="estimateTodo" id="estMinutes">Minutes</option>
+          <option name="estimateTodo" id="estDays">Days</option>
+        </select>
+        <label for="todoCategory">Category:</label>
+
+        <select name="" id="todoCategory">
+          <option value="Health">Health</option>
+          <option value="Housekeeping">Housekeeping</option>
+          <option value="Work">Work</option>
+          <option value="Music">Music</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+        </select>
+        <button id="addTodo">Add To-do</button>
+        <button id="collapse" class="collapse-button">
+          Collapse <i class="fa-solid fa-angles-up"></i>
+        </button>
       </div>
+
       <div class="NTH-calender">
         <label for="calTitle">Title:</label>
         <input type="text" name="calTitle" id="calTitle" />
@@ -160,6 +160,9 @@
         <label for="calEnd">Enddate:</label>
         <input type="date" name="endDate" id="calEndDate" />
         <input type="time" name="endTime" id="calEndTime" />
+        <div id="errorDate" style="color: red; display: none">
+          Deadline cannot be in the past!
+        </div>
         <button id="addCalResult">Add to Calender</button>
         <div class="cal-results"></div>
       </div>

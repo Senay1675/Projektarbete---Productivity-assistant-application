@@ -1,7 +1,6 @@
 const todoTitle = document.querySelector("#todoName");
 const addTodoBtn = document.querySelector("#addTodo");
 const addTodoContainer = document.querySelector(".add-todo");
-const addContainer = document.querySelector(".add-filter-todo");
 
 const todoDesc = document.querySelector("#todoDesc");
 const todoDate = document.querySelector("#todoDate");
@@ -27,17 +26,21 @@ const toggleFilterBtn = document.querySelector("#toggleFilter");
 const filterContainer = document.querySelector(".filter-todo");
 
 toggleAddcardCont.addEventListener("click", () => {
+  if (addTodoContainer.classList.contains("expanded")) {
+    toggleAddcardCont.innerHTML =
+      "Add To-dos <i class='fa-solid fa-angles-down'></i>";
+  } else {
+    toggleAddcardCont.innerHTML =
+      "Collapse <i class='fa-solid fa-angles-up'></i>";
+  }
   addTodoContainer.classList.toggle("expanded");
   addTodoContainer.classList.toggle("collapsed");
-  addContainer.classList.toggle("expanded");
-  addContainer.classList.toggle("collapsed");
 });
 
 toggleFilterBtn.addEventListener("click", () => {
   if (filterContainer.classList.contains("collapsed")) {
     // If collapsed, change to expanded icon
-    toggleFilterBtn.innerHTML =
-      "Filtering <i class='fa-solid fa-angles-up'></i>";
+    toggleFilterBtn.innerHTML = "Filtering ";
   } else {
     // If expanded, change to collapsed icon
     toggleFilterBtn.innerHTML =

@@ -139,14 +139,6 @@
 
 // TO-DO STYLING START >>>>>>>
 
-.add-filter-todo {
-  position: sticky;
-  right: 0;
-  width: 30%;
-  gap: 16px;
-  margin: 12px;
-}
-
 .todo {
   overflow: hidden;
   height: auto;
@@ -252,6 +244,7 @@
   background: linear-gradient(#e66465, #9198e5);
 
   .add-todo {
+    height: min-content;
     border-radius: 8px;
     box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
     border: 1px solid black;
@@ -333,10 +326,17 @@
     height: 0;
     padding: 0;
     border-width: 0;
+
+    * {
+      display: none;
+    }
+    .collapse-button {
+      display: block;
+    }
   }
 
   .expanded {
-    height: auto;
+    height: min-content;
   }
 
   .sort-todo {
@@ -355,8 +355,13 @@
 #estiTime {
   width: 30px;
 }
-// TO-DO STYLING SLUT <<<<<<<<<<
 
+// TO-DO STYLING SLUT -----<<<<<<<<<<
+//CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
+.calender-card {
+  border: 1px solid black;
+}
+//CALENDER NICE-TO-HAVE STYLING SLUT -----<<<<<<<<<<<<<
 // LOGIN STYLING ------------->>>>>
 
 .loginBackground {

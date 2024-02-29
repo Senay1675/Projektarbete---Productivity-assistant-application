@@ -95,14 +95,6 @@
   width: 20%;
 }
 
-.add-filter-todo {
-  position: sticky;
-  right: 0;
-  width: 30%;
-  gap: 16px;
-  margin: 12px;
-}
-
 .todo {
   overflow: hidden;
   height: auto;
@@ -200,6 +192,8 @@
   background: linear-gradient(#e66465, #9198e5);
 }
 .todo-container .add-todo {
+  height: -moz-min-content;
+  height: min-content;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
   border: 1px solid black;
@@ -271,8 +265,15 @@
   padding: 0;
   border-width: 0;
 }
+.todo-container .collapsed * {
+  display: none;
+}
+.todo-container .collapsed .collapse-button {
+  display: block;
+}
 .todo-container .expanded {
-  height: auto;
+  height: -moz-min-content;
+  height: min-content;
 }
 .todo-container .sort-todo {
   width: auto;
@@ -288,6 +289,10 @@
 
 #estiTime {
   width: 30px;
+}
+
+.calender-card {
+  border: 1px solid black;
 }
 
 .loginBackground {
