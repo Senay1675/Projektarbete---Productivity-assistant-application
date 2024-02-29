@@ -1,5 +1,6 @@
 const todoTitle = document.querySelector("#todoName");
 const addTodoBtn = document.querySelector("#addTodo");
+const addTodoContainer = document.querySelector(".add-todo");
 
 const todoDesc = document.querySelector("#todoDesc");
 const todoDate = document.querySelector("#todoDate");
@@ -15,6 +16,7 @@ const allTodoCategories = document.querySelectorAll(
 const allCategBtn = document.querySelector("#selectAllCateg");
 
 const sortFilter = document.querySelector("#riseFall");
+const toggleAddcardCont = document.querySelector("#collapse");
 const deadlineCheck = document.querySelector("#deadlineEst");
 const timeCheck = document.querySelector("#timeEst");
 
@@ -23,7 +25,28 @@ const todoFilterReset = document.querySelector("#todoFilterReset");
 const toggleFilterBtn = document.querySelector("#toggleFilter");
 const filterContainer = document.querySelector(".filter-todo");
 
+toggleAddcardCont.addEventListener("click", () => {
+  if (addTodoContainer.classList.contains("expanded")) {
+    toggleAddcardCont.innerHTML =
+      "Add To-dos <i class='fa-solid fa-angles-down'></i>";
+  } else {
+    toggleAddcardCont.innerHTML =
+      "Collapse <i class='fa-solid fa-angles-up'></i>";
+  }
+  addTodoContainer.classList.toggle("expanded");
+  addTodoContainer.classList.toggle("collapsed");
+});
+
 toggleFilterBtn.addEventListener("click", () => {
+  if (filterContainer.classList.contains("collapsed")) {
+    // If collapsed, change to expanded icon
+    toggleFilterBtn.innerHTML =
+      "Filtering <i class='fa-solid fa-angles-up'></i>";
+  } else {
+    // If expanded, change to collapsed icon
+    toggleFilterBtn.innerHTML =
+      "Filtering <i class='fa-solid fa-angles-down'></i>";
+  }
   filterContainer.classList.toggle("collapsed");
   filterContainer.classList.toggle("expanded");
 });
@@ -36,11 +59,14 @@ const createTodoItem = (
   estimation,
   estimationUnit,
   deadline,
-  category
+  category,
+  cardID
 ) => {
+  //Create CardID
   //Create Todo-card
   const todoCard = createDiv("todo");
-
+  cardID = Math.floor(1000 + Math.random() * 9000);
+  todoCard.classList.add(cardID);
   //Add divs for structure in To-do card
   let upperTodo = createDiv("upperCard");
 
@@ -68,11 +94,16 @@ const createTodoItem = (
   const deleteBtn = createButton("Delete", "todoDeleteBtn");
 
   editBtn.addEventListener("click", () => {
+    const uniqueCard = editBtn.parentElement.parentElement.classList[1];
+    const editStatus = todoCard.querySelector(".todoStatus span").textContent;
     if (editBtn.innerText === "Edit") {
-      editBtn.innerText = "Save";
+      editBtn.textContent = "Save";
       todoDetails.innerHTML = "";
-      todoDetails.innerHTML = `<input id="titleEdit" type="text" value="${title}" />
+      todoDetails.innerHTML = `<p>Title:</p>
+      <input id="titleEdit" type="text" value="${title}"/>
+      <p>Desc:</p>
         <input type="text"  id="descEdit" value="${description}"/>
+        <p>Categ:</p>
         <select id="categEdit">
                 <option value="Health">Health</option>
                 <option value="Housekeeping">Housekeeping</option>
@@ -80,14 +111,63 @@ const createTodoItem = (
                 <option value="Music">Music</option>
                 <option value="Miscellaneous">Miscellaneous</option>
               </select>`;
+      status.innerHTML = `<span>${editStatus}</span>
+                <span>Est. time:</span>
+              <input id="estiTime" type="text" value="${estimation}"/>
+              <select id="estiValue">
+                <option value="Minutes">Minutes</option>
+                <option value="Days">Days</option>
+               />
+               </select>`;
     } else {
-      const titleEdit = document.getElementById("titleEdit");
-      const descEdit = document.getElementById("descEdit");
-      const categEdit = document.getElementById("categEdit");
-      todoDetails.innerHTML = `<h4>${titleEdit.value}</h4>
-      <p>${descEdit.value}</p>
-      <span>${categEdit.value}</span>
+      editBtn.textContent = "Edit";
+      const titleEdit = document.getElementById("titleEdit").value;
+      const descEdit = document.getElementById("descEdit").value;
+      const categEdit = document.getElementById("categEdit").value;
+      const getEstTime = document.getElementById("estiTime").value;
+      const getEstValue = document.getElementById("estiValue").value;
+
+      todoDetails.innerHTML = `<h4>${titleEdit}</h4>
+      <p>${descEdit}</p>
+      <span>${categEdit}</span>
       `;
+
+      `<span>${statusText}</span>
+  <span>Est. time: <span>${estimation}</span> ${estimationUnit}</span>
+  <span>Deadline: <span>${deadline}</span></span>`;
+
+      status.innerHTML = `<span>${editStatus}</span>
+      <span>Est. time: ${getEstTime}
+            <span>${getEstValue}</span></span>
+            <span>Deadline: <span>${deadline}</span></span>`;
+      console.log(userTodo);
+
+      const editedCard = {
+        userID: currentID,
+        status: editStatus,
+        title: titleEdit,
+        description: descEdit,
+        estimation: getEstTime,
+        estimationUnit: getEstValue,
+        deadline,
+        category: categEdit,
+        cardID: uniqueCard,
+      };
+      console.log(editedCard.estimation);
+      //Update localStorage list of todos'
+
+      let todoLocalCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+      console.log(todoLocalCards);
+      todoLocalCards.forEach((card, index) => {
+        if (card.cardID === +uniqueCard) {
+          todoLocalCards[index] = editedCard;
+        }
+      });
+      console.log(editedCard);
+
+      //CREATE A FUNCTION THAT UPDATES LOCALSTORAGE!!!!!!!!!!
+      console.log(todoLocalCards);
+      localStorage.setItem("userTodo", JSON.stringify(todoLocalCards));
     }
   });
   doneBtn.addEventListener("click", () => {
@@ -100,39 +180,88 @@ const createTodoItem = (
     doneBtn.remove();
   });
 
+  let allUserTodos = {
+    userID: currentID,
+    status: statusText,
+    title,
+    description,
+    estimation,
+    estimationUnit,
+    deadline,
+    category,
+    cardID,
+  };
+  //   console.log(allUserTodos.estimation);
+
   deleteBtn.addEventListener("click", () => {
+    deleteBtnFunc(deleteBtn);
     deleteBtn.parentElement.parentElement.remove();
+    // const uniqueClass = deleteBtn.parentElement.parentElement.classList[1];
+
+    // let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+
+    // todoCards.forEach((card) => console.log(card.cardID));
+    // const updatedTodoList = todoCards.filter((item) => {
+    //   return item.cardID !== +uniqueClass;
+    // });
+
+    // localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
   });
 
   upperTodo.append(status);
   middleTodo.append(todoDetails);
   lowerTodo.append(doneBtn, editBtn, deleteBtn);
   todoCard.append(upperTodo, middleTodo, lowerTodo);
-  console.log(todoCard);
-
-  //Make this a separate function
-  //Set and Get data to and from localStorage
-  let allUserTodos = {
-    user: "Username",
-    title: title,
-    status: statusText,
-    estTime: estimation,
-    estUnit: estimationUnit,
-  };
+  //   console.log(todoCard);
 
   userTodo.push(allUserTodos);
-  console.log(userTodo);
+  //   console.log(userTodo);
   localStorage.setItem("userTodo", JSON.stringify(userTodo));
-
-  let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
-  console.log(parsedUserTodo);
-  /*Sätt in all data i localstorage här?
-Kom på ett sätt att få in localStorage till respektive användare, använd object?*/
 
   return todoCard;
 };
 
-const getTodoData = () => {};
+//delete and edit button function
+
+const deleteBtnFunc = (button) => {
+  const btn = button.innerText;
+  const cardId = button.parentElement.parentElement.classList[1];
+  let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+  console.log(btn);
+  if (btn === "Delete") {
+    todoCards.forEach((card) => console.log(card.cardID));
+    const updatedTodoList = todoCards.filter((item) => {
+      return item.cardID !== +cardId;
+    });
+    localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
+    console.log(updatedTodoList);
+  }
+};
+// console.log(localStorage.getItem("userTodo"));
+let currentID = localStorage.getItem("currentUserId");
+// console.log("Current user: " + currentID);
+const getTodoData = () => {
+  let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
+  //   console.log(currentID);
+  parsedUserTodo.forEach((todo) => {
+    // console.log(todo);
+    // console.log(todo.userID);
+    // console.log(currentID);
+    if (todo.userID === currentID) {
+      let localTodo = createTodoItem(
+        todo.title,
+        todo.description,
+        todo.estimation,
+        todo.estimationUnit,
+        todo.deadline,
+        todo.category,
+        todo.cardID
+      );
+      //   console.log(localTodo);
+      todoList.append(localTodo);
+    }
+  });
+};
 
 sortFilter.addEventListener("change", () => {
   let filter = sortFilter.value;
@@ -290,3 +419,5 @@ todoFilterReset.addEventListener("click", () => {
     stat.checked = false;
   });
 });
+
+getTodoData();

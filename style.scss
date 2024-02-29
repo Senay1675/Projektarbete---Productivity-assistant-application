@@ -68,16 +68,82 @@
   }
 }
 
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
 /* ---------------- HEADER STYLING ------------------ */
 
 #loginHeader {
   display: flex;
   background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
+  min-height: 250px;
 
   .headerLeft {
     border: 1px solid black;
     width: 20%;
-    height: inherit;
   }
 
   .headerMiddle {
@@ -104,6 +170,16 @@
   .headerRight {
     border: 1px solid blue;
     width: 20%;
+  }
+}
+
+// ------------------ TIMER STYLING ------------------------
+
+.timerContainer {
+  border: 1px solid magenta;
+  height: 200px;
+  #timer {
+    font-size: xx-large;
   }
 }
 
@@ -139,16 +215,8 @@
 
 // TO-DO STYLING START >>>>>>>
 
-.add-filter-todo {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 12px;
-  align-self: flex-end;
-}
-
 .todo {
+  overflow: hidden;
   height: auto;
   min-width: 170px;
   width: 40%;
@@ -182,12 +250,20 @@
     }
   }
   .middleCard {
+    margin-top: auto;
     width: 100%;
     .todoDetails {
       width: 50%;
       h4 {
         font-size: 24px;
         margin-bottom: 12px;
+      }
+      p {
+        font-size: 14px;
+        width: 80%;
+      }
+      span {
+        font-weight: bold;
       }
     }
   }
@@ -235,25 +311,31 @@
   background: rgb(255, 255, 203);
 }
 
-.add-todo {
-  border-radius: 8px;
-  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  padding: 18px;
-  gap: 6px;
-}
-
 .todo-container {
+  overflow: auto;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  height: 1100px;
+
   background: linear-gradient(#e66465, #9198e5);
 
-  * {
+  .add-todo {
+    height: min-content;
+    border-radius: 8px;
+    box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    gap: 6px;
+    h3 {
+      color: white;
+    }
+  }
+  label {
     color: white;
   }
+
   button,
   select {
     color: black;
@@ -293,15 +375,19 @@
   }
   .filter-todo {
     border: 1px solid black;
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    transition: max-height 0.6s ease-in, border 0.6s ease;
+    transition: height 0.6s ease-in;
     padding: 12px;
     border-radius: 8px;
 
     // border: 1px solid black;
     box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
 
+    h3,
+    h4 {
+      color: white;
+    }
     .allCateg {
       display: flex;
       flex-direction: column;
@@ -313,13 +399,20 @@
   }
 
   .collapsed {
-    max-height: 0;
-    // padding: 0;
+    height: 0;
+    padding: 0;
     border-width: 0;
+
+    * {
+      display: none;
+    }
+    .collapse-button {
+      display: block;
+    }
   }
 
   .expanded {
-    max-height: 800px;
+    height: min-content;
   }
 
   .sort-todo {
@@ -328,12 +421,23 @@
   }
 }
 
-// TO-DO STYLING SLUT <<<<<<<<<<
-
-* {
-  margin: 0;
+#descEdit,
+#categEdit,
+#titleEdit {
+  font-size: 12px;
+  width: 80%;
 }
 
+#estiTime {
+  width: 30px;
+}
+
+// TO-DO STYLING SLUT -----<<<<<<<<<<
+//CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
+.calender-card {
+  border: 1px solid black;
+}
+//CALENDER NICE-TO-HAVE STYLING SLUT -----<<<<<<<<<<<<<
 // LOGIN STYLING ------------->>>>>
 
 .loginBackground {
@@ -406,119 +510,6 @@
 }
 
 // LOGIN STYLING SLUT ! ---------------------<<<<
-
-.add-filter-todo {
-  border: 1px solid black;
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-self: flex-end;
-}
-
-.todo {
-  height: auto;
-  background-color: rgb(255, 255, 212);
-
-  border: 1px solid black;
-  padding: 10px;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-
-  .upperCard {
-    display: flex;
-    justify-content: flex-end;
-    width: 200px;
-    .todoStatus > span {
-      font-size: 12px;
-    }
-    .todoStatus > span:first-child {
-      position: absolute;
-      left: 5%;
-    }
-    .todoStatus > span:nth-child(2) {
-      text-align: end;
-    }
-  }
-  //   .middleCard {
-  //   }
-  //   .lowerCard {
-  //   }
-}
-
-.todoStatus {
-  height: 50px;
-  width: 50px;
-}
-
-.todo-done {
-  background: rgb(203, 255, 203);
-}
-
-.todo button {
-  border: none;
-  border-radius: 4px;
-  height: 24px;
-  &:hover {
-    color: white;
-    cursor: pointer;
-  }
-}
-
-.todoDoneBtn {
-  background-color: rgb(28, 251, 28);
-  &:hover {
-    background-color: rgb(107, 245, 107);
-  }
-}
-
-.todoDeleteBtn {
-  background-color: red;
-
-  &:hover {
-    background-color: rgb(249, 58, 58);
-  }
-}
-
-.todo-progress {
-  background: rgb(255, 255, 203);
-}
-
-.add-todo {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  padding: 18px;
-  gap: 6px;
-}
-
-.todo-container {
-  display: flex;
-
-  .todo-list {
-    display: flex;
-    flex-direction: column;
-    padding: 12px;
-  }
-  .todo-list > h3 {
-    font-size: 16px;
-    font-weight: normal;
-  }
-
-  .your-todo {
-    padding: 12px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .filter-todo {
-    padding: 12px;
-  }
-
-  .sort-todo {
-    width: auto;
-    height: auto;
-  }
-}
 
 // Habit Styling
 

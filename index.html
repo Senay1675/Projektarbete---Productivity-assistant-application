@@ -8,10 +8,14 @@
     <script src="/login.js" defer></script>
     <script src="script.js " defer></script>
     <link rel="stylesheet" href="/style.css" />
+
     <script
       src="https://kit.fontawesome.com/29047c7944.js"
       crossorigin="anonymous"
     ></script>
+    <script src="todo.js" defer></script>
+    <script src="calender.js" defer></script>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <!-- ''''''' --------------- HEADER ---------------------'''''' -->
@@ -28,6 +32,36 @@
         <button id="logOutBtn">Log out</button>
       </div>
     </header>
+
+    <!-- -------------- fkn timer --------------  -->
+    <!-- 
+    <p id="countdown">1:00</p>
+
+    <div class="timerContainer">
+      <div class="timer">
+        <div class="time">
+          <span id="minutes">1</span>
+          <span id="colon">:</span>
+          <span id="seconds">00</span>
+        </div>
+      </div>
+
+      <div class="timerButtons">
+        <button id="workBtn">Work</button>
+        <button id="pomodoroBtn">Pomodoro</button>
+        <button id="longBreakBtn">Long break</button>
+        <button id="shortBreakBtn">Short break</button>
+      </div>
+    </div> -->
+
+    <div class="timerContainer">
+      <button id="pomodoroBtn">Pomodoro</button>
+      <button id="longBreak">Long break</button>
+      <button id="shortBreak">Short break</button>
+      <p id="timer">00:00</p>
+      <button id="startTimer">START TIMER</button>
+      <button id="stopTimer">STOP</button>
+    </div>
 
     <!-- ''''''' --------------- HEADER ---------------------'''''' -->
 
@@ -116,42 +150,60 @@
         </div>
         <div class="your-todo"></div>
       </div>
-      <div class="add-filter-todo">
-        <div class="add-todo">
-          <h3>Add your todo:</h3>
-          <label for="todoName">To-do:</label>
-          <input type="text" name="todo" id="todoName" />
-          <label for="todoDesc">Description:</label>
-          <input type="text" name="todo-desc" id="todoDesc" />
-          <label for="todoDate">Deadline:</label>
-          <input type="date" name="todo-deadline" id="todoDate" />
-          <div id="errorMessage" style="color: red; display: none">
-            Deadline cannot be in the past!
-          </div>
-          <label for="todoEstimate">Est. time:</label>
-          <input type="number" name="todoEst" id="todoEstimate" />
-          <select value="estTime" id="estTime">
-            <option name="estimateTodo" id="estMinutes">Minutes</option>
-            <option name="estimateTodo" id="estDays">Days</option>
-          </select>
-          <label for="todoCategory">Category:</label>
 
-          <select name="" id="todoCategory">
-            <option value="Health">Health</option>
-            <option value="Housekeeping">Housekeeping</option>
-            <option value="Work">Work</option>
-            <option value="Music">Music</option>
-            <option value="Miscellaneous">Miscellaneous</option>
-          </select>
-          <button id="addTodo">Add To-do</button>
+      <div class="add-todo expanded">
+        <h3>Add your todo:</h3>
+        <label for="todoName">To-do:</label>
+        <input type="text" name="todo" id="todoName" />
+        <label for="todoDesc">Description:</label>
+        <input type="text" name="todo-desc" id="todoDesc" />
+        <label for="todoDate">Deadline:</label>
+        <input type="date" name="todo-deadline" id="todoDate" />
+        <div id="errorMessage" style="color: red; display: none">
+          Deadline cannot be in the past!
         </div>
+        <label for="todoEstimate">Est. time:</label>
+        <input type="number" name="todoEst" id="todoEstimate" />
+        <select value="estTime" id="estTime">
+          <option name="estimateTodo" id="estMinutes">Minutes</option>
+          <option name="estimateTodo" id="estDays">Days</option>
+        </select>
+        <label for="todoCategory">Category:</label>
+
+        <select name="" id="todoCategory">
+          <option value="Health">Health</option>
+          <option value="Housekeeping">Housekeeping</option>
+          <option value="Work">Work</option>
+          <option value="Music">Music</option>
+          <option value="Miscellaneous">Miscellaneous</option>
+        </select>
+        <button id="addTodo">Add To-do</button>
+        <button id="collapse" class="collapse-button">
+          Collapse <i class="fa-solid fa-angles-up"></i>
+        </button>
+      </div>
+
+      <div class="NTH-calender">
+        <label for="calTitle">Title:</label>
+        <input type="text" name="calTitle" id="calTitle" />
+        <label for="calStart">Startdate:</label>
+        <input type="date" name="startDate" id="calStartDate" />
+        <input type="time" name="startTime" id="calStartTime" />
+        <label for="calEnd">Enddate:</label>
+        <input type="date" name="endDate" id="calEndDate" />
+        <input type="time" name="endTime" id="calEndTime" />
+        <div id="errorDate" style="color: red; display: none">
+          Deadline cannot be in the past!
+        </div>
+        <button id="addCalResult">Add to Calender</button>
+        <div class="cal-results"></div>
       </div>
     </div>
     <!--    Habits    -->
     <div class="habit-container">
       <div id="habitForm-container">
         <h3>Add your habit:</h3>
-        <label for="habitInput">add</label>
+
         <input
           type="text"
           name="habit"
@@ -169,6 +221,48 @@
 
         <br />
         <button id="addHabitBtn">Add habit</button>
+        <div class="filter-habit">
+          <h3>Habit-filtrering</h3>
+
+          <label for="filtrera">low</label>
+          <input type="checkbox" id="low-Check" name="filtrera" value="low" />
+
+          <label for="filtrera">Medium</label>
+          <input
+            type="checkbox"
+            id="medium-Check"
+            name="filtrera"
+            value="medium"
+          />
+
+          <label for="filtrera">High</label>
+          <input type="checkbox" id="high-Check" name="filtrera" value="high" />
+
+          <button id="filter-btn">Filtrera</button>
+        </div>
+
+        <div class="sort-habit">
+          <h3>Habit sortering:</h3>
+          <select name="habit-option" id="sort-select">
+            <option value="sort">Sort</option>
+            <option value="rising">Rising</option>
+            <option value="falling">Falling</option>
+          </select>
+          <label for="sort-habit-streak">Habit-streak:</label>
+          <input
+            type="radio"
+            id="sort-streak-radio"
+            name="sort-habit-streak"
+            value="streak"
+          />
+          <label for="sort-habit-streak">Priority</label>
+          <input
+            type="radio"
+            id="sort-priority-radio"
+            name="sort-habit-streak"
+            value="priority"
+          />
+        </div>
         <div id="habitCard-container"></div>
       </div>
     </div>
