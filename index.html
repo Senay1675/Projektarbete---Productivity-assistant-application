@@ -184,17 +184,20 @@
       </div>
 
       <div class="NTH-calender">
-        <label for="calTitle">Title:</label>
-        <input type="text" name="calTitle" id="calTitle" />
-        <label for="calStart">Startdate:</label>
-        <input type="date" name="startDate" id="calStartDate" />
-        <input type="time" name="startTime" id="calStartTime" />
-        <label for="calEnd">Enddate:</label>
-        <input type="date" name="endDate" id="calEndDate" />
-        <input type="time" name="endTime" id="calEndTime" />
-        <div id="errorDate" style="color: red; display: none">
-          Deadline cannot be in the past!
+        <div class="add-event">
+          <label for="calTitle">Title:</label>
+          <input type="text" name="calTitle" id="calTitle" />
+          <label for="calStartDate">Startdate:</label>
+          <input type="date" name="startDate" id="calStartDate" />
+          <input type="time" name="startTime" id="calStartTime" />
+          <label for="calEndDate">Enddate:</label>
+          <input type="date" name="endDate" id="calEndDate" />
+          <input type="time" name="endTime" id="calEndTime" />
+          <div id="errorDate" style="color: red; display: none">
+            Deadline cannot be in the past!
+          </div>
         </div>
+
         <button id="addCalResult">Add to Calender</button>
         <div class="cal-results"></div>
       </div>

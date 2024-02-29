@@ -43,7 +43,8 @@ addToCal.addEventListener("click", () => {
   const startTime = calStartTime.value;
   const endDate = calEndDate.value;
   const endTime = calEndTime.value;
-
+  let result = checkExistingDates(startDate, startTime, endDate, endTime);
+  console.log(result);
   addtoCalender(title, startDate, startTime, endDate, endTime);
 });
 
@@ -119,9 +120,18 @@ const createPtag = (text) => {
   return p;
 };
 
-// const createDiv = (className) => {
-//   const div = document.createElement("div");
-//   div.classList.add(className);
-//   return div;
-// };
+const checkExistingDates = (startDate, startTime, endDate, endTime) => {
+  let parsedEvents = JSON.parse(localStorage.getItem("userCalender") || "[]");
+  console.log(parsedEvents);
+  parsedEvents.forEach((item) => {
+    if (item.startDate === startDate) {
+      if (endTime < item.startTime || startTime > item.endTime) {
+        console.log("is ok");
+      } else {
+        console.log("Times overlapping!!");
+        return false;
+      }
+    }
+  });
+};
 getCalenderData();

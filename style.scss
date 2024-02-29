@@ -434,8 +434,21 @@
 
 // TO-DO STYLING SLUT -----<<<<<<<<<<
 //CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
+.NTH-calender {
+  input {
+    width: 75%;
+  }
+}
+
 .calender-card {
+  height: 140px;
+  width: 300px;
   border: 1px solid black;
+}
+
+.add-event {
+  display: flex;
+  flex-direction: column;
 }
 //CALENDER NICE-TO-HAVE STYLING SLUT -----<<<<<<<<<<<<<
 // LOGIN STYLING ------------->>>>>

@@ -29,7 +29,14 @@ toggleAddcardCont.addEventListener("click", () => {
   if (addTodoContainer.classList.contains("expanded")) {
     toggleAddcardCont.innerHTML =
       "Add To-dos <i class='fa-solid fa-angles-down'></i>";
+    if (toggleAddcardCont.classList.contains("exp")) {
+      toggleAddcardCont.classList.toggle("coll");
+    }
+    toggleAddcardCont.classList.add("coll");
+    toggleAddcardCont.classList.remove("exp");
   } else {
+    toggleAddcardCont.classList.remove("coll");
+    toggleAddcardCont.classList.add("exp");
     toggleAddcardCont.innerHTML =
       "Collapse <i class='fa-solid fa-angles-up'></i>";
   }
