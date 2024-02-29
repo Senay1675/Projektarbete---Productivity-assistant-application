@@ -35,6 +35,8 @@ logOutBtn.addEventListener("click", () => {
 
 /* ------------ TIMER  ------------*/
 
+// Starting contitions:
+
 let startingMinutes = 1;
 let time = startingMinutes * 60;
 let countdownEl = document.querySelector("#timer");
@@ -42,9 +44,15 @@ let intervalId; // = setInterval(updateCountdown, 1000);
 let isPaused = true;
 const startTimerBtn = document.querySelector("#startTimer");
 const stopTimerBtn = document.querySelector("#stopTimer");
+const pomodoroBtn = document.querySelector("#pomodoroBtn");
+const longBreakBtn = document.querySelector("#longBreak");
+const shortBreakBtn = document.querySelector("#shortBreak");
 
 startTimerBtn.addEventListener("click", toggleTimer);
 stopTimerBtn.addEventListener("click", stopTimer);
+pomodoroBtn.addEventListener("click", () => setTimer(25));
+longBreakBtn.addEventListener("click", () => setTimer(15));
+shortBreakBtn.addEventListener("click", () => setTimer(5));
 
 // Toggla Start/pause/Resume funktionalitet:
 function toggleTimer() {
@@ -95,6 +103,12 @@ function updateCountdown() {
   } else {
     time--;
   }
+}
+
+function setTimer(minutes) {
+  startingMinutes = minutes;
+  time = startingMinutes * 60;
+  updateCountdown();
 }
 
 // let start = Date.now();
