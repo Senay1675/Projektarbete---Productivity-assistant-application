@@ -43,9 +43,15 @@ addToCal.addEventListener("click", () => {
   const startTime = calStartTime.value;
   const endDate = calEndDate.value;
   const endTime = calEndTime.value;
+
   let result = checkExistingDates(startDate, startTime, endDate, endTime);
+  console.log(startDate, startTime, endDate, endTime);
   console.log(result);
-  addtoCalender(title, startDate, startTime, endDate, endTime);
+  if (result) {
+    addtoCalender(title, startDate, startTime, endDate, endTime);
+  } else {
+    console.log("Failed to create event, dates overlapping.");
+  }
 });
 
 const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
@@ -80,6 +86,7 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
     endDate,
     endTime,
   };
+
   userEvents.push(addCalenderStorage);
   localStorage.setItem("userCalender", JSON.stringify(userEvents));
 };
@@ -119,19 +126,55 @@ const createPtag = (text) => {
   p.textContent = text;
   return p;
 };
-
+// startdate has to be over old enddate,
+//assuming the new enddate cannot be behind the new startdate
+//Same with the new enddate but it cannot be behind the old startdate then
 const checkExistingDates = (startDate, startTime, endDate, endTime) => {
   let parsedEvents = JSON.parse(localStorage.getItem("userCalender") || "[]");
   console.log(parsedEvents);
-  parsedEvents.forEach((item) => {
-    if (item.startDate === startDate) {
-      if (endTime < item.startTime || startTime > item.endTime) {
-        console.log("is ok");
-      } else {
-        console.log("Times overlapping!!");
+  if (!(parsedEvents.length === 0)) {
+    for (let item of parsedEvents) {
+      console.log(
+        startDate,
+        endDate + " items: " + item.startDate,
+        item.endDate
+      );
+      if (startDate === item.startDate || startDate === item.endDate) {
+        console.log("Startdate same as old date! Check the time!");
         return false;
       }
+      if (endDate === item.startDate || endDate === item.endDate) {
+        console.log("Enddate same as old date!! check the time!!");
+        return false;
+      }
+      if (startDate > item.endDate || endDate < item.startDate) {
+        console.log("Dates ok");
+      }
     }
-  });
+    return true;
+  } else {
+    return true;
+  }
 };
+
+// NS > OE
+// NE < OS
+// going by new end cannot be behind new start
+
+/*
+newDate starts before oldDate but newEnd ends after oldDate
+*/
+
+/*newEndTime > oldStartTime  måste newEndTime > oldEndTime
+
+newEndTime < oldEndTime måste newEndTime vara < oldStartTime också
+
+newStartTime < oldStartTime måste newEndTime  < oldEndTime
+
+newStartTime > oldStartTime måste newStartTime vara över oldendTime också
+
+om newstarttime under oldstarttime, måste newendtime vara under oldstarttime också
+
+om newstarttime > oldendtime måste newendtime vara över oldendtime också*/
+
 getCalenderData();
