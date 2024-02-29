@@ -40,7 +40,8 @@ toggleAddcardCont.addEventListener("click", () => {
 toggleFilterBtn.addEventListener("click", () => {
   if (filterContainer.classList.contains("collapsed")) {
     // If collapsed, change to expanded icon
-    toggleFilterBtn.innerHTML = "Filtering ";
+    toggleFilterBtn.innerHTML =
+      "Filtering <i class='fa-solid fa-angles-up'></i>";
   } else {
     // If expanded, change to collapsed icon
     toggleFilterBtn.innerHTML =
@@ -125,10 +126,6 @@ const createTodoItem = (
       const categEdit = document.getElementById("categEdit").value;
       const getEstTime = document.getElementById("estiTime").value;
       const getEstValue = document.getElementById("estiValue").value;
-
-      console.log(titleEdit, desXcEdit, categEdit, getEstTime, getEstValue);
-
-      console.log(editStatus);
 
       todoDetails.innerHTML = `<h4>${titleEdit}</h4>
       <p>${descEdit}</p>
