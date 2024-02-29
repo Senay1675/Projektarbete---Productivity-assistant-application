@@ -40,20 +40,21 @@ let time = startingMinutes * 60;
 let countdownEl = document.querySelector("#timer");
 let intervalId; // = setInterval(updateCountdown, 1000);
 let isPaused = true;
-const startTimer = document.querySelector("#startTimer");
-const stopTimer = document.querySelector("#stopTimer");
+const startTimerBtn = document.querySelector("#startTimer");
+const stopTimerBtn = document.querySelector("#stopTimer");
 
-startTimer.addEventListener("click", toggleTimer);
-stopTimer.addEventListener("click", stopTimer);
+startTimerBtn.addEventListener("click", toggleTimer);
+stopTimerBtn.addEventListener("click", stopTimer);
 
 // Toggla Start/pause/Resume funktionalitet:
 function toggleTimer() {
   if (isPaused) {
     startTimer();
-    document.querySelector("#startTimer").innerText = "PAUSE";
+    startTimerBtn.innerText = "PAUSE";
+    stopTimerBtn.style.display = "inline-block";
   } else {
     pauseTimer();
-    document.querySelector("#startTimer").textContent = "RESUME";
+    startTimerBtn.textContent = "RESUME";
   }
   isPaused = !isPaused; // Om isPaused är true - gör isPaused till false
 }
@@ -75,8 +76,8 @@ function stopTimer() {
   time = startingMinutes * 60;
   updateCountdown();
   isPaused = true;
-  startTimer.textContent = "START TIMER";
-  stopTimer.style.display = "none";
+  startTimerBtn.textContent = "START TIMER";
+  stopTimerBtn.style.display = "none";
 }
 
 // Countdown funktionalitet:
@@ -90,6 +91,7 @@ function updateCountdown() {
 
   if (time <= 0) {
     clearInterval(intervalId);
+    stopTimerBtn.style.display = "none";
   } else {
     time--;
   }
