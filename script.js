@@ -1,4 +1,5 @@
 /* ------------------- Habits ---------------------- */
+const radioCategories = document.querySelectorAll('input[name="priority"]');
 
 const inputHabit = document.querySelector("#habitInput");
 const lowBtn = document.querySelector("#low");
@@ -7,7 +8,57 @@ const highBtn = document.querySelector("#high");
 const addHabit = document.querySelector("#addHabitBtn");
 const habitCardContainer = document.querySelector("#habitCard-container");
 
-const radioCategories = document.querySelectorAll('input[name="priority"]');
+const sortSelect = document.querySelector("#sort-select");
+const sortRadioStreak = document.querySelector("#sort-streak-radio");
+const sortRadioPriority = document.querySelector("#sort-priority-radio");
+
+sortSelect.addEventListener("change",() =>{
+  let sorting = sortSelect.value
+});
+
+const sortingHabits = (filter) => {
+  console.log(filter);
+  const habitcardsort = Array.from()
+};
+
+
+// den här koden är filter funktionen
+
+const filterBtn = document.querySelector("#filter-btn");
+
+filterBtn.addEventListener("click", () =>{
+  
+  const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]');
+  console.log(filterCheckboxes);
+
+  filterCheckboxes.forEach((filter)=>{ 
+    console.log(filter.checked);
+
+    if (filter.checked){
+      priority = filter.value;
+      console.log("vald prioritet", priority);
+    }
+  
+  habitCardContainer.querySelectorAll(".habit-card").forEach((item)=>{
+    let habitCard2 = item.querySelector("p").textContent;
+
+    console.log("habitcard value " + habitCard2);
+    console.log("priority value " + priority);
+
+    if (priority === habitCard2){
+          // Gör något med de matchande habitCard-elementen
+          item.style.display = 'block'; // Visa elementet
+        } else {
+          item.style.display = 'none'; // Dölj elementet om det inte matchar
+    }
+  });
+
+  });
+});
+
+
+
+
 
 console.log(habitCardContainer);
 
@@ -23,6 +74,8 @@ addHabit.addEventListener("click", () => {
   habitCard.classList.add("habit-card");
   let habitName = document.createElement("h4");
   habitName.innerText = inputHabit.value;
+
+
   radioCategories.forEach((radio) => {
     if (radio.checked) {
       priority = radio.value;
