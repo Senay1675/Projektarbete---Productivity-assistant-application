@@ -8,7 +8,19 @@ const highBtn = document.querySelector("#high");
 const addHabit = document.querySelector("#addHabitBtn");
 const habitCardContainer = document.querySelector("#habitCard-container");
 
-const sortSelect = document.querySelector("#sortSelect");
+const sortSelect = document.querySelector("#sort-select");
+const sortRadioStreak = document.querySelector("#sort-streak-radio");
+const sortRadioPriority = document.querySelector("#sort-priority-radio");
+
+sortSelect.addEventListener("change",() =>{
+  let sorting = sortSelect.value
+});
+
+const sortingHabits = (filter) => {
+  console.log(filter);
+  const habitcardsort = Array.from()
+};
+
 
 // den här koden är filter funktionen
 

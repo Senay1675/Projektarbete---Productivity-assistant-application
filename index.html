@@ -151,7 +151,7 @@
     <div class="habit-container">
       <div id="habitForm-container">
         <h3>Add your habit:</h3>
-        <label for="habitInput">add</label>
+        
         <input
           type="text"
           name="habit"
@@ -189,13 +189,14 @@
       <div class="sort-habit">
           <h3>Habit sortering:</h3>
           <select name="habit-option" id="sort-select">
+              <option value="sort">Sort</option>
               <option value="rising">Rising</option>
               <option value="falling">Falling</option>
           </select>
-          <label for="">Habit-streak:</label>
-          <input type="radio" id="sort-streak-radio" name="" value="streak">
-          <label for="">Priority</label>
-          <input type="radio" id="sort-priority-radio" name="" value="priority">
+          <label for="sort-habit-streak">Habit-streak:</label>
+          <input type="radio" id="sort-streak-radio" name="sort-habit-streak" value="streak">
+          <label for="sort-habit-streak">Priority</label>
+          <input type="radio" id="sort-priority-radio" name="sort-habit-streak" value="priority">
 
       </div>
         <div id="habitCard-container"></div>
