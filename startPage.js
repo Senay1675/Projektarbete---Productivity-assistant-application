@@ -32,3 +32,80 @@ randomQuote().then((quote) => {
 logOutBtn.addEventListener("click", () => {
   window.location.href = "login.html";
 });
+
+/* ------------ TIMER  ------------*/
+
+let startingMinutes = 1;
+let time = startingMinutes * 60;
+let countdownEl = document.querySelector("#timer");
+let intervalId; // = setInterval(updateCountdown, 1000);
+let isPaused = true;
+const startTimer = document.querySelector("#startTimer");
+const stopTimer = document.querySelector("#stopTimer");
+
+startTimer.addEventListener("click", toggleTimer);
+stopTimer.addEventListener("click", stopTimer);
+
+// Toggla Start/pause/Resume funktionalitet:
+function toggleTimer() {
+  if (isPaused) {
+    startTimer();
+    document.querySelector("#startTimer").innerText = "PAUSE";
+  } else {
+    pauseTimer();
+    document.querySelector("#startTimer").textContent = "RESUME";
+  }
+  isPaused = !isPaused; // Om isPaused är true - gör isPaused till false
+}
+
+// Starta timer:
+function startTimer() {
+  clearInterval(intervalId); // Stoppa ev pågående upprepning
+  intervalId = setInterval(updateCountdown, 1000);
+}
+
+// Pausa timer:
+function pauseTimer() {
+  clearInterval(intervalId);
+}
+
+// Stoppa timer:
+function stopTimer() {
+  clearInterval(intervalId);
+  time = startingMinutes * 60;
+  updateCountdown();
+  isPaused = true;
+  startTimer.textContent = "START TIMER";
+  stopTimer.style.display = "none";
+}
+
+// Countdown funktionalitet:
+function updateCountdown() {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  countdownEl.innerHTML = `${minutes}:${seconds}`;
+
+  if (time <= 0) {
+    clearInterval(intervalId);
+  } else {
+    time--;
+  }
+}
+
+// let start = Date.now();
+// setInterval(function () {
+//   let delta = Date.now() - start; // Delta betyder skillnad i värde
+
+//   output(Math.floor(delta / 1000));
+//   output(new Date().toUTCString());
+// }, 1000);
+
+// const timer = {
+//   pomodoro: 25,
+//   longBreak: 15,
+//   shortBreak: 5,
+//   longBreakInterval: 4,
+// };
