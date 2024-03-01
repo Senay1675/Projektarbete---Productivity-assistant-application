@@ -1,3 +1,5 @@
+@import "./variables/mixins";
+
 * {
   margin: 0;
 }
@@ -435,21 +437,53 @@
 // TO-DO STYLING SLUT -----<<<<<<<<<<
 //CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
 .NTH-calender {
+  height: min-content;
+  border: 2px solid black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 12px;
   input {
     width: 75%;
   }
+  .start-mode {
+    @include date-style;
+  }
+
+  .end-mode {
+    @include date-style;
+  }
+  .add-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .calender-card {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0px;
+    box-sizing: border-box;
+    padding: 12px;
+    height: min-content;
+    width: 250px;
+    border: 1px solid black;
+    .calender-title {
+      width: 100%;
+      p {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+    p {
+      font-size: 14px;
+    }
+  }
 }
 
-.calender-card {
-  height: 140px;
-  width: 300px;
-  border: 1px solid black;
-}
-
-.add-event {
-  display: flex;
-  flex-direction: column;
-}
 //CALENDER NICE-TO-HAVE STYLING SLUT -----<<<<<<<<<<<<<
 // LOGIN STYLING ------------->>>>>
 

@@ -339,19 +339,59 @@
   width: 30px;
 }
 
+.NTH-calender {
+  height: -moz-min-content;
+  height: min-content;
+  border: 2px solid black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 12px;
+}
 .NTH-calender input {
   width: 75%;
 }
-
-.calender-card {
-  height: 140px;
-  width: 300px;
+.NTH-calender .start-mode {
+  width: 40%;
   border: 1px solid black;
+  padding: 4px;
+  border-radius: 4px;
 }
-
-.add-event {
+.NTH-calender .end-mode {
+  width: 40%;
+  border: 1px solid black;
+  padding: 4px;
+  border-radius: 4px;
+}
+.NTH-calender .add-event {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+.NTH-calender .calender-card {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0px;
+  box-sizing: border-box;
+  padding: 12px;
+  height: -moz-min-content;
+  height: min-content;
+  width: 250px;
+  border: 1px solid black;
+}
+.NTH-calender .calender-card .calender-title {
+  width: 100%;
+}
+.NTH-calender .calender-card .calender-title p {
+  font-size: 18px;
+  font-weight: bold;
+}
+.NTH-calender .calender-card p {
+  font-size: 14px;
 }
 
 .loginBackground {
