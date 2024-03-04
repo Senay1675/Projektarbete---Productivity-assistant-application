@@ -12,14 +12,40 @@ const sortSelect = document.querySelector("#sort-select");
 const sortRadioStreak = document.querySelector("#sort-streak-radio");
 const sortRadioPriority = document.querySelector("#sort-priority-radio");
 
+ // Din sorteringsfunktion
+
+
 sortSelect.addEventListener("change",() =>{
-  let sorting = sortSelect.value
+  let sorting = sortSelect.value;
+
+  sortingHabits(sorting);
 });
 
 const sortingHabits = (filter) => {
-  console.log(filter);
-  const habitcardsort = Array.from()
+
+  console.log(habitCardContainer);
+  
+  const habitCardSort = habitCardContainer.querySelectorAll(".habit-card");
+  console.log(habitCardSort);
+  habitCardSort.forEach((card)=>{
+    let result = card.querySelector("div:nth-child(4) > div");
+    console.log(result.textContent);
+  });
+  habitCardSort.sort((a,b) =>{
+
+    let valueA = getValueFromElement(a);
+    let valueB = getValueFromElement(b);
+  
+
+    if (filter === "rising") {
+      return valueA - valueB;
+    } else if (filter === "falling") {
+      return valueB - valueA;
+    }
+
+  });
 };
+
 
 
 // den här koden är filter funktionen
