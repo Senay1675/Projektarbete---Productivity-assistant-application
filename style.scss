@@ -223,7 +223,7 @@
   min-width: 170px;
   width: 40%;
   border-radius: 8px;
-  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+  @include shadow-1;
   background-color: rgb(255, 255, 212);
 
   padding: 10px;
@@ -317,6 +317,7 @@
   overflow: auto;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   height: 1100px;
 
   background: linear-gradient(#e66465, #9198e5);
@@ -324,7 +325,7 @@
   .add-todo {
     height: min-content;
     border-radius: 8px;
-    box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+    @include shadow-1;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -438,13 +439,14 @@
 //CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
 .NTH-calender {
   height: min-content;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   padding: 12px;
+  @include shadow-1;
   input {
     width: 75%;
   }
@@ -459,6 +461,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h2 {
+      font-size: 18px;
+      color: white;
+    }
   }
   .calender-card {
     margin-top: 8px;

@@ -132,6 +132,7 @@ const createPtag = (text) => {
 const checkExistingDates = (startDate, startTime, endDate, endTime) => {
   let parsedEvents = JSON.parse(localStorage.getItem("userCalender") || "[]");
   console.log(parsedEvents);
+  let overlap;
   if (!(parsedEvents.length === 0)) {
     for (let item of parsedEvents) {
       console.log(
@@ -141,11 +142,18 @@ const checkExistingDates = (startDate, startTime, endDate, endTime) => {
       );
       if (startDate === item.startDate || startDate === item.endDate) {
         console.log("Startdate same as old date! Check the time!");
-        return false;
+        overlap = checkTime(startTime, endTime, item.startTime, item.endTime);
+        if (overlap) {
+          return false;
+        }
       }
       if (endDate === item.startDate || endDate === item.endDate) {
         console.log("Enddate same as old date!! check the time!!");
-        return false;
+        overlap = checkTime(startTime, endTime, item.startTime, item.endTime);
+        console.log("dates overlapping: " + overlap);
+        if (overlap) {
+          return false;
+        }
       }
       if (startDate > item.endDate || endDate < item.startDate) {
         console.log("Dates ok");
@@ -157,6 +165,12 @@ const checkExistingDates = (startDate, startTime, endDate, endTime) => {
   }
 };
 
+const checkTime = (newStart, newEnd, oldStart, oldEnd) => {
+  if (newEnd < oldStart || newStart > oldEnd) {
+    return false;
+  }
+  return true;
+};
 // NS > OE
 // NE < OS
 // going by new end cannot be behind new start

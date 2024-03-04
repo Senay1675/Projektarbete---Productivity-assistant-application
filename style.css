@@ -236,6 +236,7 @@
   overflow: auto;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   height: 1100px;
   background: linear-gradient(#e66465, #9198e5);
 }
@@ -342,13 +343,14 @@
 .NTH-calender {
   height: -moz-min-content;
   height: min-content;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   padding: 12px;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
 }
 .NTH-calender input {
   width: 75%;
@@ -369,6 +371,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.NTH-calender .add-event h2 {
+  font-size: 18px;
+  color: white;
 }
 .NTH-calender .calender-card {
   margin-top: 8px;
