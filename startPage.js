@@ -37,7 +37,7 @@ logOutBtn.addEventListener("click", () => {
 
 // Starting contitions:
 
-let startingMinutes = 1;
+let startingMinutes = 25;
 let time = startingMinutes * 60;
 let countdownEl = document.querySelector("#timer");
 let intervalId; // = setInterval(updateCountdown, 1000);

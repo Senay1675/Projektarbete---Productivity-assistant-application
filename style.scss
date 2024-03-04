@@ -90,6 +90,11 @@
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+#userExistsMessage {
+  color: crimson;
+  font-size: x-small;
+}
+
 @-webkit-keyframes fadein {
   from {
     bottom: 0;
