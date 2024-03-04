@@ -140,7 +140,7 @@ const createTodoItem = (
       `;
 
       `<span>${statusText}</span>
-  <span>Est. time: <span>${estimation}</span> ${estimationUnit}</span>
+  <span>Est. time: ${estimation} ${estimationUnit}</span>
   <span>Deadline: <span>${deadline}</span></span>`;
 
       status.innerHTML = `<span>${editStatus}</span>
@@ -203,16 +203,6 @@ const createTodoItem = (
   deleteBtn.addEventListener("click", () => {
     deleteBtnFunc(deleteBtn);
     deleteBtn.parentElement.parentElement.remove();
-    // const uniqueClass = deleteBtn.parentElement.parentElement.classList[1];
-
-    // let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
-
-    // todoCards.forEach((card) => console.log(card.cardID));
-    // const updatedTodoList = todoCards.filter((item) => {
-    //   return item.cardID !== +uniqueClass;
-    // });
-
-    // localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
   });
 
   upperTodo.append(status);
@@ -235,15 +225,15 @@ const deleteBtnFunc = (button) => {
   const cardId = button.parentElement.parentElement.classList[1];
   let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
   console.log(btn);
-  if (btn === "Delete") {
-    todoCards.forEach((card) => console.log(card.cardID));
-    const updatedTodoList = todoCards.filter((item) => {
-      return item.cardID !== +cardId;
-    });
-    localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
-    console.log(updatedTodoList);
-  }
+  todoCards.forEach((card) => console.log(card.cardID));
+  const updatedTodoList = todoCards.filter((item) => {
+    return item.cardID !== +cardId;
+  });
+  localStorage.setItem("userTodo", JSON.stringify(updatedTodoList));
+  console.log(updatedTodoList);
+  return;
 };
+
 // console.log(localStorage.getItem("userTodo"));
 let currentID = localStorage.getItem("currentUserId");
 // console.log("Current user: " + currentID);
@@ -284,6 +274,8 @@ const timeSort = (filter) => {
   todoCards.sort((a, b) => {
     const timeA = extractTimeDate(a);
     const timeB = extractTimeDate(b);
+
+    console.log("current estimate:", timeA, timeB);
     console.log(timeA);
     //Check if sorting by rising or falling order
     if (filter === "rising") {
@@ -306,6 +298,7 @@ const extractTimeDate = (todoCard) => {
     const details = todoCard.querySelector(
       ".todoStatus span:nth-child(2) > span"
     );
+    console.log(details);
     if (!details) return 0;
     const estText = details.textContent;
     const [estimation, _] = estText.split(" ");
@@ -352,6 +345,24 @@ todoDate.addEventListener("change", () => {
   } else {
     errorMessage.style.display = "none";
     addTodoBtn.disabled = false;
+  }
+});
+
+todoEstValue.addEventListener("change", () => {
+  if (todoEstValue.value === "Days") {
+    const deadlineDate = new Date(todoDate.value);
+    const today = new Date();
+    const estEndDate = new Date(
+      today.getTime() + todoEst.value * 24 * 60 * 60 * 1000
+    );
+
+    if (estEndDate > deadlineDate) {
+      errorDays.style.display = "block";
+    } else {
+      errorDays.style.display = "none";
+    }
+  } else {
+    errorDays.style.display = "none";
   }
 });
 
