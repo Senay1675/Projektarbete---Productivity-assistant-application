@@ -1,5 +1,6 @@
 const calenderContainer = document.querySelector("NTH-calender");
 const calenderResults = document.querySelector(".cal-results");
+const sortCalendar = document.querySelector("#sortCalendar");
 
 const calTitle = document.querySelector("#calTitle");
 const calStartDate = document.querySelector("#calStartDate");
@@ -89,46 +90,40 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
 
   userEvents.push(addCalenderStorage);
   localStorage.setItem("userCalender", JSON.stringify(userEvents));
+  //   sortCalender();
 };
 
 const getCalenderData = () => {
-  let userCalenderEvents = [];
   let parsedUserCalender = JSON.parse(
     localStorage.getItem("userCalender") || "[]"
   );
-  console.log(parsedUserCalender);
-  parsedUserCalender.forEach((item) => {
-    console.log(item.id);
-    console.log(activeUser);
-    if (item.id === activeUser) {
-      //   userCalenderEvents.push(item);
-      console.log(
-        item.title,
-        item.startDate,
-        item.startTime,
-        item.endDate,
-        item.endTime
-      );
-      addtoCalender(
-        item.title,
-        item.startDate,
-        item.startTime,
-        item.endDate,
-        item.endTime
-      );
-    }
+
+  const userEvents = parsedUserCalender.filter(
+    (item) => item.id === activeUser
+  );
+  userEvents.sort((a, b) => new Date(a.endDate) - new Date(b.endDate));
+  userEvents.forEach((item) => {
+    addtoCalender(
+      item.title,
+      item.startDate,
+      item.startTime,
+      item.endDate,
+      item.endTime
+    );
   });
-  console.log(userCalenderEvents);
 };
+
+// sortCalendar.addEventListener("click", () => {
+//   calenderResults.innerHTML = "";
+//   getCalenderData();
+// });
 
 const createPtag = (text) => {
   const p = document.createElement("p");
   p.textContent = text;
   return p;
 };
-// startdate has to be over old enddate,
-//assuming the new enddate cannot be behind the new startdate
-//Same with the new enddate but it cannot be behind the old startdate then
+
 const checkExistingDates = (startDate, startTime, endDate, endTime) => {
   let parsedEvents = JSON.parse(localStorage.getItem("userCalender") || "[]");
   console.log(parsedEvents);
@@ -171,24 +166,5 @@ const checkTime = (newStart, newEnd, oldStart, oldEnd) => {
   }
   return true;
 };
-// NS > OE
-// NE < OS
-// going by new end cannot be behind new start
-
-/*
-newDate starts before oldDate but newEnd ends after oldDate
-*/
-
-/*newEndTime > oldStartTime  måste newEndTime > oldEndTime
-
-newEndTime < oldEndTime måste newEndTime vara < oldStartTime också
-
-newStartTime < oldStartTime måste newEndTime  < oldEndTime
-
-newStartTime > oldStartTime måste newStartTime vara över oldendTime också
-
-om newstarttime under oldstarttime, måste newendtime vara under oldstarttime också
-
-om newstarttime > oldendtime måste newendtime vara över oldendtime också*/
 
 getCalenderData();

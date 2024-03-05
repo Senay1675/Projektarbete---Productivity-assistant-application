@@ -140,12 +140,12 @@ const createTodoItem = (
       `;
 
       `<span>${statusText}</span>
-  <span>Est. time: ${estimation} ${estimationUnit}</span>
+  <span>Est. time: <span>${estimation}</span> ${estimationUnit}</span>
   <span>Deadline: <span>${deadline}</span></span>`;
 
       status.innerHTML = `<span>${editStatus}</span>
-      <span>Est. time: ${getEstTime}
-            <span>${getEstValue}</span></span>
+      <span>Est. time: <span>${getEstTime}</span>
+            ${getEstValue}</span></span>
             <span>Deadline: <span>${deadline}</span></span>`;
       console.log(userTodo);
 
@@ -161,7 +161,7 @@ const createTodoItem = (
         cardID: uniqueCard,
       };
       console.log(editedCard.estimation);
-      //Update localStorage list of todos'
+      //Update localStorage list of todos
 
       let todoLocalCards = JSON.parse(localStorage.getItem("userTodo")) || [];
       console.log(todoLocalCards);
@@ -198,7 +198,6 @@ const createTodoItem = (
     category,
     cardID,
   };
-  //   console.log(allUserTodos.estimation);
 
   deleteBtn.addEventListener("click", () => {
     deleteBtnFunc(deleteBtn);
@@ -209,10 +208,8 @@ const createTodoItem = (
   middleTodo.append(todoDetails);
   lowerTodo.append(doneBtn, editBtn, deleteBtn);
   todoCard.append(upperTodo, middleTodo, lowerTodo);
-  //   console.log(todoCard);
 
   userTodo.push(allUserTodos);
-  //   console.log(userTodo);
   localStorage.setItem("userTodo", JSON.stringify(userTodo));
 
   return todoCard;
@@ -234,16 +231,12 @@ const deleteBtnFunc = (button) => {
   return;
 };
 
-// console.log(localStorage.getItem("userTodo"));
 let currentID = localStorage.getItem("currentUserId");
-// console.log("Current user: " + currentID);
+
 const getTodoData = () => {
   let parsedUserTodo = JSON.parse(localStorage.getItem("userTodo") || "[]");
-  //   console.log(currentID);
+
   parsedUserTodo.forEach((todo) => {
-    // console.log(todo);
-    // console.log(todo.userID);
-    // console.log(currentID);
     if (todo.userID === currentID) {
       let localTodo = createTodoItem(
         todo.title,
@@ -254,7 +247,7 @@ const getTodoData = () => {
         todo.category,
         todo.cardID
       );
-      //   console.log(localTodo);
+
       todoList.append(localTodo);
     }
   });
@@ -269,8 +262,9 @@ sortFilter.addEventListener("change", () => {
 const timeSort = (filter) => {
   console.log(filter);
   //Get an array of all the cards in the DOM
+  console.log(todoList);
   const todoCards = Array.from(todoList.getElementsByClassName("todo"));
-
+  console.log(todoCards);
   todoCards.sort((a, b) => {
     const timeA = extractTimeDate(a);
     const timeB = extractTimeDate(b);
@@ -304,6 +298,7 @@ const extractTimeDate = (todoCard) => {
     const [estimation, _] = estText.split(" ");
     return parseInt(estimation) || 0;
   }
+
   if (deadlineCheck.checked) {
     const details = todoCard.querySelector(
       ".todoStatus span:nth-child(3) > span"
@@ -373,7 +368,6 @@ addTodoBtn.addEventListener("click", () => {
   const estimationUnit = todoEstValue.value;
   const deadline = todoDate.value;
   const category = todoCategory.value;
-  console.log(estimation);
 
   const todoItem = createTodoItem(
     title,
@@ -384,7 +378,6 @@ addTodoBtn.addEventListener("click", () => {
     category
   );
   todoList.append(todoItem);
-  console.log(todoItem);
 });
 
 const filterTodoItems = (todoStatus, todoCategory) => {
