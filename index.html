@@ -30,38 +30,36 @@
       </div>
       <div class="headerRight">
         <button id="logOutBtn">Log out</button>
+        <button data-modal-target="#timerModal" id="focusTimeBtn">
+          Focus Time
+        </button>
       </div>
     </header>
 
     <!-- -------------- fkn timer --------------  -->
     <!-- 
-    <p id="countdown">1:00</p>
+    <div id="timerModal" class="modal">
+      <div class="modalContent">
+        <span class="close" id="closeModal">&times;</span> -->
 
-    <div class="timerContainer">
-      <div class="timer">
-        <div class="time">
-          <span id="minutes">1</span>
-          <span id="colon">:</span>
-          <span id="seconds">00</span>
-        </div>
+    <div class="modal" id="timerModal">
+      <div class="modalHeader">
+        <button data-close-button id="closeBtn">&times;</button>
       </div>
 
-      <div class="timerButtons">
-        <button id="workBtn">Work</button>
+      <div class="timerContainer">
         <button id="pomodoroBtn">Pomodoro</button>
-        <button id="longBreakBtn">Long break</button>
-        <button id="shortBreakBtn">Short break</button>
+        <button id="longBreak">Long break</button>
+        <button id="shortBreak">Short break</button>
+        <div id="timer">00:00</div>
+        <button id="startTimer">START TIMER</button>
+        <button id="stopTimer" style="display: none">STOP</button>
       </div>
-    </div> -->
-
-    <div class="timerContainer">
-      <button id="pomodoroBtn">Pomodoro</button>
-      <button id="longBreak">Long break</button>
-      <button id="shortBreak">Short break</button>
-      <div id="timer">00:00</div>
-      <button id="startTimer">START TIMER</button>
-      <button id="stopTimer" style="display: none">STOP</button>
     </div>
+    <div id="timerOverlay"></div>
+
+    <!-- </div>
+    </div> -->
 
     <!-- ''''''' --------------- HEADER ---------------------'''''' -->
 
