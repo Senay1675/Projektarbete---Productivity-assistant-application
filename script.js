@@ -12,38 +12,61 @@ const sortSelect = document.querySelector("#sort-select");
 const sortRadioStreak = document.querySelector("#sort-streak-radio");
 const sortRadioPriority = document.querySelector("#sort-priority-radio");
 
- // Din sorteringsfunktion
+ // Min sorteringsfunktion
 
 
 sortSelect.addEventListener("change",() =>{
   let sorting = sortSelect.value;
 
   sortingHabits(sorting);
+  console.log(sortingHabits(sorting));
 });
 
 const sortingHabits = (filter) => {
 
   console.log(habitCardContainer);
   
-  const habitCardSort = habitCardContainer.querySelectorAll(".habit-card");
+  const habitCardSort = Array.from(habitCardContainer.querySelectorAll(".habit-card"));
   console.log(habitCardSort);
+
   habitCardSort.forEach((card)=>{
     let result = card.querySelector("div:nth-child(4) > div");
     console.log(result.textContent);
+
   });
-  habitCardSort.sort((a,b) =>{
-
-    let valueA = getValueFromElement(a);
-    let valueB = getValueFromElement(b);
+  console.log(habitCardSort);
   
+  habitCardSort.sort((a, b) =>{
 
+    let habitA = a.querySelector("div:nth-child(4) > div").textContent;
+    let habitB = b.querySelector("div:nth-child(4) > div").textContent;
+    
+    // här gör jag om value till integers 
+
+    let valueA = parseInt(habitA);
+    let valueB = parseInt(habitB);
+    console.log(valueA);
+    console.log(valueB);
+
+    // Använd lämplig jämförelse beroende på vad du sorterar (strängar, nummer, etc.)
+    
+    console.log(filter);
     if (filter === "rising") {
       return valueA - valueB;
     } else if (filter === "falling") {
       return valueB - valueA;
     }
-
+  
+    
   });
+
+  // här så tömmer jag den gamla listan och lägger till Nya kort som är sorterade och appendar dem 
+
+  habitCardContainer.innerHTML = "";
+  habitCardSort.forEach((card) => {
+   habitCardContainer.append(card)
+  });  
+
 };
 
 
