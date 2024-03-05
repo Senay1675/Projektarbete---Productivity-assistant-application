@@ -224,7 +224,11 @@
   width: 40%;
   border-radius: 8px;
   @include shadow-1;
-  background-color: rgb(255, 255, 212);
+  background: radial-gradient(
+    circle,
+    rgba(249, 249, 176, 1) 1%,
+    rgba(255, 255, 212, 1) 47%
+  );
 
   padding: 10px;
   display: flex;
@@ -281,7 +285,11 @@
 }
 
 .todo-done {
-  background: rgb(203, 255, 203);
+  background: radial-gradient(
+    circle,
+    rgba(161, 254, 161, 1) 1%,
+    rgba(203, 255, 203, 1) 47%
+  );
 }
 
 .todo button {
@@ -450,6 +458,11 @@
 // TO-DO STYLING SLUT -----<<<<<<<<<<
 //CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
 .NTH-calender {
+  background: linear-gradient(
+    58deg,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(142, 142, 142, 1) 100%
+  );
   height: min-content;
   border: 1px solid black;
   border-radius: 8px;
@@ -480,6 +493,12 @@
     }
   }
   .calender-card {
+    border-radius: 8px;
+    background: radial-gradient(
+      circle,
+      rgba(145, 152, 229, 1) 0%,
+      rgba(230, 100, 101, 1) 66%
+    );
     margin-top: 8px;
     display: flex;
     flex-wrap: wrap;
@@ -493,12 +512,30 @@
     .calender-title {
       width: 100%;
       p {
-        font-size: 18px;
+        @include calendar-color-1;
+        font-size: 16px;
         font-weight: bold;
       }
     }
-    p {
-      font-size: 14px;
+    .start-mode {
+      background: linear-gradient(
+        58deg,
+        rgba(230, 100, 101, 1) 18%,
+        rgba(145, 152, 229, 1) 85%
+      );
+      p {
+        @include calendar-color-1;
+      }
+    }
+    .end-mode {
+      background: linear-gradient(
+        58deg,
+        rgba(145, 152, 229, 1) 15%,
+        rgba(230, 100, 101, 1) 82%
+      );
+      p {
+        @include calendar-color-1;
+      }
     }
   }
 }

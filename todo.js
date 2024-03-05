@@ -62,6 +62,7 @@ let userTodo = [];
 
 const createTodoItem = (
   title,
+  cardStatus,
   description,
   estimation,
   estimationUnit,
@@ -71,7 +72,11 @@ const createTodoItem = (
 ) => {
   //Create CardID
   //Create Todo-card
+  console.log(cardStatus + " Each card status?");
   const todoCard = createDiv("todo");
+  if (cardStatus === "Done") {
+    todoCard.classList.add("todo-done");
+  }
   cardID = Math.floor(1000 + Math.random() * 9000);
   todoCard.classList.add(cardID);
   //Add divs for structure in To-do card
@@ -83,7 +88,7 @@ const createTodoItem = (
 
   // Append to upper card position
   let status = createDiv("todoStatus");
-  let statusText = "To-do";
+  let statusText = cardStatus;
   status.innerHTML = `<span>${statusText}</span>
   <span>Est. time: <span>${estimation}</span> ${estimationUnit}</span>
   <span>Deadline: <span>${deadline}</span></span>`;
@@ -99,9 +104,16 @@ const createTodoItem = (
   const doneBtn = createButton("Done", "todoDoneBtn");
   const editBtn = createButton("Edit", "todoEditBtn");
   const deleteBtn = createButton("Delete", "todoDeleteBtn");
+  if (cardStatus === "Done") {
+    doneBtn.style.display = "none";
+  }
 
   editBtn.addEventListener("click", () => {
-    const uniqueCard = editBtn.parentElement.parentElement.classList[1];
+    const parentElement = editBtn.parentElement.parentElement;
+    const uniqueCard = parentElement.classList.contains("todo-done")
+      ? parentElement.classList[2]
+      : parentElement.classList[1];
+    console.log("EditBtn " + parentElement.classList[1]);
     const editStatus = todoCard.querySelector(".todoStatus span").textContent;
     if (editBtn.innerText === "Edit") {
       editBtn.textContent = "Save";
@@ -182,7 +194,33 @@ const createTodoItem = (
     const status = lowTodo.parentElement.querySelector(
       ".todoStatus > span:first-child"
     );
+    //Get current todos from localStorage
     status.textContent = "Done";
+    let localCards = JSON.parse(localStorage.getItem("userTodo")) || [];
+    const parentElement = editBtn.parentElement.parentElement;
+    const todoID = parentElement.classList.contains("todo-done")
+      ? parentElement.classList[2]
+      : parentElement.classList[1];
+    console.log("DoneBtn " + parentElement.classList);
+    // const uniqueCard = parentElement.classList.contains("todo-done")
+    //   ? parentElement.classList[2]
+    //   : parentElementclassList[1];
+    console.log(todoID, localCards);
+    localCards.forEach((todo) => {
+      const todoIndex = localCards.findIndex((todo) => todo.cardID === +todoID);
+      console.log(todoIndex);
+      console.log(localCards[todoIndex].status);
+      localCards[todoIndex].status = "Done";
+      console.log(localCards[todoIndex].status);
+      localStorage.setItem("userTodo", JSON.stringify(localCards));
+    });
+
+    console.log(localCards);
+
+    // console.log(localCards, cardID);
+    // let state = document.querySelector(".todoStatus > span");
+    // console.log(state.textContent);
+
     doneBtn.parentElement.parentElement.classList.add("todo-done");
     doneBtn.remove();
   });
@@ -219,10 +257,11 @@ const createTodoItem = (
 
 const deleteBtnFunc = (button) => {
   const btn = button.innerText;
-  const cardId = button.parentElement.parentElement.classList[1];
+  const cardId = button.parentElement.parentElement.classList[2];
+  console.log(cardId);
   let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
   console.log(btn);
-  todoCards.forEach((card) => console.log(card.cardID));
+  todoCards.forEach((card) => console.log(card.cardID, cardId));
   const updatedTodoList = todoCards.filter((item) => {
     return item.cardID !== +cardId;
   });
@@ -238,8 +277,10 @@ const getTodoData = () => {
 
   parsedUserTodo.forEach((todo) => {
     if (todo.userID === currentID) {
+      console.log(todo.status);
       let localTodo = createTodoItem(
         todo.title,
+        todo.status,
         todo.description,
         todo.estimation,
         todo.estimationUnit,
@@ -266,6 +307,7 @@ const timeSort = (filter) => {
   const todoCards = Array.from(todoList.getElementsByClassName("todo"));
   console.log(todoCards);
   todoCards.sort((a, b) => {
+    console.log(a, b);
     const timeA = extractTimeDate(a);
     const timeB = extractTimeDate(b);
 
@@ -296,6 +338,7 @@ const extractTimeDate = (todoCard) => {
     if (!details) return 0;
     const estText = details.textContent;
     const [estimation, _] = estText.split(" ");
+    console.log(estimation);
     return parseInt(estimation) || 0;
   }
 
@@ -363,6 +406,7 @@ todoEstValue.addEventListener("change", () => {
 
 addTodoBtn.addEventListener("click", () => {
   const title = todoTitle.value;
+  const cardStatus = "To-do";
   const description = todoDesc.value;
   const estimation = todoEst.value;
   const estimationUnit = todoEstValue.value;
@@ -371,6 +415,7 @@ addTodoBtn.addEventListener("click", () => {
 
   const todoItem = createTodoItem(
     title,
+    cardStatus,
     description,
     estimation,
     estimationUnit,

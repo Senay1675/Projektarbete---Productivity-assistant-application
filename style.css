@@ -150,7 +150,7 @@
   width: 40%;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
-  background-color: rgb(255, 255, 212);
+  background: radial-gradient(circle, rgb(249, 249, 176) 1%, rgb(255, 255, 212) 47%);
   padding: 10px;
   display: flex;
   gap: 12px;
@@ -201,7 +201,7 @@
 }
 
 .todo-done {
-  background: rgb(203, 255, 203);
+  background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
 }
 
 .todo button {
@@ -349,6 +349,7 @@
 }
 
 .NTH-calender {
+  background: linear-gradient(58deg, rgb(0, 0, 0) 30%, rgb(142, 142, 142) 100%);
   height: -moz-min-content;
   height: min-content;
   border: 1px solid black;
@@ -385,6 +386,8 @@
   color: white;
 }
 .NTH-calender .calender-card {
+  border-radius: 8px;
+  background: radial-gradient(circle, rgb(145, 152, 229) 0%, rgb(230, 100, 101) 66%);
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -401,11 +404,21 @@
   width: 100%;
 }
 .NTH-calender .calender-card .calender-title p {
-  font-size: 18px;
+  color: white;
+  font-size: 16px;
   font-weight: bold;
 }
-.NTH-calender .calender-card p {
-  font-size: 14px;
+.NTH-calender .calender-card .start-mode {
+  background: linear-gradient(58deg, rgb(230, 100, 101) 18%, rgb(145, 152, 229) 85%);
+}
+.NTH-calender .calender-card .start-mode p {
+  color: white;
+}
+.NTH-calender .calender-card .end-mode {
+  background: linear-gradient(58deg, rgb(145, 152, 229) 15%, rgb(230, 100, 101) 82%);
+}
+.NTH-calender .calender-card .end-mode p {
+  color: white;
 }
 
 .loginBackground {
