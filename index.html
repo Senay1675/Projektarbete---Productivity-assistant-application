@@ -8,6 +8,12 @@
     <script src="/login.js" defer></script>
     <script src="script.js " defer></script>
     <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       src="https://kit.fontawesome.com/29047c7944.js"
@@ -48,12 +54,18 @@
       </div>
 
       <div class="timerContainer">
-        <button id="pomodoroBtn">Pomodoro</button>
-        <button id="longBreak">Long break</button>
-        <button id="shortBreak">Short break</button>
-        <div id="timer">00:00</div>
-        <button id="startTimer">START TIMER</button>
-        <button id="stopTimer" style="display: none">STOP</button>
+        <div class="timeButtons">
+          <button id="pomodoroBtn">Pomodoro</button>
+          <button id="longBreak">Long break</button>
+          <button id="shortBreak">Short break</button>
+        </div>
+        <div class="time">
+          <div id="timer">00:00</div>
+        </div>
+        <div class="pauseButtons">
+          <button id="startTimer">START TIMER</button>
+          <button id="stopTimer" style="display: none">STOP</button>
+        </div>
       </div>
     </div>
     <div id="timerOverlay"></div>
