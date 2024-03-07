@@ -38,10 +38,12 @@ const sortingHabits = (filter) => {
   
   habitCardSort.sort((a, b) =>{
 
+    // IF sortera på streaks
+
     let habitA = a.querySelector("div:nth-child(4) > div").textContent;
     let habitB = b.querySelector("div:nth-child(4) > div").textContent;
     
-    // här gör jag om value till integers 
+    // här gör jag om  streak value till integers 
 
     let valueA = parseInt(habitA);
     let valueB = parseInt(habitB);
@@ -49,7 +51,7 @@ const sortingHabits = (filter) => {
     console.log(valueB);
 
     // Använd lämplig jämförelse beroende på vad du sorterar (strängar, nummer, etc.)
-    
+
     console.log(filter);
     if (filter === "rising") {
       return valueA - valueB;
@@ -57,7 +59,22 @@ const sortingHabits = (filter) => {
       return valueB - valueA;
     }
   
-    
+    //Else sortera på prio
+    const priorityA = a.querySelector('input[name="priority"]:checked').value;
+    const priorityB = b.querySelector('input[name="priority"]:checked').value;
+  
+    // Jämför prioriteterna som strängar (Low, Medium, High)
+    if (priorityA === priorityB) {
+      return 0; // Ingen förändring i ordningen
+    } else if (priorityA === "Low") {
+      return -1; // Sortera habitA före habitB
+    } else if (priorityB === "Low") {
+      return 1; // Sortera habitB före habitA
+    } else if (priorityA === "Medium" && priorityB === "High") {
+      return -1; // Sortera habitA före habitB
+    } else {
+      return 1; // Sortera habitB före habitA (om priorityA är "High" eller priorityB är "Medium")
+    }
   });
 
   // här så tömmer jag den gamla listan och lägger till Nya kort som är sorterade och appendar dem 
@@ -75,35 +92,87 @@ const sortingHabits = (filter) => {
 
 const filterBtn = document.querySelector("#filter-btn");
 
-filterBtn.addEventListener("click", () =>{
-  
-  const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]');
+filterBtn.addEventListener("click", () => {
+  const habitCards = habitCardContainer.querySelectorAll(".habit-card");
+  const filteredCards = []; // En tillfällig array för att lagra matchande kort
+
+  // Återställ display-stilen för alla habit-kort
+  habitCards.forEach((item) => {
+    item.style.display = 'block';
+  });
+
+  const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]:checked');
   console.log(filterCheckboxes);
 
-  filterCheckboxes.forEach((filter)=>{ 
-    console.log(filter.checked);
+  // Om ingen checkbox är markerad, visa alla kort
+  if (filterCheckboxes.length === 0) {
+    return;
+  }
 
-    if (filter.checked){
-      priority = filter.value;
-      console.log("vald prioritet", priority);
-    }
-  
-  habitCardContainer.querySelectorAll(".habit-card").forEach((item)=>{
-    let habitCard2 = item.querySelector("p").textContent;
+  // Loopa genom markerade checkboxar och lagra matchande kort i den temporära arrayen
+  filterCheckboxes.forEach((filter) => {
+    const priority = filter.value;
+    console.log("vald prioritet", priority);
 
-    console.log("habitcard value " + habitCard2);
-    console.log("priority value " + priority);
+    habitCards.forEach((item) => {
+      let habitCard2 = item.querySelector("p").textContent;
 
-    if (priority === habitCard2){
-          // Gör något med de matchande habitCard-elementen
-          item.style.display = 'block'; // Visa elementet
-        } else {
-          item.style.display = 'none'; // Dölj elementet om det inte matchar
-    }
+      console.log("habitcard value " + habitCard2);
+      console.log("priority value " + priority);
+
+      if (priority === habitCard2) {
+        // Lagra matchande kort i den temporära arrayen
+        filteredCards.push(item);
+      }
+    });
   });
 
+  // Loopa igenom alla habit-kort och visa/dölj baserat på prioritet
+  habitCards.forEach((item) => {
+    // Om kortet finns i den temporära arrayen, visa det, annars dölj det
+    if (filteredCards.includes(item)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
   });
 });
+
+//const filterBtn = document.querySelector("#filter-btn");
+
+
+
+
+// filterBtn.addEventListener("click", () =>{
+//   let priority;
+  
+//   const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]');
+//   console.log(filterCheckboxes);
+
+//   filterCheckboxes.forEach((filter)=>{ 
+//     console.log(filter.checked);
+
+//     if (filter.checked){
+//       priority = filter.value;
+//       console.log("vald prioritet", priority);
+//     }
+  
+//   habitCardContainer.querySelectorAll(".habit-card").forEach((item)=>{
+//     let habitCard2 = item.querySelector("p").textContent;
+
+//     console.log("habitcard value " + habitCard2);
+//     console.log("priority value " + priority);
+
+//     if (priority === habitCard2){
+//           // Gör något med de matchande habitCard-elementen
+//           item.style.display = 'block'; // Visa elementet
+//         } else {
+//           item.style.display = 'none'; // Dölj elementet om det inte matchar
+//     }
+//   });
+
+//   });
+// });
 
 
 

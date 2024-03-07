@@ -80,19 +80,7 @@
 
 #snackbar.show {
   visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
 }
 @keyframes fadein {
   from {
@@ -102,16 +90,6 @@
   to {
     bottom: 30px;
     opacity: 1;
-  }
-}
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
   }
 }
 @keyframes fadeout {
@@ -163,15 +141,6 @@
 }
 .timerContainer #timer {
   font-size: xx-large;
-}
-
-.add-filter-todo {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 12px;
-  align-self: flex-end;
 }
 
 .todo {
@@ -440,6 +409,7 @@
 }
 
 .habit-container {
+  background-color: #9198e5;
   display: flex;
   border: black solid;
 }
@@ -467,4 +437,4 @@
   margin: 10px;
   width: 200px; /* Justera bredden efter ditt behov */
   text-align: center;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
