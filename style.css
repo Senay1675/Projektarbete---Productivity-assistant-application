@@ -200,6 +200,11 @@
   align-self: flex-end;
 }
 
+.coll {
+  border: none;
+  border-radius: 4px;
+}
+
 .todo-done {
   background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
 }
@@ -335,6 +340,7 @@
 .todo-container .sort-todo {
   width: auto;
   height: auto;
+  margin-bottom: 6px;
 }
 
 #descEdit,
@@ -419,6 +425,19 @@
 }
 .NTH-calender .calender-card .end-mode p {
   color: white;
+}
+
+.pastEvent {
+  opacity: 0.8;
+}
+
+.cal-results > div:nth-child(1) > .calender-title > p:nth-child(2) {
+  display: inline !important;
+}
+
+.calender-title {
+  display: flex;
+  justify-content: space-between;
 }
 
 .loginBackground {

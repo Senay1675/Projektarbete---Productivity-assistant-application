@@ -61,7 +61,9 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
 
   const calTitle = createDiv("calender-title");
   const calenderTitle = createPtag(title);
-  calTitle.append(calenderTitle);
+  const closestDeadline = createPtag("Closest to deadline!");
+  closestDeadline.style.display = "none";
+  calTitle.append(calenderTitle, closestDeadline);
 
   const start = createDiv("start-mode");
   const starting = createPtag("Start:");
@@ -78,7 +80,12 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
   calCard.append(calTitle, start, end);
   console.log(calCard);
   calenderResults.append(calCard);
-
+  let today = new Date(calEndDate);
+  console.log(calEndDate);
+  if (calEndDate > new Date()) {
+    console.log(">>>>>>>>>>>>");
+    calCard.classList.add("pastEvent");
+  }
   const addCalenderStorage = {
     id: activeUser,
     title,
@@ -91,6 +98,13 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
   userEvents.push(addCalenderStorage);
   localStorage.setItem("userCalender", JSON.stringify(userEvents));
   //   sortCalender();
+};
+// FINISH THE FUNCTION AND CHECK IF DATE IS BEHIND TODAYS DATE
+const isDateBehind = (endDate) => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
 };
 
 const getCalenderData = () => {
