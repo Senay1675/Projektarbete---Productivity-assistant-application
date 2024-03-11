@@ -82,6 +82,7 @@
   visibility: visible;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
+<<<<<<< HEAD
 
 #userExistsMessage {
   color: crimson;
@@ -98,6 +99,8 @@
     opacity: 1;
   }
 }
+=======
+>>>>>>> d9237aa06e500d75a56fbfedcc4af900cd2f9983
 @keyframes fadein {
   from {
     bottom: 0;
@@ -197,6 +200,7 @@
 .timerContainer #timer {
   font-size: xx-large;
 }
+<<<<<<< HEAD
 .timerContainer .timeButtons {
   border: 1px solid grey;
   width: 100%;
@@ -289,6 +293,8 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
+=======
+>>>>>>> d9237aa06e500d75a56fbfedcc4af900cd2f9983
 
 .todo {
   overflow: hidden;
@@ -672,6 +678,7 @@
 }
 
 .habit-container {
+  background-color: #9198e5;
   display: flex;
   border: black solid;
 }
@@ -699,4 +706,4 @@
   margin: 10px;
   width: 200px; /* Justera bredden efter ditt behov */
   text-align: center;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
