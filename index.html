@@ -27,7 +27,7 @@
     <!-- ''''''' --------------- HEADER ---------------------'''''' -->
 
     <header id="loginHeader">
-      <div class="headerLeft">fdfvfgdf</div>
+      <div class="headerLeft"></div>
       <div class="headerMiddle">
         <h1>Habit app</h1>
         <h2 id="loginHeaderH1">Initialt välkomstmeddelande</h2>
@@ -35,10 +35,10 @@
         <p id="loginQuoteContainer"></p>
       </div>
       <div class="headerRight">
-        <button id="logOutBtn">Log out</button>
         <button data-modal-target="#timerModal" id="focusTimeBtn">
           Focus Time
         </button>
+        <button id="logOutBtn">Log out</button>
       </div>
     </header>
 
@@ -60,7 +60,7 @@
           <button id="shortBreak">Short break</button>
         </div>
         <div class="time">
-          <div id="timer">00:00</div>
+          <div id="timer" contenteditable="true">00:00</div>
         </div>
         <div class="pauseButtons">
           <button id="startTimer">START TIMER</button>

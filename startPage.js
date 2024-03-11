@@ -122,6 +122,41 @@ focusTimeButton.forEach((button) => {
   });
 });
 
+// ------ CUSTOM TIME FUNCTIONALLITY -------------
+
+countdownEl.addEventListener("click", function () {
+  // ta bort eventlyssnare för att förhindra dubbelklicksproblem
+
+  this.removeEventListener("click", arguments.callee);
+
+  // Spara det nuvarande värdet för att kunna använda det senare
+  let originalValue = this.innerText;
+
+  // Rensainnehållet när det klickas för att låta användaren skriva in egen tid
+  this.innerText = "";
+
+  // Skapa ett textinmatningsfält för att låta användaren skriva i tiden
+  let inputField = document.createElement("input");
+  inputField.type = "text";
+  inputField.value = originalValue;
+
+  // Lägg till eventlyssnare för attreagera på ändringar
+  inputField.addEventListener("blur", function () {
+    // Återställ till det ursprungliga värdet om inget har skrivits in
+    countdownEl.innerText = this.value || originalValue;
+
+    // återlägg eventlyssnaren
+    countdownEl.addEventListener("click", arguments.callee);
+  });
+
+  // Ersätt textinmatningsfältet för att låta användaren redigera tiedn
+  this.innerHTML = "";
+  this.append(inputField);
+
+  // Fokus på inputfältet
+  inputField.focus();
+});
+
 overlay.addEventListener("click", () => {
   const modals = document.querySelectorAll(".modal.active");
   modals.forEach((modal) => {
