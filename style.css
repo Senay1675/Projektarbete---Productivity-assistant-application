@@ -82,25 +82,11 @@
   visibility: visible;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
-<<<<<<< HEAD
 
 #userExistsMessage {
   color: crimson;
   font-size: x-small;
 }
-
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
-}
-=======
->>>>>>> d9237aa06e500d75a56fbfedcc4af900cd2f9983
 @keyframes fadein {
   from {
     bottom: 0;
@@ -200,7 +186,6 @@
 .timerContainer #timer {
   font-size: xx-large;
 }
-<<<<<<< HEAD
 .timerContainer .timeButtons {
   border: 1px solid grey;
   width: 100%;
@@ -293,8 +278,6 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
-=======
->>>>>>> d9237aa06e500d75a56fbfedcc4af900cd2f9983
 
 .todo {
   overflow: hidden;
@@ -303,11 +286,7 @@
   width: 40%;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
-  background: radial-gradient(
-    circle,
-    rgb(249, 249, 176) 1%,
-    rgb(255, 255, 212) 47%
-  );
+  background: radial-gradient(circle, rgb(249, 249, 176) 1%, rgb(255, 255, 212) 47%);
   padding: 10px;
   display: flex;
   gap: 12px;
@@ -363,11 +342,7 @@
 }
 
 .todo-done {
-  background: radial-gradient(
-    circle,
-    rgb(161, 254, 161) 1%,
-    rgb(203, 255, 203) 47%
-  );
+  background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
 }
 
 .todo button {
@@ -408,7 +383,9 @@
   background: linear-gradient(#e66465, #9198e5);
 }
 .todo-container .add-todo {
-  height: -webkit-min-content;
+  position: sticky;
+  top: 50px;
+  background: linear-gradient(58deg, rgb(0, 0, 0) 30%, rgb(142, 142, 142) 100%);
   height: -moz-min-content;
   height: min-content;
   border-radius: 8px;
@@ -493,7 +470,6 @@
   display: block;
 }
 .todo-container .expanded {
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
 }
@@ -553,11 +529,7 @@
 }
 .NTH-calender .calender-card {
   border-radius: 8px;
-  background: radial-gradient(
-    circle,
-    rgb(145, 152, 229) 0%,
-    rgb(230, 100, 101) 66%
-  );
+  background: radial-gradient(circle, rgb(145, 152, 229) 0%, rgb(230, 100, 101) 66%);
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -579,21 +551,13 @@
   font-weight: bold;
 }
 .NTH-calender .calender-card .start-mode {
-  background: linear-gradient(
-    58deg,
-    rgb(230, 100, 101) 18%,
-    rgb(145, 152, 229) 85%
-  );
+  background: linear-gradient(58deg, rgb(230, 100, 101) 18%, rgb(145, 152, 229) 85%);
 }
 .NTH-calender .calender-card .start-mode p {
   color: white;
 }
 .NTH-calender .calender-card .end-mode {
-  background: linear-gradient(
-    58deg,
-    rgb(145, 152, 229) 15%,
-    rgb(230, 100, 101) 82%
-  );
+  background: linear-gradient(58deg, rgb(145, 152, 229) 15%, rgb(230, 100, 101) 82%);
 }
 .NTH-calender .calender-card .end-mode p {
   color: white;
