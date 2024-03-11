@@ -1,5 +1,6 @@
 const calenderContainer = document.querySelector("NTH-calender");
 const calenderResults = document.querySelector(".cal-results");
+const pastEvents = document.querySelector(".pastEvents");
 const sortCalendar = document.querySelector("#sortCalendar");
 
 const calTitle = document.querySelector("#calTitle");
@@ -49,14 +50,16 @@ addToCal.addEventListener("click", () => {
   console.log(startDate, startTime, endDate, endTime);
   console.log(result);
   if (result) {
+    errorOverlap.style.display = "none";
     addtoCalender(title, startDate, startTime, endDate, endTime);
   } else {
+    errorOverlap.style.display = "block";
     console.log("Failed to create event, dates overlapping.");
   }
 });
 
 const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
-  console.log(title, startDate, startTime, endDate, endTime);
+  //   console.log(title, startDate, startTime, endDate, endTime);
   const calCard = createDiv("calender-card");
 
   const calTitle = createDiv("calender-title");
@@ -78,14 +81,23 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
   end.append(ending, calEndDate, calEndTime);
 
   calCard.append(calTitle, start, end);
-  console.log(calCard);
-  calenderResults.append(calCard);
-  let today = new Date(calEndDate);
-  console.log(calEndDate);
-  if (calEndDate > new Date()) {
-    console.log(">>>>>>>>>>>>");
-    calCard.classList.add("pastEvent");
+  //   console.log(calCard);
+  let behind = isDateBehind(endDate);
+  console.log("The answer to isDateBehind function is: " + behind);
+  if (behind) {
+    console.log("DATE HAS PASSED <<<<<<<");
+    calCard.style.filter = "grayscale(100%)";
+    calCard.style.opacity = "0.8";
+    pastEvents.append(calCard);
+  } else {
+    calenderResults.append(calCard);
   }
+  //   let today = new Date(calEndDate);
+  //   //   console.log(calEndDate);
+  //   if (calEndDate > new Date()) {
+  //     console.log(">>>>>>>>>>>>");
+  //     calCard.classList.add("pastEvent");
+  //   }
   const addCalenderStorage = {
     id: activeUser,
     title,
@@ -100,17 +112,32 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
   //   sortCalender();
 };
 // FINISH THE FUNCTION AND CHECK IF DATE IS BEHIND TODAYS DATE
-const isDateBehind = (endDate) => {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() + 1;
-  const day = today.getDate();
-};
 
 const getCalenderData = () => {
   let parsedUserCalender = JSON.parse(
     localStorage.getItem("userCalender") || "[]"
   );
+
+  //   let closestDeadline = Infinity;
+  //   let closestEvent = null;
+  //   parsedUserCalender.forEach((item) => {
+  //     if (item.id === activeUser) {
+  //       const endDate = new Date(item.endDate);
+  //       const isBehind = isDateBehind(endDate);
+  //       if (!isBehind && endDate < closestDeadline) {
+  //         closestDeadline = endDate;
+  //         closestEvent = item;
+  //       }
+  //     }
+  //   });
+  //   if (closestEvent) {
+  //     const closestCard = document.querySelector(
+  //       `.calender-card.${closestEvent.id}`
+  //     );
+  //     const closestParagraph = document.createElement("p");
+  //     closestParagraph.textContent = "Closest to deadline!";
+  //     closestCard.prepend(closestParagraph);
+  //   }
 
   const userEvents = parsedUserCalender.filter(
     (item) => item.id === activeUser
@@ -179,6 +206,30 @@ const checkTime = (newStart, newEnd, oldStart, oldEnd) => {
     return false;
   }
   return true;
+};
+
+const isDateBehind = (endDate) => {
+  let today = new Date();
+  let year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+  today = year + "-" + month + "-" + day;
+  //   console.log("Todays date: " + today);
+  //   console.log("Date to check: " + endDate);
+  //   console.log(new Date(today));
+  //   console.log(new Date(endDate));
+  if (new Date(endDate) < new Date(today)) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 getCalenderData();

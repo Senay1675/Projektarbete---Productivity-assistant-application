@@ -427,10 +427,6 @@
   color: white;
 }
 
-.pastEvent {
-  opacity: 0.8;
-}
-
 .cal-results > div:nth-child(1) > .calender-title > p:nth-child(2) {
   display: inline !important;
 }
@@ -438,6 +434,10 @@
 .calender-title {
   display: flex;
   justify-content: space-between;
+}
+
+.pastEventTitle {
+  color: white;
 }
 
 .loginBackground {

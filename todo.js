@@ -72,7 +72,7 @@ const createTodoItem = (
 ) => {
   //Create CardID
   //Create Todo-card
-  console.log(cardStatus + " Each card status?");
+
   const todoCard = createDiv("todo");
   if (cardStatus === "Done") {
     todoCard.classList.add("todo-done");
@@ -257,10 +257,9 @@ const createTodoItem = (
 
 const deleteBtnFunc = (button) => {
   const btn = button.innerText;
-  const cardId = button.parentElement.parentElement.classList[2];
-  console.log(cardId);
+  const cardId = button.parentElement.parentElement.classList[1];
   let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
-  console.log(btn);
+
   todoCards.forEach((card) => console.log(card.cardID, cardId));
   const updatedTodoList = todoCards.filter((item) => {
     return item.cardID !== +cardId;
@@ -277,7 +276,6 @@ const getTodoData = () => {
 
   parsedUserTodo.forEach((todo) => {
     if (todo.userID === currentID) {
-      console.log(todo.status);
       let localTodo = createTodoItem(
         todo.title,
         todo.status,
