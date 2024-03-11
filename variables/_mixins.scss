@@ -1,0 +1,14 @@
+@mixin date-style {
+  width: 40%;
+  border: 1px solid black;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+@mixin shadow-1 {
+  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+}
+
+@mixin calendar-color-1 {
+  color: white;
+}

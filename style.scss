@@ -1,3 +1,5 @@
+@import "./variables/mixins";
+
 * {
   margin: 0;
 }
@@ -68,6 +70,8 @@
   }
 }
 
+// ----------- SNACKBAR STYLING ----------------
+
 #snackbar {
   visibility: hidden;
   min-width: 250px;
@@ -88,6 +92,11 @@
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#userExistsMessage {
+  color: crimson;
+  font-size: x-small;
 }
 
 @-webkit-keyframes fadein {
@@ -134,12 +143,14 @@
   }
 }
 
+// ---------------- SNACKBAR STYLING SLUT -----------------
+
 /* ---------------- HEADER STYLING ------------------ */
 
 #loginHeader {
   display: flex;
   background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
-  min-height: 250px;
+  min-height: 300px;
 
   .headerLeft {
     border: 1px solid black;
@@ -155,8 +166,18 @@
 
     h1 {
       font-family: nanum brush script;
-      font-size: 80px;
+      font-size: 100px;
       color: #e66465;
+    }
+
+    h2 {
+      font-family: montserrat;
+      font-weight: 100;
+      text-transform: uppercase;
+      font-size: 20px;
+      letter-spacing: 0.1ch;
+      line-height: 3;
+      border-bottom: 1px solid black;
     }
 
     p {
@@ -170,6 +191,32 @@
   .headerRight {
     border: 1px solid blue;
     width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    #focusTimeBtn {
+      border: none;
+      border-radius: 10px;
+      height: 30px;
+      font-family: montserrat;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 0.3ch;
+      font-weight: 600;
+      background-color: #5560db;
+      color: beige;
+      box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+      -webkit-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+      -moz-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+      width: 80%;
+    }
+    #focusTimeBtn:hover {
+      box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
+      -webkit-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
+      -moz-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
+      transition-duration: 100ms;
+      transform: scale(1.01);
+    }
   }
 }
 
@@ -177,39 +224,109 @@
 
 .timerContainer {
   border: 1px solid magenta;
-  height: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   #timer {
     font-size: xx-large;
   }
+  .timeButtons {
+    border: 1px solid grey;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    button {
+      background-color: rgb(72, 71, 71);
+      min-height: 30px;
+      width: 30%;
+      font-family: montserrat;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+  }
+  .time {
+    border: 1px solid yellow;
+
+    display: flex;
+    justify-content: center;
+    #timer {
+      font-size: 60px;
+      font-family: montserrat;
+      font-weight: 800;
+    }
+  }
+  .pauseButtons {
+    border: 1px solid firebrick;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    #startTimer {
+      width: 160px;
+    }
+  }
+  button {
+    border: none;
+    border-radius: 3px;
+    height: 45px;
+    width: 25%;
+    background-color: rgb(244, 137, 92);
+    font-family: montserrat;
+    letter-spacing: 0.3ch;
+  }
 }
 
-// #loginHeaderH1 {
-//   width: 100vw;
-//   display: flex;
-//   justify-content: center;
-// }
+.modal {
+  border: 1px solid black;
+  border-radius: 10px;
+  color: lightgray;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+  background-color: rgb(35, 35, 35);
+  width: 500px;
+  max-width: 80%;
+  padding: 5px 10px;
+}
 
-// #loginHeader {
-//   // background: linear-gradient(rgb(223, 125, 125), rgb(187, 144, 233));
-//   background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
-//   height: 300px;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: center;
-//   align-items: center;
-//   // border-bottom: 3px solid grey;
-//   h1 {
-//     font-family: nanum brush script;
-//     font-size: 80px;
-//     color: #e66465;
-//   }
-//   p {
-//     font-variant-caps: all-petite-caps;
-//     font-family: "Times New Roman", Times, serif;
-//     font-size: small;
-//     letter-spacing: 0.01ch;
-//   }
-// }
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#timerOverlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+#timerOverlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#closeBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
 
 // LOGIN STYLING SLUT ! ---------------------<<<<
 
@@ -221,8 +338,12 @@
   min-width: 170px;
   width: 40%;
   border-radius: 8px;
-  box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
-  background-color: rgb(255, 255, 212);
+  @include shadow-1;
+  background: radial-gradient(
+    circle,
+    rgba(249, 249, 176, 1) 1%,
+    rgba(255, 255, 212, 1) 47%
+  );
 
   padding: 10px;
   display: flex;
@@ -278,8 +399,17 @@
   }
 }
 
+.coll {
+  border: none;
+  border-radius: 4px;
+}
+
 .todo-done {
-  background: rgb(203, 255, 203);
+  background: radial-gradient(
+    circle,
+    rgba(161, 254, 161, 1) 1%,
+    rgba(203, 255, 203, 1) 47%
+  );
 }
 
 .todo button {
@@ -312,22 +442,34 @@
 }
 
 .todo-container {
-  overflow: auto;
   width: 100%;
   display: flex;
-  height: 1100px;
+  flex-wrap: wrap;
+  height: min-content;
+  padding: 18px 0px;
 
   background: linear-gradient(#e66465, #9198e5);
 
   .add-todo {
+    position: sticky;
+    top: 50px;
+    background: linear-gradient(
+      58deg,
+      rgba(0, 0, 0, 1) 30%,
+      rgba(142, 142, 142, 1) 100%
+    );
+
     height: min-content;
     border-radius: 8px;
-    box-shadow: 1px 3px 6px rgb(0 0 0 / 0.4);
+    @include shadow-1;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     padding: 18px;
     gap: 6px;
+    collapsed {
+      right: 50px;
+    }
     h3 {
       color: white;
     }
@@ -345,6 +487,7 @@
     display: flex;
     flex-direction: column;
     padding: 12px;
+    width: 60%;
 
     h2 {
       color: white;
@@ -418,6 +561,7 @@
   .sort-todo {
     width: auto;
     height: auto;
+    margin-bottom: 6px;
   }
 }
 
@@ -434,9 +578,102 @@
 
 // TO-DO STYLING SLUT -----<<<<<<<<<<
 //CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
-.calender-card {
+.NTH-calender {
+  background: linear-gradient(
+    58deg,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(142, 142, 142, 1) 100%
+  );
+  height: min-content;
   border: 1px solid black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 12px;
+  @include shadow-1;
+  input {
+    width: 75%;
+  }
+  .start-mode {
+    @include date-style;
+  }
+
+  .end-mode {
+    @include date-style;
+  }
+  .add-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-size: 18px;
+      color: white;
+    }
+  }
+  .calender-card {
+    border-radius: 8px;
+    background: radial-gradient(
+      circle,
+      rgba(145, 152, 229, 1) 0%,
+      rgba(230, 100, 101, 1) 66%
+    );
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0px;
+    box-sizing: border-box;
+    padding: 12px;
+    height: min-content;
+    width: 250px;
+    border: 1px solid black;
+    .calender-title {
+      width: 100%;
+      p {
+        @include calendar-color-1;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    .start-mode {
+      background: linear-gradient(
+        58deg,
+        rgba(230, 100, 101, 1) 18%,
+        rgba(145, 152, 229, 1) 85%
+      );
+      p {
+        @include calendar-color-1;
+      }
+    }
+    .end-mode {
+      background: linear-gradient(
+        58deg,
+        rgba(145, 152, 229, 1) 15%,
+        rgba(230, 100, 101, 1) 82%
+      );
+      p {
+        @include calendar-color-1;
+      }
+    }
+  }
 }
+
+.cal-results > div:nth-child(1) > .calender-title > p:nth-child(2) {
+  display: inline !important;
+}
+
+.calender-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pastEventTitle {
+  color: white;
+}
+
 //CALENDER NICE-TO-HAVE STYLING SLUT -----<<<<<<<<<<<<<
 // LOGIN STYLING ------------->>>>>
 
@@ -514,6 +751,9 @@
 // Habit Styling
 
 .habit-container {
+  background-color: #9198e5;
+  //height: 100vh;
+  //width: 100vw;
   display: flex;
   border: black solid;
 
