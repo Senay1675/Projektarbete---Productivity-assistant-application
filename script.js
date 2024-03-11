@@ -138,45 +138,6 @@ filterBtn.addEventListener("click", () => {
   });
 });
 
-//const filterBtn = document.querySelector("#filter-btn");
-
-
-
-
-// filterBtn.addEventListener("click", () =>{
-//   let priority;
-  
-//   const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]');
-//   console.log(filterCheckboxes);
-
-//   filterCheckboxes.forEach((filter)=>{ 
-//     console.log(filter.checked);
-
-//     if (filter.checked){
-//       priority = filter.value;
-//       console.log("vald prioritet", priority);
-//     }
-  
-//   habitCardContainer.querySelectorAll(".habit-card").forEach((item)=>{
-//     let habitCard2 = item.querySelector("p").textContent;
-
-//     console.log("habitcard value " + habitCard2);
-//     console.log("priority value " + priority);
-
-//     if (priority === habitCard2){
-//           // Gör något med de matchande habitCard-elementen
-//           item.style.display = 'block'; // Visa elementet
-//         } else {
-//           item.style.display = 'none'; // Dölj elementet om det inte matchar
-//     }
-//   });
-
-//   });
-// });
-
-
-
-
 
 console.log(habitCardContainer);
 
@@ -190,7 +151,7 @@ addHabit.addEventListener("click", () => {
 
   let habitCard = document.createElement("div");
   habitCard.classList.add("habit-card");
-  let habitName = document.createElement("h4");
+  let habitName = document.createElement("h3");
   habitName.innerText = inputHabit.value;
 
 
@@ -210,7 +171,7 @@ addHabit.addEventListener("click", () => {
   habitCardContainer.append(habitCard);
 
   let habitCounter = document.createElement("div");
-  let habitStreakTitle = document.createElement("h3");
+  let habitStreakTitle = document.createElement("p");
   habitStreakTitle.innerText = "Streak";
 
   habitCounter.append(habitStreakTitle);
@@ -229,8 +190,8 @@ addHabit.addEventListener("click", () => {
   let counterValue = document.createElement("div");
   counterValue.innerText = "0";
 
-  counterDiv.appendChild(incrementBtn);
   counterDiv.appendChild(counterValue);
+  counterDiv.appendChild(incrementBtn);
   counterDiv.appendChild(decrementBtn);
   counterDiv.appendChild(resetBtn);
   habitCard.appendChild(counterDiv);
