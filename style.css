@@ -82,6 +82,22 @@
   visibility: visible;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
+
+#userExistsMessage {
+  color: crimson;
+  font-size: x-small;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
 @keyframes fadein {
   from {
     bottom: 0;
@@ -106,7 +122,7 @@
 #loginHeader {
   display: flex;
   background: linear-gradient(rgb(187, 144, 233), rgb(223, 125, 125));
-  min-height: 250px;
+  min-height: 300px;
 }
 #loginHeader .headerLeft {
   border: 1px solid black;
@@ -121,8 +137,17 @@
 }
 #loginHeader .headerMiddle h1 {
   font-family: nanum brush script;
-  font-size: 80px;
+  font-size: 100px;
   color: #e66465;
+}
+#loginHeader .headerMiddle h2 {
+  font-family: montserrat;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 0.1ch;
+  line-height: 3;
+  border-bottom: 1px solid black;
 }
 #loginHeader .headerMiddle p {
   font-variant-caps: all-petite-caps;
@@ -133,14 +158,136 @@
 #loginHeader .headerRight {
   border: 1px solid blue;
   width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#loginHeader .headerRight #focusTimeBtn {
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  font-family: montserrat;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.3ch;
+  font-weight: 600;
+  background-color: #5560db;
+  color: beige;
+  box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+  -webkit-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+  -moz-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+  width: 80%;
+}
+#loginHeader .headerRight #focusTimeBtn:hover {
+  box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
+  -webkit-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
+  -moz-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
+  transition-duration: 100ms;
+  transform: scale(1.01);
 }
 
 .timerContainer {
   border: 1px solid magenta;
-  height: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 .timerContainer #timer {
   font-size: xx-large;
+}
+.timerContainer .timeButtons {
+  border: 1px solid grey;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.timerContainer .timeButtons button {
+  background-color: rgb(72, 71, 71);
+  min-height: 30px;
+  width: 30%;
+  font-family: montserrat;
+  text-transform: uppercase;
+  color: #ccc;
+}
+.timerContainer .time {
+  border: 1px solid yellow;
+  display: flex;
+  justify-content: center;
+}
+.timerContainer .time #timer {
+  font-size: 60px;
+  font-family: montserrat;
+  font-weight: 800;
+}
+.timerContainer .pauseButtons {
+  border: 1px solid firebrick;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+.timerContainer .pauseButtons #startTimer {
+  width: 160px;
+}
+.timerContainer button {
+  border: none;
+  border-radius: 3px;
+  height: 45px;
+  width: 25%;
+  background-color: rgb(244, 137, 92);
+  font-family: montserrat;
+  letter-spacing: 0.3ch;
+}
+
+.modal {
+  border: 1px solid black;
+  border-radius: 10px;
+  color: lightgray;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  z-index: 10;
+  background-color: rgb(35, 35, 35);
+  width: 500px;
+  max-width: 80%;
+  padding: 5px 10px;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#timerOverlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+#timerOverlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#closeBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .todo {
@@ -150,7 +297,11 @@
   width: 40%;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
-  background: radial-gradient(circle, rgb(249, 249, 176) 1%, rgb(255, 255, 212) 47%);
+  background: radial-gradient(
+    circle,
+    rgb(249, 249, 176) 1%,
+    rgb(255, 255, 212) 47%
+  );
   padding: 10px;
   display: flex;
   gap: 12px;
@@ -206,7 +357,11 @@
 }
 
 .todo-done {
-  background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
+  background: radial-gradient(
+    circle,
+    rgb(161, 254, 161) 1%,
+    rgb(203, 255, 203) 47%
+  );
 }
 
 .todo button {
@@ -247,9 +402,7 @@
   background: linear-gradient(#e66465, #9198e5);
 }
 .todo-container .add-todo {
-  position: sticky;
-  top: 50px;
-  background: linear-gradient(58deg, rgb(0, 0, 0) 30%, rgb(142, 142, 142) 100%);
+  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   border-radius: 8px;
@@ -334,6 +487,7 @@
   display: block;
 }
 .todo-container .expanded {
+  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
 }
@@ -393,7 +547,11 @@
 }
 .NTH-calender .calender-card {
   border-radius: 8px;
-  background: radial-gradient(circle, rgb(145, 152, 229) 0%, rgb(230, 100, 101) 66%);
+  background: radial-gradient(
+    circle,
+    rgb(145, 152, 229) 0%,
+    rgb(230, 100, 101) 66%
+  );
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -415,13 +573,21 @@
   font-weight: bold;
 }
 .NTH-calender .calender-card .start-mode {
-  background: linear-gradient(58deg, rgb(230, 100, 101) 18%, rgb(145, 152, 229) 85%);
+  background: linear-gradient(
+    58deg,
+    rgb(230, 100, 101) 18%,
+    rgb(145, 152, 229) 85%
+  );
 }
 .NTH-calender .calender-card .start-mode p {
   color: white;
 }
 .NTH-calender .calender-card .end-mode {
-  background: linear-gradient(58deg, rgb(145, 152, 229) 15%, rgb(230, 100, 101) 82%);
+  background: linear-gradient(
+    58deg,
+    rgb(145, 152, 229) 15%,
+    rgb(230, 100, 101) 82%
+  );
 }
 .NTH-calender .calender-card .end-mode p {
   color: white;
@@ -533,4 +699,4 @@
   margin: 10px;
   width: 200px; /* Justera bredden efter ditt behov */
   text-align: center;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */

@@ -7,6 +7,8 @@ let users = JSON.parse(localStorage.getItem("users")) || [];
 
 /* ---------- REGISTER BUTTON ------------ */
 
+let userExistPara = document.querySelector("#userExistsMessage");
+
 function showSnackbar() {
   let snackbar = document.querySelector("#snackbar");
   snackbar.classList.add("show");
@@ -19,25 +21,26 @@ loginRegisterBtn.addEventListener("click", () => {
   let username = loginUsernameInput.value;
   let password = loginPasswordInput.value;
 
-  let newUser = {
-    username,
-    password,
-    id: crypto.randomUUID(),
-  };
+  // Kontrollera att användarnamnet inte redan finns
 
-  users.push(newUser);
+  let usernameExists = users.some((user) => user.username === username);
 
-  localStorage.setItem("users", JSON.stringify(users));
+  if (usernameExists) {
+    console.log("Användarnamnet finns redan, välj ett annat");
+    userExistPara.textContent = "Username already exists";
+  } else {
+    let newUser = {
+      username,
+      password,
+      id: crypto.randomUUID(),
+    };
 
-  showSnackbar();
+    users.push(newUser);
 
-  //   alert("User has been created");
-  //   const loginMessageElement = document.createElement("div");
-  //   loginMessageElement.textContent = "User has been created";
-  //   loginMessageElement.classList.add("success-message");
+    localStorage.setItem("users", JSON.stringify(users));
 
-  //   document.body.append(loginMessageElement);
-  //   console.log("Användaren har registrerats", newUser);
+    showSnackbar();
+  }
 });
 
 /* ---------- LOGIN BUTTON -------------- */
@@ -56,11 +59,9 @@ loginBtn.addEventListener("click", () => {
     console.log("user found: " + user.username);
     localStorage.setItem("currentUser", user.username);
     localStorage.setItem("currentUserId", user.id);
-    // loginHeaderH1.innerText = `Welcome ${user.username}`;
     window.location.href = "index.html";
-    // h2.textContent = `Welcome ${user.username}`;
   } else {
-    h2.textContent = `Failed 2 login`;
+    userExistPara.textContent = `Wrong username or password`;
   }
 });
 

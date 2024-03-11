@@ -8,6 +8,12 @@
     <!-- <script src="/login.js" defer></script> -->
     <script src="script.js " defer></script>
     <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       src="https://kit.fontawesome.com/29047c7944.js"
@@ -21,7 +27,7 @@
     <!-- ''''''' --------------- HEADER ---------------------'''''' -->
 
     <header id="loginHeader">
-      <div class="headerLeft">fdfvfgdf</div>
+      <div class="headerLeft"></div>
       <div class="headerMiddle">
         <h1>Habit app</h1>
         <h2 id="loginHeaderH1">Initialt välkomstmeddelande</h2>
@@ -29,39 +35,43 @@
         <p id="loginQuoteContainer"></p>
       </div>
       <div class="headerRight">
+        <button data-modal-target="#timerModal" id="focusTimeBtn">
+          Focus Time
+        </button>
         <button id="logOutBtn">Log out</button>
       </div>
     </header>
 
     <!-- -------------- fkn timer --------------  -->
     <!-- 
-    <p id="countdown">1:00</p>
+    <div id="timerModal" class="modal">
+      <div class="modalContent">
+        <span class="close" id="closeModal">&times;</span> -->
 
-    <div class="timerContainer">
-      <div class="timer">
+    <div class="modal" id="timerModal">
+      <div class="modalHeader">
+        <button data-close-button id="closeBtn">&times;</button>
+      </div>
+
+      <div class="timerContainer">
+        <div class="timeButtons">
+          <button id="pomodoroBtn">Pomodoro</button>
+          <button id="longBreak">Long break</button>
+          <button id="shortBreak">Short break</button>
+        </div>
         <div class="time">
-          <span id="minutes">1</span>
-          <span id="colon">:</span>
-          <span id="seconds">00</span>
+          <div id="timer" contenteditable="true">00:00</div>
+        </div>
+        <div class="pauseButtons">
+          <button id="startTimer">START TIMER</button>
+          <button id="stopTimer" style="display: none">STOP</button>
         </div>
       </div>
-
-      <div class="timerButtons">
-        <button id="workBtn">Work</button>
-        <button id="pomodoroBtn">Pomodoro</button>
-        <button id="longBreakBtn">Long break</button>
-        <button id="shortBreakBtn">Short break</button>
-      </div>
-    </div> -->
-
-    <div class="timerContainer">
-      <button id="pomodoroBtn">Pomodoro</button>
-      <button id="longBreak">Long break</button>
-      <button id="shortBreak">Short break</button>
-      <p id="timer">00:00</p>
-      <button id="startTimer">START TIMER</button>
-      <button id="stopTimer" style="display: none">STOP</button>
     </div>
+    <div id="timerOverlay"></div>
+
+    <!-- </div>
+    </div> -->
 
     <!-- ''''''' --------------- HEADER ---------------------'''''' -->
 
