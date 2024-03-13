@@ -12,10 +12,9 @@ const sortSelect = document.querySelector("#sort-select");
 const sortRadioStreak = document.querySelector("#sort-streak-radio");
 const sortRadioPriority = document.querySelector("#sort-priority-radio");
 
- // Min sorteringsfunktion
+// Min sorteringsfunktion
 
-
-sortSelect.addEventListener("change",() =>{
+sortSelect.addEventListener("change", () => {
   let sorting = sortSelect.value;
 
   sortingHabits(sorting);
@@ -23,27 +22,26 @@ sortSelect.addEventListener("change",() =>{
 });
 
 const sortingHabits = (filter) => {
-
   console.log(habitCardContainer);
-  
-  const habitCardSort = Array.from(habitCardContainer.querySelectorAll(".habit-card"));
+
+  const habitCardSort = Array.from(
+    habitCardContainer.querySelectorAll(".habit-card")
+  );
   console.log(habitCardSort);
 
-  habitCardSort.forEach((card)=>{
+  habitCardSort.forEach((card) => {
     let result = card.querySelector("div:nth-child(4) > div");
     console.log(result.textContent);
-
   });
   console.log(habitCardSort);
-  
-  habitCardSort.sort((a, b) =>{
 
+  habitCardSort.sort((a, b) => {
     // IF sortera på streaks
 
     let habitA = a.querySelector("div:nth-child(4) > div").textContent;
     let habitB = b.querySelector("div:nth-child(4) > div").textContent;
-    
-    // här gör jag om  streak value till integers 
+
+    // här gör jag om  streak value till integers
 
     let valueA = parseInt(habitA);
     let valueB = parseInt(habitB);
@@ -58,11 +56,11 @@ const sortingHabits = (filter) => {
     } else if (filter === "falling") {
       return valueB - valueA;
     }
-  
+
     //Else sortera på prio
     const priorityA = a.querySelector('input[name="priority"]:checked').value;
     const priorityB = b.querySelector('input[name="priority"]:checked').value;
-  
+
     // Jämför prioriteterna som strängar (Low, Medium, High)
     if (priorityA === priorityB) {
       return 0; // Ingen förändring i ordningen
@@ -77,16 +75,13 @@ const sortingHabits = (filter) => {
     }
   });
 
-  // här så tömmer jag den gamla listan och lägger till Nya kort som är sorterade och appendar dem 
+  // här så tömmer jag den gamla listan och lägger till Nya kort som är sorterade och appendar dem
 
   habitCardContainer.innerHTML = "";
   habitCardSort.forEach((card) => {
-   habitCardContainer.append(card)
-  });  
-
+    habitCardContainer.append(card);
+  });
 };
-
-
 
 // den här koden är filter funktionen
 
@@ -98,10 +93,12 @@ filterBtn.addEventListener("click", () => {
 
   // Återställ display-stilen för alla habit-kort
   habitCards.forEach((item) => {
-    item.style.display = 'block';
+    item.style.display = "block";
   });
 
-  const filterCheckboxes = document.querySelectorAll('input[name="filtrera"]:checked');
+  const filterCheckboxes = document.querySelectorAll(
+    'input[name="filtrera"]:checked'
+  );
   console.log(filterCheckboxes);
 
   // Om ingen checkbox är markerad, visa alla kort
@@ -131,13 +128,12 @@ filterBtn.addEventListener("click", () => {
   habitCards.forEach((item) => {
     // Om kortet finns i den temporära arrayen, visa det, annars dölj det
     if (filteredCards.includes(item)) {
-      item.style.display = 'block';
+      item.style.display = "block";
     } else {
-      item.style.display = 'none';
+      item.style.display = "none";
     }
   });
 });
-
 
 console.log(habitCardContainer);
 
@@ -146,25 +142,30 @@ console.log(radioCategories);
 
 addHabit.addEventListener("click", () => {
   // För varje kort som skapas så gör jag en en till funktion som tar ut prioritet värde från radio buttons
-
-  // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
-
-  let habitCard = document.createElement("div");
-  habitCard.classList.add("habit-card");
-  let habitName = document.createElement("h3");
-  habitName.innerText = inputHabit.value;
-
+  let streak = "0";
+  let prio;
+  let title = inputHabit.value;
 
   radioCategories.forEach((radio) => {
     if (radio.checked) {
-      priority = radio.value;
-      console.log("Vald prioritet", priority);
-
-      let prioritytext = document.createElement("p");
-      prioritytext.innerText = radio.value;
-      habitCard.append(prioritytext);
+      prio = radio.value;
+      console.log("Vald prioritet", prio);
     }
   });
+  console.log(streak, prio, title);
+  // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
+  makeHabitcard(streak, prio, title);
+});
+
+const makeHabitcard = (habitStreak, habitPriority, habitTitle) => {
+  let habitCard = document.createElement("div");
+  habitCard.classList.add("habit-card");
+  let habitName = document.createElement("h3");
+  habitName.innerText = habitTitle;
+
+  let prioritytext = document.createElement("p");
+  prioritytext.innerText = habitPriority;
+  habitCard.append(prioritytext);
 
   habitCard.append(habitName);
 
@@ -180,7 +181,6 @@ addHabit.addEventListener("click", () => {
   // Här koden som skapar counter elementen och appendar dem till DOMen
 
   let counterDiv = document.createElement("div");
-
   let incrementBtn = document.createElement("button");
   incrementBtn.innerText = "+";
   let decrementBtn = document.createElement("button");
@@ -188,7 +188,7 @@ addHabit.addEventListener("click", () => {
   let resetBtn = document.createElement("button");
   resetBtn.innerText = "Reset";
   let counterValue = document.createElement("div");
-  counterValue.innerText = "0";
+  counterValue.innerText = habitStreak;
 
   counterDiv.appendChild(counterValue);
   counterDiv.appendChild(incrementBtn);
@@ -216,8 +216,7 @@ addHabit.addEventListener("click", () => {
     counter = 0;
     counterValue.innerText = counter;
   });
-});
-
+};
 /* ------------------- Habits ---------------------- */
 
 /* ------------------- Habits ---------------------- */

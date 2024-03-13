@@ -286,7 +286,8 @@
   width: 40%;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
-  background: radial-gradient(circle, rgb(249, 249, 176) 1%, rgb(255, 255, 212) 47%);
+  color: white;
+  background: rgb(145, 152, 229);
   padding: 10px;
   display: flex;
   gap: 12px;
@@ -323,6 +324,7 @@
 .todo .middleCard .todoDetails p {
   font-size: 14px;
   width: 80%;
+  word-wrap: break-word;
 }
 .todo .middleCard .todoDetails span {
   font-weight: bold;
@@ -343,6 +345,7 @@
 
 .todo-done {
   background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
+  color: black;
 }
 
 .todo button {
@@ -382,15 +385,17 @@
   padding: 18px 0px;
   background: linear-gradient(#e66465, #9198e5);
 }
+.todo-container *:not(i) {
+  font-family: Montserrat;
+}
 .todo-container .add-todo {
   position: sticky;
   top: 50px;
-  background: linear-gradient(58deg, rgb(0, 0, 0) 30%, rgb(142, 142, 142) 100%);
+  background: rgb(145, 152, 229) 0%;
   height: -moz-min-content;
   height: min-content;
   border-radius: 8px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   padding: 18px;
@@ -419,12 +424,15 @@
   color: white;
 }
 .todo-container .todo-list #toggleFilter {
-  color: black;
+  background-color: rgb(145, 152, 229);
+  border: none;
+  border-radius: 4px;
+  color: white;
   font-size: 18px;
   width: 120px;
 }
 .todo-container .todo-list #toggleFilter i {
-  color: black;
+  color: white;
   margin-left: 12px;
 }
 .todo-container .todo-list > h3 {
@@ -459,7 +467,6 @@
   margin: 0px 12px 0px 2px;
 }
 .todo-container .collapsed {
-  height: 0;
   padding: 0;
   border-width: 0;
 }
@@ -490,11 +497,31 @@
   width: 30px;
 }
 
+#collapse.collapse-button.coll {
+  background-color: rgb(145, 152, 229);
+  color: white;
+  height: 100px;
+  width: 120px;
+}
+
+#collapse.exp {
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.calendar-container {
+  padding-bottom: 48px;
+  display: flex;
+  justify-content: center;
+  background: rgb(145, 152, 229);
+}
+
 .NTH-calender {
-  background: linear-gradient(58deg, rgb(0, 0, 0) 30%, rgb(142, 142, 142) 100%);
+  width: 50%;
+  background: rgb(223, 125, 125);
   height: -moz-min-content;
   height: min-content;
-  border: 1px solid black;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -503,8 +530,14 @@
   padding: 12px;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.4);
 }
+.NTH-calender * {
+  font-family: Montserrat;
+}
 .NTH-calender input {
   width: 75%;
+}
+.NTH-calender label {
+  color: white;
 }
 .NTH-calender .start-mode {
   width: 40%;
@@ -518,6 +551,9 @@
   padding: 4px;
   border-radius: 4px;
 }
+.NTH-calender .pastEventTitle {
+  font-size: 20px;
+}
 .NTH-calender .add-event {
   display: flex;
   flex-direction: column;
@@ -529,7 +565,7 @@
 }
 .NTH-calender .calender-card {
   border-radius: 8px;
-  background: radial-gradient(circle, rgb(145, 152, 229) 0%, rgb(230, 100, 101) 66%);
+  background: radial-gradient(circle, rgb(230, 100, 101) 0%, rgb(145, 152, 229) 66%);
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -540,7 +576,6 @@
   height: -moz-min-content;
   height: min-content;
   width: 250px;
-  border: 1px solid black;
 }
 .NTH-calender .calender-card .calender-title {
   width: 100%;

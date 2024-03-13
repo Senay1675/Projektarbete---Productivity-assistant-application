@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="/startPage.js" defer></script>
-    <script src="/login.js" defer></script>
     <script src="script.js " defer></script>
     <link rel="stylesheet" href="/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -103,6 +102,7 @@
               name="todoStatus"
               id="todoProgess"
               value="To-do"
+              checked
             />
             <label for="todoDone">Done</label>
             <input
@@ -195,10 +195,11 @@
           Collapse <i class="fa-solid fa-angles-up"></i>
         </button>
       </div>
-
+    </div>
+    <div class="calendar-container">
       <div class="NTH-calender">
         <div class="add-event">
-          <h2>Add Calender Event</h2>
+          <h2>Add Calendar Event</h2>
           <label for="calTitle">Title:</label>
           <input type="text" name="calTitle" id="calTitle" />
           <label for="calStartDate">Startdate:</label>
@@ -215,10 +216,7 @@
           </div>
         </div>
 
-        <button id="addCalResult">Add to Calender</button>
-        <button id="sortCalendar">
-          Sort <i class="fa-solid fa-arrow-down-short-wide"></i>
-        </button>
+        <button id="addCalResult">Add to Calendar</button>
         <div class="cal-results"></div>
         <h2 class="pastEventTitle">Past events</h2>
         <div class="pastEvents"></div>

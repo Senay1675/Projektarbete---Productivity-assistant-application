@@ -1,4 +1,5 @@
 @import "./variables/mixins";
+@import "./variables/colors";
 
 * {
   margin: 0;
@@ -339,12 +340,13 @@
   width: 40%;
   border-radius: 8px;
   @include shadow-1;
-  background: radial-gradient(
-    circle,
-    rgba(249, 249, 176, 1) 1%,
-    rgba(255, 255, 212, 1) 47%
-  );
-
+  color: white;
+  // background: radial-gradient(
+  //   circle,
+  //   rgba(249, 249, 176, 1) 1%,
+  //   rgba(255, 255, 212, 1) 47%
+  // );
+  background: $bg-violet;
   padding: 10px;
   display: flex;
   gap: 12px;
@@ -382,6 +384,7 @@
       p {
         font-size: 14px;
         width: 80%;
+        word-wrap: break-word;
       }
       span {
         font-weight: bold;
@@ -410,6 +413,7 @@
     rgba(161, 254, 161, 1) 1%,
     rgba(203, 255, 203, 1) 47%
   );
+  color: black;
 }
 
 .todo button {
@@ -449,20 +453,23 @@
   padding: 18px 0px;
 
   background: linear-gradient(#e66465, #9198e5);
-
+  *:not(i) {
+    font-family: Montserrat;
+  }
   .add-todo {
     position: sticky;
     top: 50px;
-    background: linear-gradient(
-      58deg,
-      rgba(0, 0, 0, 1) 30%,
-      rgba(142, 142, 142, 1) 100%
-    );
+    // background: linear-gradient(
+    //   58deg,
+    //   rgba(0, 0, 0, 1) 30%,
+    //   rgba(142, 142, 142, 1) 100%
+    // );
+    background: rgba(145, 152, 229, 1) 0%;
 
     height: min-content;
     border-radius: 8px;
     @include shadow-1;
-    border: 1px solid black;
+
     display: flex;
     flex-direction: column;
     padding: 18px;
@@ -494,12 +501,15 @@
     }
 
     #toggleFilter {
-      color: black;
+      background-color: $bg-violet;
+      border: none;
+      border-radius: 4px;
+      color: white;
       font-size: 18px;
       width: 120px;
 
       i {
-        color: black;
+        color: white;
         margin-left: 12px;
       }
     }
@@ -542,7 +552,7 @@
   }
 
   .collapsed {
-    height: 0;
+    // height: 0;
     padding: 0;
     border-width: 0;
 
@@ -575,17 +585,37 @@
 #estiTime {
   width: 30px;
 }
+#collapse.collapse-button.coll {
+  background-color: $bg-violet;
+  color: white;
+  height: 100px;
+  width: 120px;
+}
 
+#collapse.exp {
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.calendar-container {
+  padding-bottom: 48px;
+  display: flex;
+  justify-content: center;
+  background: $bg-violet;
+}
 // TO-DO STYLING SLUT -----<<<<<<<<<<
 //CALENDER NICE-TO-HAVE STYLING >>>>>>>>>>>>>
 .NTH-calender {
-  background: linear-gradient(
-    58deg,
-    rgba(0, 0, 0, 1) 30%,
-    rgba(142, 142, 142, 1) 100%
-  );
+  // background: linear-gradient(
+  //   58deg,
+  //   rgba(0, 0, 0, 1) 30%,
+  //   rgba(142, 142, 142, 1) 100%
+  // );
+  width: 50%;
+  background: $bg-orange;
   height: min-content;
-  border: 1px solid black;
+
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -593,8 +623,14 @@
   box-sizing: border-box;
   padding: 12px;
   @include shadow-1;
+  * {
+    font-family: Montserrat;
+  }
   input {
     width: 75%;
+  }
+  label {
+    color: white;
   }
   .start-mode {
     @include date-style;
@@ -602,6 +638,10 @@
 
   .end-mode {
     @include date-style;
+  }
+
+  .pastEventTitle {
+    font-size: 20px;
   }
   .add-event {
     display: flex;
@@ -617,8 +657,8 @@
     border-radius: 8px;
     background: radial-gradient(
       circle,
-      rgba(145, 152, 229, 1) 0%,
-      rgba(230, 100, 101, 1) 66%
+      rgba(230, 100, 101, 1) 0%,
+      rgba(145, 152, 229, 1) 66%
     );
     margin-top: 8px;
     display: flex;
@@ -629,7 +669,7 @@
     padding: 12px;
     height: min-content;
     width: 250px;
-    border: 1px solid black;
+
     .calender-title {
       width: 100%;
       p {
