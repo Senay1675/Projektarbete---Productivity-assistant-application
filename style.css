@@ -645,8 +645,12 @@
   background-color: #9198e5;
   display: flex;
   border: black solid;
+  font-family: sans-serif;
 }
 .habit-container #habitForm-container {
+  color: white;
+  background-color: #606ad7;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   border: solid black;
@@ -666,8 +670,12 @@
 
 .habit-card {
   border: 1px solid #ccc;
+  gap: 10px;
   padding: 10px;
   margin: 10px;
   width: 200px; /* Justera bredden efter ditt behov */
   text-align: center;
+}
+.habit-card .delete-button {
+  background-color: #e66465;
 }/*# sourceMappingURL=style.css.map */
