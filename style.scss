@@ -749,7 +749,9 @@
 // LOGIN STYLING SLUT ! ---------------------<<<<
 
 // Habit Styling
-
+#habit-rubrik {
+  margin: 10px;
+}
 .habit-container {
   background-color: #9198e5;
   //height: 100vh;
@@ -769,26 +771,30 @@
     padding: 10px;
   }
   .filter-habit {
-    border: solid black;
+    border-bottom: solid black;
     padding: 10px;
     margin: 10px;
   }
   .sort-habit {
-    border: solid black;
+    border-bottom: solid black;
     padding: 10px;
     margin: 10px;
   }
 }
 
 .habit-card {
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color:dodgerblue;
+  //border: 1px solid #ccc;
   gap: 10px;
   padding: 10px;
   margin: 10px;
-  width: 200px; /* Justera bredden efter ditt behov */
+  //width: 85%; /* Justera bredden efter ditt behov */
   text-align: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 
   .delete-button {
     background-color: #e66465;
+    margin: 5px;
   }
 }

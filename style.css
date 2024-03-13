@@ -641,6 +641,10 @@
   height: 100px;
 }
 
+#habit-rubrik {
+  margin: 10px;
+}
+
 .habit-container {
   background-color: #9198e5;
   display: flex;
@@ -658,24 +662,26 @@
   padding: 10px;
 }
 .habit-container .filter-habit {
-  border: solid black;
+  border-bottom: solid black;
   padding: 10px;
   margin: 10px;
 }
 .habit-container .sort-habit {
-  border: solid black;
+  border-bottom: solid black;
   padding: 10px;
   margin: 10px;
 }
 
 .habit-card {
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: dodgerblue;
   gap: 10px;
   padding: 10px;
   margin: 10px;
-  width: 200px; /* Justera bredden efter ditt behov */
   text-align: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .habit-card .delete-button {
   background-color: #e66465;
+  margin: 5px;
 }/*# sourceMappingURL=style.css.map */
