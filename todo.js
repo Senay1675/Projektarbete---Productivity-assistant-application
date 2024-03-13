@@ -106,6 +106,7 @@ const createTodoItem = (
   const deleteBtn = createButton("Delete", "todoDeleteBtn");
   if (cardStatus === "Done") {
     doneBtn.style.display = "none";
+    editBtn.style.display = "none";
   }
 
   editBtn.addEventListener("click", () => {
@@ -116,6 +117,7 @@ const createTodoItem = (
     console.log("EditBtn " + parentElement.classList[1]);
     const editStatus = todoCard.querySelector(".todoStatus span").textContent;
     if (editBtn.innerText === "Edit") {
+      //disble delete btn
       editBtn.textContent = "Save";
       todoDetails.innerHTML = "";
       todoDetails.innerHTML = `<p>Title:</p>
@@ -139,6 +141,7 @@ const createTodoItem = (
                />
                </select>`;
     } else {
+      //enable delete btn
       editBtn.textContent = "Edit";
       const titleEdit = document.getElementById("titleEdit").value;
       const descEdit = document.getElementById("descEdit").value;
@@ -170,7 +173,7 @@ const createTodoItem = (
         estimationUnit: getEstValue,
         deadline,
         category: categEdit,
-        cardID: uniqueCard,
+        cardID: +uniqueCard,
       };
       console.log(editedCard.estimation);
       //Update localStorage list of todos
@@ -207,7 +210,9 @@ const createTodoItem = (
     //   : parentElementclassList[1];
     console.log(todoID, localCards);
     localCards.forEach((todo) => {
-      const todoIndex = localCards.findIndex((todo) => todo.cardID === +todoID);
+      const todoIndex = localCards.findIndex(
+        (todo) => +todo.cardID === +todoID
+      );
       console.log(todoIndex);
       console.log(localCards[todoIndex].status);
       localCards[todoIndex].status = "Done";
@@ -223,6 +228,7 @@ const createTodoItem = (
 
     doneBtn.parentElement.parentElement.classList.add("todo-done");
     doneBtn.remove();
+    lowTodo.firstChild.remove();
   });
 
   let allUserTodos = {
@@ -234,7 +240,7 @@ const createTodoItem = (
     estimationUnit,
     deadline,
     category,
-    cardID,
+    cardID: +cardID,
   };
 
   deleteBtn.addEventListener("click", () => {
@@ -289,8 +295,10 @@ const getTodoData = () => {
         todo.estimationUnit,
         todo.deadline,
         todo.category,
-        todo.cardID
+        +todo.cardID
       );
+
+      console.log(todo.cardID);
 
       todoList.append(localTodo);
     }
