@@ -185,16 +185,66 @@ function closeModal(modal) {
 
 // ------------ VÄDER API := ---------------------
 
-const apiKey = "88cc3776d9e1a3fd596dea8ca64d74db";
-const apiURL =
-  "https://api.openweathermap.org/data/3.0/onecall?lat={59;33}&lon={18;06}&exclude={part}&appid={API key}";
+// const apiKey = "88cc3776d9e1a3fd596dea8ca64d74db";
+// const apiURL = `https://api.openweathermap.org/data/3.0/onecall?lat={59;33}&lon={18;06}&exclude={part}&appid=${apiKey}`;
 
-fetch("${apiURL}?apikey=${apiKey}")
-  .then((response) => response.jason())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((error) => console.error("Fel vid hämtning av väderdata"));
+// fetch("${apiURL}?apikey=${apiKey}")
+//   .then((response) => response.jason())
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((error) => console.error("Fel vid hämtning av väderdata"));
+
+async function getWeather() {
+  const response = await fetch(
+    "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
+  );
+  const weather = response.json();
+
+  return weather;
+}
+
+getWeather().then((weather) => {
+  let weatherDetails = weather.properties.timeseries[0].data.instant.details;
+  let temp = weatherDetails.air_temperature;
+  let clouds = weatherDetails.cloud_area_fraction;
+  let wind = weatherDetails.wind_speed;
+
+  let weatherIcon;
+  let weatherImg;
+
+  let weatherContainer = document.querySelector(".headerLeft");
+
+  if (clouds < 60) {
+    weatherIcon = `fair_day.svg`;
+  } else if (clouds > 60) {
+    weatherIcon = `cloudy.svg`;
+  } else if (clouds < 30) {
+    weatherIcon = `clearsky_day.svg`;
+  }
+
+  weatherImg = document.createElement("img");
+  weatherImg.src = "./weathericons/weather/svg/cloudy.svg";
+
+  let showTemp = document.createElement("p");
+  showTemp.innerHTML = `${temp} °C`;
+
+  let currentWind = document.createElement("p");
+  currentWind.innerHTML = `${wind} m/s`;
+
+  //   /Users/charleslindberg/weathericons/weather/svg
+
+  //     weatherImg.innerHTML = `<img src="/weather/svg/${weatherIcon}" />`;
+  weatherContainer.append(weatherImg);
+  weatherContainer.append(showTemp);
+  weatherContainer.append(currentWind);
+
+  console.log(weather);
+  console.log(temp);
+  console.log(clouds);
+  console.log(wind);
+  console.log(weatherIcon);
+});
 
 // function openModal() {
 //   document.querySelector("#timerModal").style.display = "block";
