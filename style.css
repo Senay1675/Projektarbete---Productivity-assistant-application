@@ -414,7 +414,11 @@
 }
 
 .todo-done {
-  background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
+  background: radial-gradient(
+    circle,
+    rgb(161, 254, 161) 1%,
+    rgb(203, 255, 203) 47%
+  );
   color: black;
 }
 
@@ -636,7 +640,11 @@
 }
 .NTH-calender .calender-card {
   border-radius: 8px;
-  background: radial-gradient(circle, rgb(230, 100, 101) 0%, rgb(145, 152, 229) 66%);
+  background: radial-gradient(
+    circle,
+    rgb(230, 100, 101) 0%,
+    rgb(145, 152, 229) 66%
+  );
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -657,13 +665,21 @@
   font-weight: bold;
 }
 .NTH-calender .calender-card .start-mode {
-  background: linear-gradient(58deg, rgb(230, 100, 101) 18%, rgb(145, 152, 229) 85%);
+  background: linear-gradient(
+    58deg,
+    rgb(230, 100, 101) 18%,
+    rgb(145, 152, 229) 85%
+  );
 }
 .NTH-calender .calender-card .start-mode p {
   color: white;
 }
 .NTH-calender .calender-card .end-mode {
-  background: linear-gradient(58deg, rgb(145, 152, 229) 15%, rgb(230, 100, 101) 82%);
+  background: linear-gradient(
+    58deg,
+    rgb(145, 152, 229) 15%,
+    rgb(230, 100, 101) 82%
+  );
 }
 .NTH-calender .calender-card .end-mode p {
   color: white;
@@ -790,4 +806,4 @@
 .habit-card .delete-button {
   background-color: #e66465;
   margin: 5px;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
