@@ -257,7 +257,12 @@ const createTodoItem = (
 
 const deleteBtnFunc = (button) => {
   const btn = button.innerText;
-  const cardId = button.parentElement.parentElement.classList[1];
+  let cardId = button.parentElement.parentElement.classList[1];
+  if (cardId === "todo-done") {
+    console.log("Done todo, changing ID.");
+    cardId = button.parentElement.parentElement.classList[2];
+    console.log(cardId);
+  }
   let todoCards = JSON.parse(localStorage.getItem("userTodo")) || [];
 
   todoCards.forEach((card) => console.log(card.cardID, cardId));
