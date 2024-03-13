@@ -1,4 +1,4 @@
-const calenderContainer = document.querySelector("NTH-calender");
+const calenderContainer = document.querySelector(".NTH-calender");
 const calenderResults = document.querySelector(".cal-results");
 const pastEvents = document.querySelector(".pastEvents");
 const sortCalendar = document.querySelector("#sortCalendar");
@@ -13,6 +13,9 @@ const calEndTime = document.querySelector("#calEndTime");
 const addToCal = document.querySelector("#addCalResult");
 
 const activeUser = localStorage.getItem("currentUserId");
+
+const scrollCalendar = document.querySelector("#calendarScroll");
+
 let userEvents = [];
 
 const checkDateCorrection = () => {
@@ -231,5 +234,8 @@ const isDateBehind = (endDate) => {
     return false;
   }
 };
+scrollCalendar.addEventListener("click", () => {
+  calenderContainer.scrollIntoView({ behavior: "smooth" });
+});
 
 getCalenderData();

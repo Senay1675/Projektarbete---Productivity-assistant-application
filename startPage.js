@@ -185,17 +185,21 @@ function closeModal(modal) {
 
 // ------------ VÄDER API := ---------------------
 
-const apiKey = "88cc3776d9e1a3fd596dea8ca64d74db";
-const apiURL =
-  "https://api.openweathermap.org/data/3.0/onecall?lat={59;33}&lon={18;06}&exclude={part}&appid={API key}";
+async function getWeather() {
+  const response = await fetch(
+    "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
+  );
+  const weather = response.json();
 
-fetch("${apiURL}?apikey=${apiKey}")
-  .then((response) => response.jason())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((error) => console.error("Fel vid hämtning av väderdata"));
+  return weather;
+}
 
+getWeather().then((weather) => {
+  let temp =
+    weather.properties.timeseries[0].data.instant.details.air_temperature;
+  console.log(weather);
+  console.log(temp);
+});
 // function openModal() {
 //   document.querySelector("#timerModal").style.display = "block";
 // }
