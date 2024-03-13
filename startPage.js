@@ -195,78 +195,78 @@ function closeModal(modal) {
 //   })
 //   .catch((error) => console.error("Fel vid hämtning av väderdata"));
 
-async function getWeather() {
-  const response = await fetch(
-    "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
-  );
-  const weather = response.json();
+// async function getWeather() {
+//   const response = await fetch(
+//     "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
+//   );
+//   const weather = response.json();
 
-  return weather;
-}
-
-getWeather().then((weather) => {
-  let weatherDetails = weather.properties.timeseries[0].data.instant.details;
-  let temp = weatherDetails.air_temperature;
-  let clouds = weatherDetails.cloud_area_fraction;
-  let wind = weatherDetails.wind_speed;
-
-  let weatherIcon;
-  let weatherImg;
-
-  let weatherContainer = document.querySelector(".headerLeft");
-
-  if (clouds < 60) {
-    weatherIcon = `fair_day.svg`;
-  } else if (clouds > 60) {
-    weatherIcon = `cloudy.svg`;
-  } else if (clouds < 30) {
-    weatherIcon = `clearsky_day.svg`;
-  }
-
-  weatherImg = document.createElement("img");
-  weatherImg.src = "./weathericons/weather/svg/cloudy.svg";
-
-  let showTemp = document.createElement("p");
-  showTemp.innerHTML = `${temp} °C`;
-
-  let currentWind = document.createElement("p");
-  currentWind.innerHTML = `${wind} m/s`;
-
-  //   /Users/charleslindberg/weathericons/weather/svg
-
-  //     weatherImg.innerHTML = `<img src="/weather/svg/${weatherIcon}" />`;
-  weatherContainer.append(weatherImg);
-  weatherContainer.append(showTemp);
-  weatherContainer.append(currentWind);
-
-  console.log(weather);
-  console.log(temp);
-  console.log(clouds);
-  console.log(wind);
-  console.log(weatherIcon);
-});
-
-// function openModal() {
-//   document.querySelector("#timerModal").style.display = "block";
+//   return weather;
 // }
 
-// function closeModal() {
-//   document.querySelector("#timerModal").style.display = "none";
-// }
+// getWeather().then((weather) => {
+//   let weatherDetails = weather.properties.timeseries[0].data.instant.details;
+//   let temp = weatherDetails.air_temperature;
+//   let clouds = weatherDetails.cloud_area_fraction;
+//   let wind = weatherDetails.wind_speed;
 
-// document.querySelector("#focusTimeBtn").addEventListener("click", openModal);
+//   let weatherIcon;
+//   let weatherImg;
 
-// let start = Date.now();
-// setInterval(function () {
-//   let delta = Date.now() - start; // Delta betyder skillnad i värde
+//   let weatherContainer = document.querySelector(".headerLeft");
 
-//   output(Math.floor(delta / 1000));
-//   output(new Date().toUTCString());
-// }, 1000);
+//   if (clouds < 60) {
+//     weatherIcon = `fair_day.svg`;
+//   } else if (clouds > 60) {
+//     weatherIcon = `cloudy.svg`;
+//   } else if (clouds < 30) {
+//     weatherIcon = `clearsky_day.svg`;
+//   }
 
-// const timer = {
-//   pomodoro: 25,
-//   longBreak: 15,
-//   shortBreak: 5,
-//   longBreakInterval: 4,
-// };
+//   weatherImg = document.createElement("img");
+//   weatherImg.src = "./weathericons/weather/svg/cloudy.svg";
+
+//   let showTemp = document.createElement("p");
+//   showTemp.innerHTML = `${temp} °C`;
+
+//   let currentWind = document.createElement("p");
+//   currentWind.innerHTML = `${wind} m/s`;
+
+//   //   /Users/charleslindberg/weathericons/weather/svg
+
+//   //     weatherImg.innerHTML = `<img src="/weather/svg/${weatherIcon}" />`;
+//   weatherContainer.append(weatherImg);
+//   weatherContainer.append(showTemp);
+//   weatherContainer.append(currentWind);
+
+//   console.log(weather);
+//   console.log(temp);
+//   console.log(clouds);
+//   console.log(wind);
+//   console.log(weatherIcon);
+// });
+
+// // function openModal() {
+// //   document.querySelector("#timerModal").style.display = "block";
+// // }
+
+// // function closeModal() {
+// //   document.querySelector("#timerModal").style.display = "none";
+// // }
+
+// // document.querySelector("#focusTimeBtn").addEventListener("click", openModal);
+
+// // let start = Date.now();
+// // setInterval(function () {
+// //   let delta = Date.now() - start; // Delta betyder skillnad i värde
+
+// //   output(Math.floor(delta / 1000));
+// //   output(new Date().toUTCString());
+// // }, 1000);
+
+// // const timer = {
+// //   pomodoro: 25,
+// //   longBreak: 15,
+// //   shortBreak: 5,
+// //   longBreakInterval: 4,
+// // };
