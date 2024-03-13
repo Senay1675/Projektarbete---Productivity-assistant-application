@@ -183,6 +183,19 @@ function closeModal(modal) {
   overlay.classList.remove("active");
 }
 
+// ------------ VÄDER API := ---------------------
+
+const apiKey = "88cc3776d9e1a3fd596dea8ca64d74db";
+const apiURL =
+  "https://api.openweathermap.org/data/3.0/onecall?lat={59;33}&lon={18;06}&exclude={part}&appid={API key}";
+
+fetch("${apiURL}?apikey=${apiKey}")
+  .then((response) => response.jason())
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => console.error("Fel vid hämtning av väderdata"));
+
 // function openModal() {
 //   document.querySelector("#timerModal").style.display = "block";
 // }
