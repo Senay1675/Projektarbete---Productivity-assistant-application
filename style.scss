@@ -165,7 +165,7 @@
   min-height: 300px;
 
   .headerLeft {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 20%;
   }
 
@@ -201,7 +201,7 @@
   }
 
   .headerRight {
-    border: 1px solid blue;
+    // border: 1px solid blue;
     width: 20%;
     display: flex;
     flex-direction: column;
@@ -303,7 +303,7 @@
 // ------------------ TIMER STYLING ------------------------
 
 .timerContainer {
-  border: 1px solid magenta;
+  // border: 1px solid magenta;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -313,7 +313,7 @@
     font-size: xx-large;
   }
   .timeButtons {
-    border: 1px solid grey;
+    // border: 1px solid grey;
 
     width: 100%;
     display: flex;
@@ -328,7 +328,7 @@
     }
   }
   .time {
-    border: 1px solid yellow;
+    // border: 1px solid yellow;
 
     display: flex;
     justify-content: center;
@@ -339,7 +339,7 @@
     }
   }
   .pauseButtons {
-    border: 1px solid firebrick;
+    // border: 1px solid firebrick;
     display: flex;
     justify-content: space-evenly;
     width: 100%;

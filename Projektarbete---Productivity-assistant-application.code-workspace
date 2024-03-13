@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"path": "../../../../../weathericons/weather"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Projektarbete---Productivity-assistant-application"
+  }
+}
