@@ -63,32 +63,57 @@ const sortingHabits = (filter) => {
     console.log(valueB);
 
     // Använd lämplig jämförelse beroende på vad du sorterar (strängar, nummer, etc.)
+    console.log(sortRadioPriority.value);
+if(sortRadioStreak.checked){
 
-    console.log(filter);
-    if (filter === "rising") {
-      return valueA - valueB;
-    } else if (filter === "falling") {
-      return valueB - valueA;
-    }
+  console.log(filter);
+  if (filter === "rising") {
+    return valueA - valueB;
+  } else if (filter === "falling") {
+    return valueB - valueA;
+  }
+}
     //}
 
     //Else sortera på prio
-    else if (filter === "priority") {
-      const priorityA = a.querySelector('input[name="priority"]:checked').value;
-      const priorityB = b.querySelector('input[name="priority"]:checked').value;
+    else if (sortRadioPriority.checked) {
+      
+     console.log(a.querySelector("p").innerText);
+     console.log(b.querySelector("p").innerText);
+//console.log(a.querySelector("#habitCard-container > div:nth-child(1) > p"));
+//console.log(b.querySelector("#habitCard-container > div:nth-child(1) > p"));
+
+      const priorityA = a.querySelector("p").innerText;
+      const priorityB = b.querySelector("p").innerText;
 
       // Jämför prioriteterna som strängar (Low, Medium, High)
-      if (priorityA === priorityB) {
-        return 0; // Ingen förändring i ordningen
-      } else if (priorityA === "Low") {
-        return -1; // Sortera habitA före habitB
-      } else if (priorityB === "Low") {
-        return 1; // Sortera habitB före habitA
-      } else if (priorityA === "Medium" && priorityB === "High") {
-        return -1; // Sortera habitA före habitB
-      } else {
-        return 1; // Sortera habitB före habitA (om priorityA är "High" eller priorityB är "Medium")
-      }
+if (priorityA === priorityB) {
+  return 0; // Ingen förändring i ordningen
+} else if (filter === "rising") {
+  // Stigande ordning
+  if (priorityA === "Low") {
+    return -1; // Sortera habitA före habitB
+  } else if (priorityB === "Low") {
+    return 1; // Sortera habitB före habitA
+  } else if (priorityA === "Medium" && priorityB === "High") {
+    return -1; // Sortera habitA före habitB
+  } else {
+    return 1; // Sortera habitB före habitA (om priorityA är "High" eller priorityB är "Medium")
+  }
+}
+ else if (filter === "falling") {
+  // Fallande ordning
+  if (priorityA === "Low") {
+    return 1; // Sortera habitB före habitA
+  } else if (priorityB === "Low") {
+    return -1; // Sortera habitA före habitB
+  } else if (priorityA === "Medium" && priorityB === "High") {
+    return 1; // Sortera habitB före habitA
+  } else {
+    return -1; // Sortera habitA före habitB (om priorityA är "High" eller priorityB är "Medium")
+  }
+}
+
     }
   });
 
@@ -155,80 +180,7 @@ filterBtn.addEventListener("click", () => {
 console.log(habitCardContainer);
 
 console.log(radioCategories);
-// När man trycker på knappen så dyker kortet för habits fram
 
-// addHabit.addEventListener("click", () => {
-//   // För varje kort som skapas så gör jag en en till funktion som tar ut prioritet värde från radio buttons
-
-//   // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
-
-//   let habitCard = document.createElement("div");
-//   habitCard.classList.add("habit-card");
-//   let habitName = document.createElement("h3");
-//   habitName.innerText = inputHabit.value;
-
-//   radioCategories.forEach((radio) => {
-//     if (radio.checked) {
-//       priority = radio.value;
-//       console.log("Vald prioritet", priority);
-
-//       let prioritytext = document.createElement("p");
-//       prioritytext.innerText = radio.value;
-//       habitCard.append(prioritytext);
-//     }
-//   });
-
-//   habitCard.append(habitName);
-
-//   habitCardContainer.append(habitCard);
-
-//   let habitCounter = document.createElement("div");
-//   let habitStreakTitle = document.createElement("p");
-//   habitStreakTitle.innerText = "Streak";
-
-//   habitCounter.append(habitStreakTitle);
-//   habitCard.append(habitCounter);
-
-//   // Här koden som skapar counter elementen och appendar dem till DOMen
-
-//   let counterDiv = document.createElement("div");
-
-//   let incrementBtn = document.createElement("button");
-//   incrementBtn.innerText = "+";
-//   let decrementBtn = document.createElement("button");
-//   decrementBtn.innerText = "-";
-//   let resetBtn = document.createElement("button");
-//   resetBtn.innerText = "Reset";
-//   let counterValue = document.createElement("div");
-//   counterValue.innerText = "0";
-
-//   counterDiv.appendChild(counterValue);
-//   counterDiv.appendChild(incrementBtn);
-//   counterDiv.appendChild(decrementBtn);
-//   counterDiv.appendChild(resetBtn);
-//   habitCard.appendChild(counterDiv);
-
-//   // Med denna kod så räknar countern upp ner och nollställer den
-
-//   let counter = 0;
-
-//   incrementBtn.addEventListener("click", () => {
-//     counter++;
-//     counterValue.innerText = counter;
-//   });
-
-//   decrementBtn.addEventListener("click", () => {
-//     if (counter > 0) {
-//       counter--;
-//       counterValue.innerText = counter;
-//     }
-//   });
-
-//   resetBtn.addEventListener("click", () => {
-//     counter = 0;
-//     counterValue.innerText = counter;
-//   });
-// });
 
 addHabit.addEventListener("click", () => {
   // För varje kort som skapas så gör jag en en till funktion som tar ut prioritet värde från radio buttons
@@ -250,6 +202,8 @@ addHabit.addEventListener("click", () => {
 const makeHabitcard = (habitStreak, habitPriority, habitTitle) => {
   let habitCard = document.createElement("div");
   habitCard.classList.add("habit-card");
+  let cardID = Math.floor(1000 + Math.random() * 9000);
+  habitCard.classList.add(cardID);
   let habitName = document.createElement("h3");
   habitName.innerText = habitTitle;
 
@@ -286,6 +240,8 @@ const makeHabitcard = (habitStreak, habitPriority, habitTitle) => {
   counterDiv.appendChild(resetBtn);
   habitCard.appendChild(counterDiv);
 
+
+  
   // Med denna kod så räknar countern upp ner och nollställer den
 
   let counter = 0;
@@ -307,20 +263,27 @@ const makeHabitcard = (habitStreak, habitPriority, habitTitle) => {
     counterValue.innerText = counter;
   });
 
-  // denna funktion raderar korten
+ 
 
-  const deleteFuncButton = (button) => {
-    const cardId = button.parentElement.parentElement.classList[1];
-    button.parentElement.remove();
+  // Funktion för att ta bort kort från local storage
+const removeFromLocalStorage = (cardId) => {
+  let habitCards = JSON.parse(localStorage.getItem("userHabit")) || [];
 
-    const updatedHabitList = habitCard.filter(
-      (item) => item.cardID !== +cardId
-    );
+  // Filtrera ut det kortet med matchande cardId
+  const updatedHabitCards = habitCards.filter((card) => card.cardID !== cardId);
 
-    let habitCards = JSON.parse(localStorage.getItem("userHabit")) || [];
+  // Spara den uppdaterade listan till local storage
+  localStorage.setItem("userHabit", JSON.stringify(updatedHabitCards));
+};
 
-    localStorage.setItem("userHabit", JSON.stringify(updatedHabitList));
-  };
+// Anropa funktionen när du vill ta bort ett kort
+const deleteFuncButton = (button) => { 
+  console.log("Delete button clicked");
+   let cardId = button.parentElement.classList[1];
+   console.log(cardID);
+  button.parentElement.remove();
+  removeFromLocalStorage(+cardId); // Använd '+' för att konvertera cardId till en siffra
+};
 
   let deleteButton = document.createElement("button");
   deleteButton.innerText = "Delete";
@@ -340,6 +303,7 @@ const makeHabitcard = (habitStreak, habitPriority, habitTitle) => {
     priority: priorityValue,
     titel: inputHabit.value,
     userID: habitUser,
+    cardID,
   };
   console.log(allHabits);
   allUserHabits.push(allHabits);
@@ -363,19 +327,4 @@ getHabitData();
 
 /* ------------------- Habits ---------------------- */
 
-// addHabit.addEventListener("click", () => {
-//   // För varje kort som skapas så gör jag en en till funktion som tar ut prioritet värde från radio buttons
-//   let streak = "0";
-//   let prio;
-//   let title = inputHabit.value;
 
-//   radioCategories.forEach((radio) => {
-//     if (radio.checked) {
-//       prio = radio.value;
-//       console.log("Vald prioritet", prio);
-//     }
-//   });
-//   console.log(streak, prio, title);
-//   // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
-//   makeHabitcard(streak, prio, title);
-// });
