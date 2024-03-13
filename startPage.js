@@ -224,7 +224,7 @@ getWeather().then((weather) => {
   }
 
   weatherImg = document.createElement("img");
-  weatherImg.src = "./iconsweather/weather/svg/cloudy.svg";
+  weatherImg.src = "./weathericons/weather/svg/cloudy.svg";
 
   let showTemp = document.createElement("p");
   showTemp.innerHTML = `${temp} °C`;
