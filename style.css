@@ -92,24 +92,12 @@
 
 #snackbar.show {
   visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 #userExistsMessage {
   color: crimson;
   font-size: x-small;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
 }
 @keyframes fadein {
   from {
@@ -119,16 +107,6 @@
   to {
     bottom: 30px;
     opacity: 1;
-  }
-}
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
   }
 }
 @keyframes fadeout {
@@ -201,12 +179,29 @@
   -moz-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
   width: 80%;
 }
-#loginHeader .headerRight #focusTimeBtn:hover {
+#loginHeader .headerRight #focusTimeBtn:hover,
+#loginHeader .headerRight #calendarScroll:hover {
   box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
   -webkit-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
   -moz-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.75);
   transition-duration: 100ms;
   transform: scale(1.01);
+}
+#loginHeader .headerRight #calendarScroll {
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  font-family: montserrat;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.3ch;
+  font-weight: 600;
+  background-color: #5560db;
+  color: beige;
+  box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+  -webkit-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+  -moz-box-shadow: 0px 1px 13px 5px rgba(255, 251, 237, 0.37);
+  width: 80%;
 }
 #loginHeader .headerRight #logOutBtn {
   border: none;
@@ -425,11 +420,7 @@
 }
 
 .todo-done {
-  background: radial-gradient(
-    circle,
-    rgb(161, 254, 161) 1%,
-    rgb(203, 255, 203) 47%
-  );
+  background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
   color: black;
 }
 
@@ -465,7 +456,6 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   padding: 18px 0px;
@@ -475,12 +465,9 @@
   font-family: Montserrat;
 }
 .todo-container .add-todo {
-  position: -webkit-sticky;
   position: sticky;
   top: 50px;
   background: rgb(145, 152, 229) 0%;
-
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   border-radius: 8px;
@@ -566,7 +553,6 @@
   display: block;
 }
 .todo-container .expanded {
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
 }
@@ -608,9 +594,9 @@
 }
 
 .NTH-calender {
-  width: 50%;
+  width: -moz-min-content;
+  width: min-content;
   background: rgb(223, 125, 125);
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   border-radius: 8px;
@@ -656,11 +642,7 @@
 }
 .NTH-calender .calender-card {
   border-radius: 8px;
-  background: radial-gradient(
-    circle,
-    rgb(230, 100, 101) 0%,
-    rgb(145, 152, 229) 66%
-  );
+  background: radial-gradient(circle, rgb(230, 100, 101) 0%, rgb(145, 152, 229) 66%);
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -668,7 +650,6 @@
   gap: 0px;
   box-sizing: border-box;
   padding: 12px;
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   width: 250px;
@@ -682,21 +663,13 @@
   font-weight: bold;
 }
 .NTH-calender .calender-card .start-mode {
-  background: linear-gradient(
-    58deg,
-    rgb(230, 100, 101) 18%,
-    rgb(145, 152, 229) 85%
-  );
+  background: linear-gradient(58deg, rgb(230, 100, 101) 18%, rgb(145, 152, 229) 85%);
 }
 .NTH-calender .calender-card .start-mode p {
   color: white;
 }
 .NTH-calender .calender-card .end-mode {
-  background: linear-gradient(
-    58deg,
-    rgb(145, 152, 229) 15%,
-    rgb(230, 100, 101) 82%
-  );
+  background: linear-gradient(58deg, rgb(145, 152, 229) 15%, rgb(230, 100, 101) 82%);
 }
 .NTH-calender .calender-card .end-mode p {
   color: white;
@@ -817,4 +790,4 @@
 }
 .habit-card .delete-button {
   background-color: #e66465;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
