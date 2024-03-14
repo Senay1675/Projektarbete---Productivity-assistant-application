@@ -185,16 +185,6 @@ function closeModal(modal) {
 
 // ------------ VÄDER API := ---------------------
 
-// const apiKey = "88cc3776d9e1a3fd596dea8ca64d74db";
-// const apiURL = `https://api.openweathermap.org/data/3.0/onecall?lat={59;33}&lon={18;06}&exclude={part}&appid=${apiKey}`;
-
-// fetch("${apiURL}?apikey=${apiKey}")
-//   .then((response) => response.jason())
-//   .then((data) => {
-//     console.log(data);
-//   })
-//   .catch((error) => console.error("Fel vid hämtning av väderdata"));
-
 async function getWeather() {
   const response = await fetch(
     "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
@@ -224,7 +214,7 @@ getWeather().then((weather) => {
   }
 
   weatherImg = document.createElement("img");
-  weatherImg.src = "./weather-icons/cloudy.svg";
+  weatherImg.src = `./weather-icons/${weatherIcon}`;
 
   let showTemp = document.createElement("p");
   showTemp.innerHTML = `${temp} °C`;
@@ -232,9 +222,6 @@ getWeather().then((weather) => {
   let currentWind = document.createElement("p");
   currentWind.innerHTML = `${wind} m/s`;
 
-  //   /Users/charleslindberg/weathericons/weather/svg
-
-  //     weatherImg.innerHTML = `<img src="/weather/svg/${weatherIcon}" />`;
   weatherContainer.append(weatherImg);
   weatherContainer.append(showTemp);
   weatherContainer.append(currentWind);
@@ -245,28 +232,3 @@ getWeather().then((weather) => {
   console.log(wind);
   console.log(weatherIcon);
 });
-
-// // function openModal() {
-// //   document.querySelector("#timerModal").style.display = "block";
-// // }
-
-// // function closeModal() {
-// //   document.querySelector("#timerModal").style.display = "none";
-// // }
-
-// // document.querySelector("#focusTimeBtn").addEventListener("click", openModal);
-
-// // let start = Date.now();
-// // setInterval(function () {
-// //   let delta = Date.now() - start; // Delta betyder skillnad i värde
-
-// //   output(Math.floor(delta / 1000));
-// //   output(new Date().toUTCString());
-// // }, 1000);
-
-// // const timer = {
-// //   pomodoro: 25,
-// //   longBreak: 15,
-// //   shortBreak: 5,
-// //   longBreakInterval: 4,
-// // };
