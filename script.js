@@ -43,7 +43,7 @@ const sortingHabits = (filter) => {
 
   habitCardSort.sort((a, b) => {
     // IF sortera på streaks
-    // if (filter === "streak"){
+    
     console.log(a);
     let habitB = b.querySelector(
       ".habit-card div:nth-child(4) > div"
@@ -63,8 +63,8 @@ const sortingHabits = (filter) => {
     console.log(valueB);
 
     // Använd lämplig jämförelse beroende på vad du sorterar (strängar, nummer, etc.)
-    console.log(sortRadioPriority.value);
-if(sortRadioStreak.checked){
+   
+  if(sortRadioStreak.checked){
 
   console.log(filter);
   if (filter === "rising") {
@@ -195,6 +195,8 @@ addHabit.addEventListener("click", () => {
     }
   });
   console.log(streak, prio, title);
+
+
   // Dessa kodrader skapar en div för att lägga korten i och tar valuet från inputen för att göra en rubrik för ärendet
   makeHabitcard(streak, prio, title);
 });
@@ -244,26 +246,47 @@ const makeHabitcard = (habitStreak, habitPriority, habitTitle) => {
   
   // Med denna kod så räknar countern upp ner och nollställer den
 
-  let counter = 0;
+  let counter = habitStreak;
 
   incrementBtn.addEventListener("click", () => {
     counter++;
     counterValue.innerText = counter;
+    let id = resetBtn.parentElement.parentElement.classList[1];
+    console.log(id);
+    updateLocalStreak(id, counter);
   });
 
   decrementBtn.addEventListener("click", () => {
     if (counter > 0) {
       counter--;
       counterValue.innerText = counter;
+      let id = resetBtn.parentElement.parentElement.classList[1];
+      console.log(id);
+      updateLocalStreak(id, counter);
     }
   });
 
   resetBtn.addEventListener("click", () => {
     counter = 0;
     counterValue.innerText = counter;
+    let id = resetBtn.parentElement.parentElement.classList[1];
+    console.log(id);
+    updateLocalStreak(id, counter);
   });
 
- 
+ const updateLocalStreak = (id, counter) =>{
+  let habitCards = JSON.parse(localStorage.getItem("userHabit")) || [];
+  habitCards.forEach((habit) =>{
+    console.log(id, habit.cardID)
+    if(+habit.cardID == id){
+      console.log("id stämmer");
+      habit.streak = counter
+    }
+    console.log(habitCards);
+  });
+  localStorage.setItem("userHabit", JSON.stringify(habitCards));
+  return;
+ };
 
   // Funktion för att ta bort kort från local storage
 const removeFromLocalStorage = (cardId) => {
@@ -299,7 +322,7 @@ const deleteFuncButton = (button) => {
   console.log(priorityValue);
 
   let allHabits = {
-    streak: counter,
+    streak: habitStreak,
     priority: priorityValue,
     titel: inputHabit.value,
     userID: habitUser,
@@ -323,6 +346,8 @@ const getHabitData = () => {
   });
 };
 getHabitData();
+
+
 /* ------------------- Habits ---------------------- */
 
 /* ------------------- Habits ---------------------- */
