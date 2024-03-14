@@ -24,7 +24,6 @@ const checkDateCorrection = () => {
   const startTime = calStartTime.value;
   const endTime = calEndTime.value;
 
-  console.log(endTime, endDate.getTime(), startTime, startDate.getTime());
   if (
     endDate < startDate ||
     (endDate.getTime() === startDate.getTime() && endTime <= startTime)
@@ -38,16 +37,21 @@ const checkDateCorrection = () => {
   }
 };
 
-calEndDate.addEventListener("change", checkDateCorrection);
-
-calEndTime.addEventListener("change", checkDateCorrection);
-
 addToCal.addEventListener("click", () => {
   const title = calTitle.value;
   const startDate = calStartDate.value;
   const startTime = calStartTime.value;
   const endDate = calEndDate.value;
   const endTime = calEndTime.value;
+
+  let falseTimeInput = checkFilledTime(startTime, endTime);
+  console.log(falseTimeInput);
+  if (falseTimeInput) {
+    errorCalTime.style.display = "block";
+    return;
+  } else {
+    errorCalTime.style.display = "none";
+  }
 
   let result = checkExistingDates(startDate, startTime, endDate, endTime);
   console.log(startDate, startTime, endDate, endTime);
@@ -62,7 +66,6 @@ addToCal.addEventListener("click", () => {
 });
 
 const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
-  //   console.log(title, startDate, startTime, endDate, endTime);
   const calCard = createDiv("calender-card");
 
   const calTitle = createDiv("calender-title");
@@ -101,6 +104,8 @@ const addtoCalender = (title, startDate, startTime, endDate, endTime) => {
   //     console.log(">>>>>>>>>>>>");
   //     calCard.classList.add("pastEvent");
   //   }
+  console.log("Start and endtime: " + startTime, endTime);
+
   const addCalenderStorage = {
     id: activeUser,
     title,
@@ -121,27 +126,6 @@ const getCalenderData = () => {
     localStorage.getItem("userCalender") || "[]"
   );
 
-  //   let closestDeadline = Infinity;
-  //   let closestEvent = null;
-  //   parsedUserCalender.forEach((item) => {
-  //     if (item.id === activeUser) {
-  //       const endDate = new Date(item.endDate);
-  //       const isBehind = isDateBehind(endDate);
-  //       if (!isBehind && endDate < closestDeadline) {
-  //         closestDeadline = endDate;
-  //         closestEvent = item;
-  //       }
-  //     }
-  //   });
-  //   if (closestEvent) {
-  //     const closestCard = document.querySelector(
-  //       `.calender-card.${closestEvent.id}`
-  //     );
-  //     const closestParagraph = document.createElement("p");
-  //     closestParagraph.textContent = "Closest to deadline!";
-  //     closestCard.prepend(closestParagraph);
-  //   }
-
   const userEvents = parsedUserCalender.filter(
     (item) => item.id === activeUser
   );
@@ -156,11 +140,6 @@ const getCalenderData = () => {
     );
   });
 };
-
-// sortCalendar.addEventListener("click", () => {
-//   calenderResults.innerHTML = "";
-//   getCalenderData();
-// });
 
 const createPtag = (text) => {
   const p = document.createElement("p");
@@ -238,4 +217,14 @@ scrollCalendar.addEventListener("click", () => {
   calenderContainer.scrollIntoView({ behavior: "smooth" });
 });
 
+const checkFilledTime = (startTime, endTime) => {
+  if (endTime === "" || startTime === "") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 getCalenderData();
+
+// fixa så att det är obligatoriskt att skriva båda tider!

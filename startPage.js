@@ -195,14 +195,14 @@ function closeModal(modal) {
 //   })
 //   .catch((error) => console.error("Fel vid hämtning av väderdata"));
 
-async function getWeather() {
-  const response = await fetch(
-    "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
-  );
-  const weather = response.json();
+// async function getWeather() {
+//   const response = await fetch(
+//     "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
+//   );
+//   const weather = response.json();
 
-  return weather;
-}
+//   return weather;
+// }
 
 getWeather().then((weather) => {
   let weatherDetails = weather.properties.timeseries[0].data.instant.details;
@@ -224,7 +224,7 @@ getWeather().then((weather) => {
   }
 
   weatherImg = document.createElement("img");
-  weatherImg.src = "./weathericons/weather/svg/cloudy.svg";
+  weatherImg.src = "./weather-icons/cloudy.svg";
 
   let showTemp = document.createElement("p");
   showTemp.innerHTML = `${temp} °C`;
@@ -246,27 +246,27 @@ getWeather().then((weather) => {
   console.log(weatherIcon);
 });
 
-// function openModal() {
-//   document.querySelector("#timerModal").style.display = "block";
-// }
+// // function openModal() {
+// //   document.querySelector("#timerModal").style.display = "block";
+// // }
 
-// function closeModal() {
-//   document.querySelector("#timerModal").style.display = "none";
-// }
+// // function closeModal() {
+// //   document.querySelector("#timerModal").style.display = "none";
+// // }
 
-// document.querySelector("#focusTimeBtn").addEventListener("click", openModal);
+// // document.querySelector("#focusTimeBtn").addEventListener("click", openModal);
 
-// let start = Date.now();
-// setInterval(function () {
-//   let delta = Date.now() - start; // Delta betyder skillnad i värde
+// // let start = Date.now();
+// // setInterval(function () {
+// //   let delta = Date.now() - start; // Delta betyder skillnad i värde
 
-//   output(Math.floor(delta / 1000));
-//   output(new Date().toUTCString());
-// }, 1000);
+// //   output(Math.floor(delta / 1000));
+// //   output(new Date().toUTCString());
+// // }, 1000);
 
-// const timer = {
-//   pomodoro: 25,
-//   longBreak: 15,
-//   shortBreak: 5,
-//   longBreakInterval: 4,
-// };
+// // const timer = {
+// //   pomodoro: 25,
+// //   longBreak: 15,
+// //   shortBreak: 5,
+// //   longBreakInterval: 4,
+// // };
