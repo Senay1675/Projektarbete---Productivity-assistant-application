@@ -195,14 +195,14 @@ function closeModal(modal) {
 //   })
 //   .catch((error) => console.error("Fel vid hämtning av väderdata"));
 
-// async function getWeather() {
-//   const response = await fetch(
-//     "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
-//   );
-//   const weather = response.json();
+async function getWeather() {
+  const response = await fetch(
+    "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=59.34&lon=18.06"
+  );
+  const weather = response.json();
 
-//   return weather;
-// }
+  return weather;
+}
 
 getWeather().then((weather) => {
   let weatherDetails = weather.properties.timeseries[0].data.instant.details;
