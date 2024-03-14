@@ -117,8 +117,8 @@ const createTodoItem = (
     console.log("EditBtn " + parentElement.classList[1]);
     const editStatus = todoCard.querySelector(".todoStatus span").textContent;
     if (editBtn.innerText === "Edit") {
-      //disble delete btn
       editBtn.textContent = "Save";
+      editBtn.nextElementSibling.disabled = true;
       todoDetails.innerHTML = "";
       todoDetails.innerHTML = `<p>Title:</p>
       <input id="titleEdit" type="text" value="${title}"/>
@@ -141,8 +141,8 @@ const createTodoItem = (
                />
                </select>`;
     } else {
-      //enable delete btn
       editBtn.textContent = "Edit";
+      editBtn.nextElementSibling.disabled = false;
       const titleEdit = document.getElementById("titleEdit").value;
       const descEdit = document.getElementById("descEdit").value;
       const categEdit = document.getElementById("categEdit").value;
@@ -159,8 +159,7 @@ const createTodoItem = (
   <span>Deadline: <span>${deadline}</span></span>`;
 
       status.innerHTML = `<span>${editStatus}</span>
-      <span>Est. time: <span>${getEstTime}</span>
-            ${getEstValue}</span></span>
+      <span>Est. time: <span>${getEstTime}</span> ${getEstValue}</span></span>
             <span>Deadline: <span>${deadline}</span></span>`;
       console.log(userTodo);
 
@@ -187,7 +186,6 @@ const createTodoItem = (
       });
       console.log(editedCard);
 
-      //CREATE A FUNCTION THAT UPDATES LOCALSTORAGE!!!!!!!!!!
       console.log(todoLocalCards);
       localStorage.setItem("userTodo", JSON.stringify(todoLocalCards));
     }
@@ -205,9 +203,7 @@ const createTodoItem = (
       ? parentElement.classList[2]
       : parentElement.classList[1];
     console.log("DoneBtn " + parentElement.classList);
-    // const uniqueCard = parentElement.classList.contains("todo-done")
-    //   ? parentElement.classList[2]
-    //   : parentElementclassList[1];
+
     console.log(todoID, localCards);
     localCards.forEach((todo) => {
       const todoIndex = localCards.findIndex(
@@ -221,10 +217,6 @@ const createTodoItem = (
     });
 
     console.log(localCards);
-
-    // console.log(localCards, cardID);
-    // let state = document.querySelector(".todoStatus > span");
-    // console.log(state.textContent);
 
     doneBtn.parentElement.parentElement.classList.add("todo-done");
     doneBtn.remove();
@@ -258,8 +250,6 @@ const createTodoItem = (
 
   return todoCard;
 };
-
-//delete and edit button function
 
 const deleteBtnFunc = (button) => {
   const btn = button.innerText;
@@ -340,15 +330,25 @@ const timeSort = (filter) => {
 
 const extractTimeDate = (todoCard) => {
   //Check which checkbox is checked in sorting and sort according to
-
+  console.log(todoCard);
   if (timeCheck.checked) {
     const details = todoCard.querySelector(
       ".todoStatus span:nth-child(2) > span"
     );
+    const unit = todoCard.querySelector(".todoStatus span:nth-child(2)");
+    let realUnit = unit.textContent.trim().split(" ")[3];
+
+    console.log(unit);
+    console.log("Real unit: " + realUnit);
     console.log(details);
+
     if (!details) return 0;
     const estText = details.textContent;
-    const [estimation, _] = estText.split(" ");
+    console.log(estText);
+    let [estimation, _] = estText.split(" ");
+    if (realUnit !== "Minutes") {
+      estimation = estimation * 60 * 24;
+    }
     console.log(estimation);
     return parseInt(estimation) || 0;
   }
@@ -395,9 +395,16 @@ todoDate.addEventListener("change", () => {
     errorMessage.style.display = "none";
     addTodoBtn.disabled = false;
   }
+  checkEstToday();
 });
 
-todoEstValue.addEventListener("change", () => {
+todoEst.addEventListener("change", () => {
+  if (todoEst.value < 0) {
+    todoEst.value = 0;
+  }
+});
+
+const checkEstToday = () => {
   if (todoEstValue.value === "Days") {
     const deadlineDate = new Date(todoDate.value);
     const today = new Date();
@@ -407,13 +414,20 @@ todoEstValue.addEventListener("change", () => {
 
     if (estEndDate > deadlineDate) {
       errorDays.style.display = "block";
+      addTodoBtn.disabled = true;
     } else {
       errorDays.style.display = "none";
+      addTodoBtn.disabled = false;
     }
   } else {
     errorDays.style.display = "none";
+    addTodoBtn.disabled = false;
   }
-});
+};
+
+todoEstValue.addEventListener("change", checkEstToday);
+
+todoEst.addEventListener("change", checkEstToday);
 
 addTodoBtn.addEventListener("click", () => {
   const title = todoTitle.value;
