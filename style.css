@@ -414,16 +414,7 @@
 }
 
 .todo-done {
-  background: radial-gradient(
-    circle,
-    rgb(161, 254, 161) 1%,
-    rgb(203, 255, 203) 47%
-  );
-  background: radial-gradient(
-    circle,
-    rgb(161, 254, 161) 1%,
-    rgb(203, 255, 203) 47%
-  );
+  background: radial-gradient(circle, rgb(161, 254, 161) 1%, rgb(203, 255, 203) 47%);
   color: black;
 }
 
@@ -645,16 +636,7 @@
 }
 .NTH-calender .calender-card {
   border-radius: 8px;
-  background: radial-gradient(
-    circle,
-    rgb(230, 100, 101) 0%,
-    rgb(145, 152, 229) 66%
-  );
-  background: radial-gradient(
-    circle,
-    rgb(230, 100, 101) 0%,
-    rgb(145, 152, 229) 66%
-  );
+  background: radial-gradient(circle, rgb(230, 100, 101) 0%, rgb(145, 152, 229) 66%);
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -675,31 +657,13 @@
   font-weight: bold;
 }
 .NTH-calender .calender-card .start-mode {
-  background: linear-gradient(
-    58deg,
-    rgb(230, 100, 101) 18%,
-    rgb(145, 152, 229) 85%
-  );
-  background: linear-gradient(
-    58deg,
-    rgb(230, 100, 101) 18%,
-    rgb(145, 152, 229) 85%
-  );
+  background: linear-gradient(58deg, rgb(230, 100, 101) 18%, rgb(145, 152, 229) 85%);
 }
 .NTH-calender .calender-card .start-mode p {
   color: white;
 }
 .NTH-calender .calender-card .end-mode {
-  background: linear-gradient(
-    58deg,
-    rgb(145, 152, 229) 15%,
-    rgb(230, 100, 101) 82%
-  );
-  background: linear-gradient(
-    58deg,
-    rgb(145, 152, 229) 15%,
-    rgb(230, 100, 101) 82%
-  );
+  background: linear-gradient(58deg, rgb(145, 152, 229) 15%, rgb(230, 100, 101) 82%);
 }
 .NTH-calender .calender-card .end-mode p {
   color: white;
@@ -784,14 +748,16 @@
 }
 
 #habit-rubrik {
+  font-family: montserrat;
   margin: 10px;
+  text-align: center;
 }
 
 .habit-container {
   background-color: #9198e5;
   display: flex;
-  border: black solid;
-  font-family: sans-serif;
+  font-family: montserrat;
+  justify-content: center;
 }
 .habit-container #habitForm-container {
   color: white;
@@ -799,24 +765,58 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  border: solid black;
-  margin: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  margin: 20px;
   padding: 10px;
+}
+.habit-container #habitInput {
+  width: 65%;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  align-self: center;
+}
+.habit-container #addHabitBtn {
+  width: 60%;
+  align-self: center;
+  padding: 7px;
+  font-size: large;
+  border-radius: 5px;
+}
+.habit-container #addHabitBtn:hover {
+  box-shadow: 0px 1px 13px 5px rgba(255, 58, 48, 0.75);
+  -webkit-box-shadow: 0px 1px 13px 5px rgba(254, 21, 21, 0.75);
+  -moz-box-shadow: 0px 1px 13px 5px rgba(255, 43, 43, 0.75);
+  transition-duration: 100ms;
+  transform: scale(1.01);
+  cursor: pointer;
 }
 .habit-container .filter-habit {
-  border-bottom: solid black;
+  border-bottom: solid white;
   padding: 10px;
   margin: 10px;
 }
+.habit-container .filter-habit .filter-titel {
+  font-family: montserrat;
+}
 .habit-container .sort-habit {
-  border-bottom: solid black;
+  border-bottom: solid white;
   padding: 10px;
   margin: 10px;
+}
+.habit-container .sort-habit .sort-titel {
+  font-family: montserrat;
+  margin: 5px;
+}
+.habit-container .sort-habit .streak-label {
+  font-family: Montserrat;
+}
+.habit-container .sort-habit .priority-label {
+  font-family: Montserrat;
 }
 
 .habit-card {
   border-radius: 10px;
-  background-color: dodgerblue;
+  background-color: #9198e5;
   gap: 10px;
   padding: 10px;
   margin: 10px;
@@ -824,6 +824,11 @@
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .habit-card .delete-button {
+  font-family: montserrat;
+  font-weight: 500;
+  color: white;
   background-color: #e66465;
   margin: 5px;
-} /*# sourceMappingURL=style.css.map */
+  padding: 5px;
+  border-radius: 5px;
+}/*# sourceMappingURL=style.css.map */

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="/startPage.js" defer></script>
-    <!-- <script src="script.js " defer></script> -->
-    <link rel="stylesheet" href="/style.css" />
+    <script src="script.js " defer></script> 
+    <link rel="stylesheet" href="style.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +21,6 @@
     ></script>
     <script src="todo.js" defer></script>
     <script src="calender.js" defer></script>
-    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <!-- ''''''' --------------- HEADER ---------------------'''''' -->
@@ -232,6 +232,9 @@
           <div id="errorOverlap" style="color: red; display: none">
             Dates overlapping. Re-check dates and time.
           </div>
+          <div id="errorCalTime" style="color: white; display: none">
+            Fill in all the properties.
+          </div>
         </div>
 
         <button id="addCalResult">Add to Calendar</button>
@@ -243,7 +246,7 @@
     <!--    Habits    -->
     <div class="habit-container">
       <div id="habitForm-container">
-        <h3 id="habit-rubrik">Add your habit:</h3>
+        <h2 id="habit-rubrik">Add your habit:</h2>
 
         <input
           type="text"
@@ -252,7 +255,7 @@
           placeholder="What do you want to do today.."
         />
         <br />
-        <h4>Habit priorities:</h4>
+        <h3>Habit priorities:</h3>
         <label for="low">Low</label>
         <input type="radio" id="low" name="priority" value="Low" />
         <label for="medium">Medium</label>
@@ -263,9 +266,9 @@
         <br />
         <button id="addHabitBtn">Add habit</button>
         <div class="filter-habit">
-          <h3>Habit-filtrering</h3>
+          <h3 class="filter-titel">Habit-filter:</h3>
 
-          <label for="filtrera">low</label>
+          <label for="filtrera">Low</label>
           <input type="checkbox" id="low-Check" name="filtrera" value="Low" />
 
           <label for="filtrera">Medium</label>
@@ -279,24 +282,24 @@
           <label for="filtrera">High</label>
           <input type="checkbox" id="high-Check" name="filtrera" value="High" />
 
-          <button id="filter-btn">Filtrera</button>
+          <button id="filter-btn">Filter</button>
         </div>
 
         <div class="sort-habit">
-          <h3>Habit sortering:</h3>
+          <h3 class="sort-titel">Habit sort:</h3>
           <select name="habit-option" id="sort-select">
             <option value="sort">Sort</option>
             <option value="rising">Rising</option>
             <option value="falling">Falling</option>
           </select>
-          <label for="sort-habit-streak">Habit-streak:</label>
+          <label class="streak-label" for="sort-habit-streak">Habit-streak</label>
           <input
             type="radio"
             id="sort-streak-radio"
             name="sort-habit-streak"
             value="streak"
           />
-          <label for="sort-habit-streak">Priority</label>
+          <label class="priority-label" for="sort-habit-streak">Priority</label>
           <input
             type="radio"
             id="sort-priority-radio"
